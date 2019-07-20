@@ -1,0 +1,54 @@
+@import 'global';
+
+:host {
+  display: block;
+  width: 100%;
+  z-index: 90;
+  background-color: rgba($clr-black, 0.9);
+  height: $footer-height;
+  float: left;
+
+  @media screen and (max-height: $screen-xxs) {
+    &.hidden {
+      display: none;
+    }
+  }
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+raw3-icon-route-button {
+  margin: 0 1rem;
+}
+
+p {
+  margin: 0;
+}
+
+.social-media-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  margin: 1rem;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: rgba($clr-white, $opacity-secondary);
+  }
+}

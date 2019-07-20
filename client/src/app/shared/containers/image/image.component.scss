@@ -1,0 +1,74 @@
+@import 'global';
+
+:host {
+  display: block;
+  margin: 0;
+}
+
+figure {
+  background-color: rgba($clr-black, 0.05);
+  margin: 0;
+  font-size: 0;
+  min-height: 100%;
+  min-width: 100%;
+  position: relative;
+  background-image: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @media screen and (orientation: portrait) {
+    background-position: left;
+  }
+
+  @media screen and (orientation: landscape) {
+    background-position: top;
+  }
+}
+
+img {
+  position: absolute;
+  object-fit: cover;
+  opacity: 0;
+  top: 0;
+  left: 0;
+
+  &.finished {
+    // Angular animation overwrites styles on the element level, so important is required.
+    opacity: 1 !important;
+  }
+
+  @media screen and (orientation: portrait) {
+    min-width: 100%;
+    width: auto;
+    height: 100%;
+  }
+
+  @media screen and (orientation: landscape) {
+    min-height: 100%;
+    height: auto;
+    width: 100%;
+  }
+}
+
+i {
+  position: absolute;
+  left: 1.5rem;
+  top: 1.5rem;
+}
+
+figcaption {
+  font-size: 12px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: $clr-white;
+  background-color: rgba($clr-black, 0.5);
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  font-family: $font-emphasis;
+  font-style: italic;
+  z-index: 2;
+}

@@ -1,0 +1,54 @@
+@import 'global';
+
+:host {
+  display: block;
+  position: relative;
+}
+
+svg {
+  height: 40vh;
+  margin-bottom: 3rem;
+}
+
+polygon {
+  transition: fill-opacity $transition-base, stroke $transition-base;
+  fill-opacity: 0;
+  cursor: pointer;
+  stroke: transparent;
+  stroke-width: 0.5rem;
+
+  &.hover,
+  &:active {
+    fill-opacity: 0.5;
+  }
+
+  &:focus {
+    stroke: $clr-blue-100;
+    stroke-width: 1rem;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &.active {
+    fill-opacity: 1;
+
+    &:focus {
+      stroke: rgba($clr-black, 0.15);
+    }
+  }
+}
+
+.chevron-container {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  bottom: 1.5rem;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  padding: 0 3rem;
+}
+
+raw3-icon-route-button {
+  pointer-events: auto;
+}

@@ -1,0 +1,33 @@
+h1, h2, h3, h4, p, span, label, a:not(.icon), button {
+  text-align: left;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+article {
+  padding-bottom: 6rem;
+}
+
+raw3-image {
+  margin-top: 2rem;
+}
+
+raw3-badge {
+  margin-top: 1rem;
+  margin-right: 1rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+section {
+  padding-bottom: 3rem;
+}
+
+.introduction {
+  margin-top: 2rem;
+  font-style: italic;
+}

@@ -1,0 +1,20 @@
+@import 'global';
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: rgba($clr-black, 0.9);
+}
+
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background-color: rgba($clr-white, 0.4);
+
+  &:hover {
+    background-color: rgba($clr-white, 0.35);
+  }
+}

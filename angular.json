@@ -1,0 +1,139 @@
+{
+  "$schema": "node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "raw3": {
+      "root": "",
+      "sourceRoot": "client/src",
+      "projectType": "application",
+      "prefix": "raw3",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/client",
+            "aot": true,
+            "serviceWorker": true,
+            "index": "client/src/index.html",
+            "main": "client/src/main.ts",
+            "tsConfig": "client/tsconfig.json",
+            "polyfills": "client/src/polyfills.ts",
+            "assets": [
+              "client/src/robots.txt",
+              "client/src/favicon.ico",
+              "client/src/assets",
+              "client/src/sitemap.xml",
+              "client/src/manifest.json"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "client/src/assets/styles"
+              ]
+            },
+            "styles": [
+              "client/src/assets/styles/index.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "serviceWorker": true,
+              "ngswConfigPath": "client/src/ngsw-config.json",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "client/src/environments/environment.ts",
+                  "with": "client/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "raw3:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "raw3:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "client/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/server",
+            "main": "client/src/main.server.ts",
+            "tsConfig": "client/tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "client/src/assets/styles"
+              ]
+            }
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "client/src/environments/environment.ts",
+                  "with": "client/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "cli": {},
+  "schematics": {
+    "@schematics/angular:class": {
+      "spec": false
+    },
+    "@schematics/angular:component": {
+      "spec": false,
+      "inlineStyle": true,
+      "inlineTemplate": true,
+      "prefix": "raw3",
+      "style": "scss"
+    },
+    "@schematics/angular:directive": {
+      "spec": false,
+      "prefix": "raw3"
+    },
+    "@schematics/angular:guard": {
+      "spec": false
+    },
+    "@schematics/angular:module": {
+      "spec": false
+    },
+    "@schematics/angular:pipe": {
+      "spec": false
+    },
+    "@schematics/angular:service": {
+      "spec": false
+    }
+  }
+}

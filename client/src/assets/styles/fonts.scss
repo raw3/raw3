@@ -1,0 +1,43 @@
+@font-face {
+  font-display: swap;
+  font-family: 'Roboto-local';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/roboto/roboto-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Roboto-local';
+  font-style: normal;
+  font-weight: 900;
+  src: url('/assets/fonts/roboto/roboto-black.ttf') format('truetype');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Slabo 13px-local';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/slabo-13px/slabo13px-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Slabo 27px-local';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/slabo-27px/slabo27px-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-display: block;
+  font-family: 'Icons';
+  src: url('/assets/fonts/icons/icons.eot?ej42vg');
+  src: url('/assets/fonts/icons/icons.eot?ej42vg#iefix') format('embedded-opentype'),
+  url('/assets/fonts/icons/icons.ttf?ej42vg') format('truetype'),
+  url('/assets/fonts/icons/icons.woff?ej42vg') format('woff'),
+  url('/assets/fonts/icons/icons.svg?ej42vg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}

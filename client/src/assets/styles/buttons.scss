@@ -1,0 +1,37 @@
+@import 'helpers/variables';
+
+button {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.button--fixed {
+  position: fixed;
+  top: 3rem;
+  right: 1.5rem;
+  z-index: 99;
+
+  @media screen and (max-width: $screen-xs) {
+    top: $header-height + 3rem;
+  }
+}
+
+.button--black {
+  color: rgba($clr-white, $opacity-primary);
+  background-color: rgba($clr-black, 0.9);
+
+  &:hover {
+    color: rgba($clr-white, $opacity-secondary);
+  }
+}
+
+.button--plain {
+  color: rgba($clr-white, $opacity-primary);
+  background-color: transparent;
+
+  &:hover {
+    color: rgba($clr-white, $opacity-secondary);
+  }
+}

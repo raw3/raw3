@@ -1,0 +1,40 @@
+@import 'global';
+
+:host {
+  background-color: rgba($clr-black, 0.9);
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 91;
+  width: 35rem;
+  transition: min-height $transition-base;
+  min-height: 27rem;
+  padding: 1.5rem 3rem;
+  text-align: left;
+  overflow-y: overlay;
+
+  @media screen and (max-width: $screen-xs) {
+    margin-top: $header-height;
+  }
+
+  @media screen and (max-width: $screen-xxs) {
+    height: calc(100vh - #{$header-height} - #{$footer-height});
+    width: 100vw;
+  }
+
+  @media screen and (max-height: $screen-xxs) {
+    height: calc(100vh - #{$header-height});
+  }
+
+  @media screen and (min-width: $screen-xs) and (max-height: $screen-xxs) {
+    height: 100vh;
+  }
+}
+
+raw3-icon-button {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 1.5rem;
+}

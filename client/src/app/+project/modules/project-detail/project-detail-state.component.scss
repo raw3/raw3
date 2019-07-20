@@ -1,0 +1,55 @@
+h1, h2, h3, h4, p, span, label, a:not(.icon), button {
+  text-align: left;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+h3 {
+  margin-bottom: 1rem;
+}
+
+article {
+  padding-bottom: 6rem;
+}
+
+raw3-image {
+  margin: 2rem 0;
+}
+
+raw3-badge {
+  margin-top: 1rem;
+  margin-right: 1rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+section {
+  padding-bottom: 3rem;
+}
+
+.introduction {
+  font-style: italic;
+}
+
+figure, img {
+  height: 50vh;
+}
+
+.code-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  a,
+  span {
+    margin: 0;
+  }
+
+  .icon:before {
+    margin-left: -0.7rem;
+  }
+}

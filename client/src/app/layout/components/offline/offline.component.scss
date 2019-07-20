@@ -1,0 +1,21 @@
+@import 'global';
+
+:host {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $clr-red-200;
+  background-image: $gradient-red;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $clr-white;
+  z-index: 1;
+}
+
+p {
+  margin: 0;
+  text-align: center;
+}

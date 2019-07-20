@@ -1,0 +1,27 @@
+@import 'global';
+
+:host {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: $clr-blue-200;
+  background-image: $gradient-blue;
+  height: $header-height;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $clr-white;
+}
+
+p {
+  margin: 0;
+  text-align: center;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+}

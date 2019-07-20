@@ -1,0 +1,82 @@
+@import 'helpers/variables';
+
+* {
+  font-family: $font-secondary;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+}
+
+h1, h2, h3, h4, p, span, label, a, button {
+  margin: 0 0 3rem 0;
+  color: inherit;
+}
+
+h1, h2, h3 {
+  font-family: $font-primary;
+
+  span {
+    font-family: inherit;
+  }
+}
+
+h1 {
+  font-size: $font-size-lg;
+}
+
+h2 {
+  font-size: $font-size-md;
+}
+
+h3 {
+  font-size: $font-size-sm;
+  letter-spacing: 0.1rem;
+}
+
+h4, p, span, label, a, input, textarea, button {
+  font-size: $font-size-xs;
+  letter-spacing: 0.1rem;
+  line-height: $font-line-height;
+}
+
+b {
+  font-family: $font-emphasis;
+  font-weight: 900;
+}
+
+strong {
+  font-family: $font-emphasis;
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.clr--white {
+  color: rgba($clr-white, 0.87);
+}
+
+.link {
+  transition: color $transition-base, background-color $transition-base;
+  font-family: $font-emphasis;
+  font-weight: 900;
+  text-decoration: underline;
+
+  &:hover {
+    color: rgba($clr-black, $opacity-secondary);
+  }
+
+  &:focus {
+    background-color: rgba($clr-blue-100, $opacity-secondary);
+  }
+
+  &.clr--white:hover {
+    color: rgba($clr-white, $opacity-secondary);
+  }
+
+  &.clr--white:focus {
+    background-color: $clr-blue-100;
+  }
+}

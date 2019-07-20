@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://raw3.io/</loc>
+    </url>
+    <url>
+        <loc>https://raw3.io/about</loc>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/logo/raw3-logo.jpg</image:loc>
+            <image:title>raw3 logo</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://raw3.io/blogs</loc>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-surfers-demise.jpg</image:loc>
+            <image:title>Surfers demise</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-how-i-started-as-a-digital-nomad-2.jpg</image:loc>
+            <image:title>Tropical San Blas island for reflection</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-how-i-started-as-a-digital-nomad-3.jpg</image:loc>
+            <image:title>Australia Sydney Opera House</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-how-i-started-as-a-digital-nomad-4.jpg</image:loc>
+            <image:title>Campervan as budget accommodation</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-how-i-started-as-a-digital-nomad-5.jpg</image:loc>
+            <image:title>Crying me and Ginni Rometti</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-how-i-started-as-a-digital-nomad-6.jpg</image:loc>
+            <image:title>Great Wall as path to freelancer</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-how-i-started-as-a-digital-nomad-7.jpg</image:loc>
+            <image:title>Great Wall as path to freelancer</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-how-i-bought-and-pimped-a-campervan-1</image:loc>
+            <image:title>Campervan in nature</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-how-i-bought-and-pimped-a-campervan-2</image:loc>
+            <image:title>Old campervan interior</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-how-i-bought-and-pimped-a-campervan-3</image:loc>
+            <image:title>Flat tire as reference to australian bureaucracy</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-how-i-bought-and-pimped-a-campervan-4</image:loc>
+            <image:title>Campervan at the mechanic</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-how-i-bought-and-pimped-a-campervan-5</image:loc>
+            <image:title>Campervan double bed interior</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-how-i-bought-and-pimped-a-campervan-6</image:loc>
+            <image:title>Wooden floor in campervan</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-how-i-bought-and-pimped-a-campervan-7</image:loc>
+            <image:title>Driving on a long empty road</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://raw3.io/photos</loc>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-domes.jpg</image:loc>
+            <image:title>Domes</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-surfers-demise.jpg</image:loc>
+            <image:title>Surfers demise</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-victorious-continent.jpg</image:loc>
+            <image:title>Victorious continent</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-rocky-lighthouse.jpg</image:loc>
+            <image:title>Rocky lighthouse</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-gold-goose-ballet.jpg</image:loc>
+            <image:title>Gold goose ballet</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-victoria-crab.jpg</image:loc>
+            <image:title>Victoria crab</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-last-light-blanket.jpg</image:loc>
+            <image:title>Last light blanket</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-spirit-of-kunanyi.jpg</image:loc>
+            <image:title>Spirit of Kunanyi</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-mirror-lake.jpg</image:loc>
+            <image:title>Mirror lake</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-pond-of-relief.jpg</image:loc>
+            <image:title>Pond of relief</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-tidal-belonging.jpg</image:loc>
+            <image:title>Tidal belonging</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-heart-of-the-valley.jpg</image:loc>
+            <image:title>Heart of the valley</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-rocky-flowers.jpg</image:loc>
+            <image:title>Rocky flowers</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-beacon.jpg</image:loc>
+            <image:title>Beacon</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-shrubbery-guardian.jpg</image:loc>
+            <image:title>Shrubbery guardian</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-faroer-islands.jpg</image:loc>
+            <image:title>Faroer Islands</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-soothing-sun.jpg</image:loc>
+            <image:title>Soothing sun</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-old-lava-plain.jpg</image:loc>
+            <image:title>Old lava plain</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-dusk-of-the-hills.jpg</image:loc>
+            <image:title>Dusk of the hills</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-field-lake-mountains.jpg</image:loc>
+            <image:title>Field lake mountains</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-golden-panama.jpg</image:loc>
+            <image:title>Golden Panama</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-panama-crab.jpg</image:loc>
+            <image:title>Panama crab</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-paradise-dawn.jpg</image:loc>
+            <image:title>Paradise dawn</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-gorgeous-gorge.jpg</image:loc>
+            <image:title>Gorgeous gorge</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-arid-cascade.jpg</image:loc>
+            <image:title>Arid cascade</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-river-roots.jpg</image:loc>
+            <image:title>River roots</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-barrel-hills.jpg</image:loc>
+            <image:title>Barrel hills</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-old-bridge.jpg</image:loc>
+            <image:title>Old bridge</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-ruins.jpg</image:loc>
+            <image:title>Ruins</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-bee.jpg</image:loc>
+            <image:title>Bee</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-cloud-hill.jpg</image:loc>
+            <image:title>Cloud hill</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-east-point.jpg</image:loc>
+            <image:title>East point</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-birds.jpg</image:loc>
+            <image:title>Birds</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-lagoon.jpg</image:loc>
+            <image:title>Lagoon</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-infinite-view.jpg</image:loc>
+            <image:title>Infinite view</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-watch-tower.jpg</image:loc>
+            <image:title>Watch tower</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+    </url>
+    <url>
+        <loc>https://raw3.io/projects</loc>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/md/raw3-raw3-io.jpg</image:loc>
+            <image:title>raw3 website</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+    </url>
+</urlset>

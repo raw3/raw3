@@ -1,0 +1,27 @@
+@import 'variables';
+
+.container {
+  position: relative;
+  padding: 6rem 1.5rem 1.5rem;
+
+  @media screen and (max-width: $screen-xs) {
+    margin-left: 0;
+  }
+}
+
+.container--narrow {
+  padding: 0 6rem;
+  margin: 0 auto;
+  max-width: 90rem;
+
+  @media screen and (max-width: $screen-xs) {
+    padding: 0 1vw;
+  }
+}
+
+.item-container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-content: stretch;
+}

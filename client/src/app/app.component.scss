@@ -1,0 +1,52 @@
+@import 'global';
+
+raw3-sidebar.banner-offset {
+  top: $header-height;
+  height: calc(100vh - #{$header-height});
+}
+
+raw3-header.banner-offset {
+  top: $header-height;
+}
+
+raw3-menu-bar.banner-offset {
+  top: $header-height + $header-height;
+  height: calc(100vh - #{$header-height} - #{$header-height});
+}
+
+section {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  margin-left: $sidebar-width;
+  height: 100vh;
+  width: calc(100vw - #{$sidebar-width});
+
+  &.banner-offset {
+    margin-top: $header-height;
+    min-height: calc(100vh - #{$header-height});
+  }
+
+  @media screen and (max-width: $screen-xs) {
+    margin-top: $header-height;
+    margin-left: 0;
+    height: calc(100vh - #{$header-height});
+    width: 100vw;
+
+    &.banner-offset {
+      margin-top: $header-height + $header-height;
+      height: calc(100vh - #{$header-height} - #{$header-height});
+    }
+  }
+}
+
+main {
+  display: block;
+  float: left;
+  width: 100%;
+  min-height: calc(100vh - #{$footer-height});
+
+  @media screen and (max-width: $screen-xs) {
+    min-height: calc(100vh - #{$footer-height} - #{$header-height});
+  }
+}

@@ -1,0 +1,54 @@
+@import 'global';
+
+:host {
+  transition: top $transition-base;
+  position: fixed;
+  width: 100vw;
+  z-index: 99;
+  right: 0;
+  background-color: rgba($clr-black, 0.9);
+  height: calc(100vh - #{$header-height});
+  top: $header-height;
+  overflow-y: auto;
+}
+
+nav {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+a {
+  transition: color $transition-base, border-color $transition-base;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 2rem;
+  width: 100%;
+
+  &:not(.active):hover {
+    color: rgba($clr-white, $opacity-secondary);
+  }
+
+  &:focus {
+    border-color: $clr-blue-100;
+  }
+
+  &.active {
+    background-color: rgba($clr-white, 0.1);
+
+    &:focus {
+      border-color: rgba($clr-white, 0.15);
+    }
+  }
+
+  span {
+    margin: 0;
+  }
+
+  .icon {
+    margin-right: 2rem;
+    pointer-events: none;
+  }
+}

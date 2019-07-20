@@ -1,0 +1,37 @@
+@mixin radial-gradient-background($primary-color, $secondary-color) {
+  background: $primary-color;
+  background: -moz-radial-gradient(center, ellipse cover, $primary-color 0%, $secondary-color 100%);
+  background: -webkit-radial-gradient(center, ellipse cover, $primary-color 0%, $secondary-color 100%);
+  background: radial-gradient(ellipse at center, $primary-color 0%, $secondary-color 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$primary-color, endColorstr=$secondary-color, GradientType=1);
+}
+
+@mixin linear-gradient-background($primary-color, $secondary-color) {
+  background: $primary-color;
+  background: -moz-linear-gradient(-90deg, $secondary-color 0%, $primary-color 50%, $secondary-color 100%);
+  background: -webkit-linear-gradient(-90deg, $secondary-color 0%, $primary-color 50%, $secondary-color 100%);
+  background: linear-gradient(-90deg, $secondary-color 0%, $primary-color 50%, $secondary-color 100%);
+}
+
+@mixin drop-shadow($horizontal-length, $vertical-length, $blur-radius, $spread-radius, $color, $opacity) {
+  -webkit-box-shadow: $horizontal-length $vertical-length $blur-radius $spread-radius rgba($color, $opacity);
+  -moz-box-shadow: $horizontal-length $vertical-length $blur-radius $spread-radius rgba($color, $opacity);
+  box-shadow: $horizontal-length $vertical-length $blur-radius $spread-radius rgba($color, $opacity);
+}
+
+@mixin chevron($size: 2rem, $degrees: -45deg) {
+  transition: transform $transition-base;
+  transform: rotate($degrees);
+  border-style: solid;
+  border-width: calc(#{$size} * 0.25) calc(#{$size} * 0.25) 0 0;
+  content: '';
+  display: inline-block;
+  height: $size;
+  position: relative;
+  vertical-align: top;
+  width: $size;
+
+  &:focus {
+    outline: 0;
+  }
+}

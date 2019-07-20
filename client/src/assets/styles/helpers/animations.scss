@@ -1,0 +1,27 @@
+@import 'variables';
+
+@keyframes spinner-color {
+  0% {
+    border-bottom-color: $clr-blue-200;
+    transform: rotate(0deg);
+  }
+  16% {
+    border-bottom-color: $clr-purple-200;
+  }
+  33% {
+    border-bottom-color: $clr-red-200;
+  }
+  50% {
+    border-bottom-color: $clr-orange-200;
+  }
+  66% {
+    border-bottom-color: $clr-yellow-200;
+  }
+  83% {
+    border-bottom-color: $clr-green-200;
+  }
+  100% {
+    border-bottom-color: $clr-blue-200;
+    transform: rotate(360deg);
+  }
+}

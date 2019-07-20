@@ -1,0 +1,75 @@
+$font-primary: 'Slabo 27px', 'Slabo 27px-local', 'Times New Roman', serif;
+$font-secondary: 'Slabo 13px', 'Slabo 27px-local', 'Times New Roman', serif;
+$font-emphasis: 'Roboto', 'Roboto-local', 'Arial', sans-serif;
+
+// Colors
+$clr-white: #fff !default;
+$clr-gray-100: #f8f9fb !default;
+$clr-gray-200: #e9ecef !default;
+$clr-gray-300: #dee2e6 !default;
+$clr-gray-400: #ced4da !default;
+$clr-gray-500: #adb5bd !default;
+$clr-gray-600: #6c757d !default;
+$clr-gray-700: #495057 !default;
+$clr-gray-800: #343a40 !default;
+$clr-gray-900: #1a1a1a !default;
+$clr-black: #000 !default;
+
+$clr-white-100: $clr-gray-100;
+$clr-white-200: $clr-gray-200;
+$clr-blue-100: #2d74da;
+$clr-blue-200: #1f57a4;
+$clr-red-100: #ff5c49;
+$clr-red-200: #e62325;
+$clr-yellow-100: #fbeaae;
+$clr-yellow-200: #fed500;
+$clr-purple-100: #9753e1;
+$clr-purple-200: #7732bb;
+$clr-green-100: #57d785;
+$clr-green-200: #34bc6e;
+$clr-orange-100: #fcaf6d;
+$clr-orange-200: #fe8500;
+
+// Gradients
+$gradient-all: linear-gradient(to right, $clr-blue-200, $clr-purple-200, $clr-red-200, $clr-orange-200, $clr-yellow-200, $clr-green-200);
+$gradient-blue: radial-gradient($clr-blue-100, $clr-blue-200);
+$gradient-red: radial-gradient($clr-red-100, $clr-red-200);
+$gradient-yellow: radial-gradient($clr-yellow-100, $clr-yellow-200);
+$gradient-purple: radial-gradient($clr-purple-100, $clr-purple-200);
+$gradient-green: radial-gradient($clr-green-100, $clr-green-200);
+$gradient-orange: radial-gradient($clr-orange-100, $clr-orange-200);
+$gradient-white: radial-gradient($clr-white-100, $clr-white-200);
+
+// Screen size
+$screen-xxs: 480px;
+$screen-xs: 768px;
+$screen-s: 992px;
+$screen-m: 1280px;
+$screen-l: 1440px;
+$screen-xl: 1600px;
+
+// Font line-height
+$font-line-height: 200%;
+
+// Font size
+$font-size-xxs: 1.2rem;
+$font-size-xs: 1.4rem;
+$font-size-sm: 2.0rem;
+$font-size-md: 2.8rem;
+$font-size-lg: 4rem;
+$font-size-xl: 10rem;
+
+// Transition
+$transition-base: 150ms ease-in-out;
+
+// Opacity
+$opacity-primary: 0.87;
+$opacity-secondary: 0.60;
+$opacity-tertiary: 0.38;
+
+// Heights
+$header-height: 6rem;
+$footer-height: 16rem;
+
+// Widths
+$sidebar-width: 20rem;

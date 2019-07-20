@@ -1,0 +1,17 @@
+@import 'global';
+
+header {
+  text-align: center;
+}
+
+app-blog-overview-item,
+raw3-skeleton-card {
+  flex: 1 calc(50% - 2rem);
+  max-width: calc(50% - 2rem);
+  margin: 1rem;
+
+  @media screen and (max-width: $screen-s) {
+    flex: 1 calc(100% - 2rem);
+    max-width: calc(100% - 2rem);
+  }
+}

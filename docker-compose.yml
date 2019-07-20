@@ -1,0 +1,31 @@
+version: "3.3"
+
+services:
+  raw3:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: raw3
+    image: raw3
+    command: npm run serve:ssr
+    restart: always
+    expose:
+      - 80
+    environment:
+      VIRTUAL_HOST: raw3.io
+      LETSENCRYPT_HOST: raw3.io
+      LETSENCRYPT_EMAIL: admin@raw3.io
+
+  redirect:
+    image: morbz/docker-web-redirect
+    restart: always
+    environment:
+      VIRTUAL_HOST: www.raw3.io,raw3.nl,www.raw3.nl
+      LETSENCRYPT_HOST: www.raw3.io,raw3.nl,www.raw3.nl
+      LETSENCRYPT_EMAIL: admin@raw3.io
+      REDIRECT_TARGET: https://raw3.io
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

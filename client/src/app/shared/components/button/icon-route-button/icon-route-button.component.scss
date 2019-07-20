@@ -1,0 +1,12 @@
+@import 'global';
+
+a {
+  transition: color $transition-base, border-color $transition-base;
+  border: 2px solid transparent;
+  height: 6rem;
+  width: 6rem;
+
+  &:focus {
+    border-color: $clr-blue-100;
+  }
+}

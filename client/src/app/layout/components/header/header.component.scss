@@ -1,0 +1,63 @@
+@import 'global';
+
+:host {
+  transition: top $transition-base;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background-color: rgba($clr-black, 0.9);
+}
+
+h2 {
+  margin: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  height: $header-height;
+}
+
+raw3-icon-button {
+  transition: transform $transition-base;
+  transform: rotate(0deg);
+
+  &.active {
+    transform: rotate(90deg);
+  }
+}
+
+a {
+  transition: color $transition-base, border-color $transition-base;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 6rem;
+  width: 6rem;
+  margin: 0;
+
+  &:not(.active):hover {
+    color: rgba($clr-white, $opacity-secondary);
+  }
+
+  &:focus {
+    border-color: $clr-blue-100;
+  }
+
+  &.active {
+    background-color: rgba($clr-white, 0.1);
+
+    &:focus {
+      border-color: rgba($clr-white, 0.15);
+    }
+  }
+
+  .icon {
+    pointer-events: none;
+  }
+}

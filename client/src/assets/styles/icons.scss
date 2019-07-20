@@ -1,0 +1,80 @@
+@import 'helpers/variables';
+
+.logo {
+  width: calc(100vh * 0.3);
+  height: auto;
+}
+
+.icon {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  font-family: 'Icons', serif !important;
+  speak: none;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &.raw3-500px:before {
+    content: '\e900';
+  }
+
+  &.raw3-blog:before {
+    content: '\e901';
+  }
+
+  &.raw3-camera:before {
+    content: '\e902';
+  }
+
+  &.raw3-chevron-left:before {
+    content: '\e903';
+  }
+
+  &.raw3-chevron-right:before {
+    content: '\e904';
+  }
+
+  &.raw3-code:before {
+    content: '\e905';
+  }
+
+  &.raw3-cross:before {
+    content: '\e906';
+  }
+
+  &.raw3-facebook:before {
+    content: '\e907';
+  }
+
+  &.raw3-instagram:before {
+    content: '\e908';
+  }
+
+  &.raw3-linkedin:before {
+    content: '\e909';
+  }
+
+  &.raw3-logo:before {
+    content: '\e90a';
+  }
+
+  &.raw3-plus:before {
+    content: '\e90b';
+  }
+
+  &.raw3-signature:before {
+    content: '\e90c';
+  }
+
+  &.raw3-hamburger:before {
+    content: '\e90d';
+  }
+}

@@ -1,0 +1,44 @@
+@import 'global';
+
+:host {
+  display: inline-block;
+}
+
+span {
+  padding: 0.5rem 1.5rem;
+}
+
+.profession {
+  background-image: $gradient-blue;
+  color: $clr-white;
+}
+
+.passion {
+  background-image: $gradient-red;
+  color: $clr-white;
+}
+
+.place {
+  background-image: $gradient-yellow;
+  color: $clr-black;
+}
+
+.profession-passion {
+  background-image: $gradient-purple;
+  color: $clr-white;
+}
+
+.passion-place {
+  background-image: $gradient-orange;
+  color: $clr-black;
+}
+
+.profession-place {
+  background-image: $gradient-green;
+  color: $clr-white;
+}
+
+.profession-passion-place {
+  background-image: $gradient-white;
+  color: $clr-black;
+}

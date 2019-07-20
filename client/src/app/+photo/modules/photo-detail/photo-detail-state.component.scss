@@ -1,0 +1,21 @@
+@import 'global';
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 100;
+  background-color: $clr-white;
+}
+
+.skeleton-block {
+  height: calc(100vh - 6rem);
+  width: calc(100vw - 6rem);
+  margin: 3rem;
+}
+
+raw3-icon-route-button {
+  top: 1.5rem;
+}
