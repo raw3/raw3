@@ -1,7 +1,6 @@
 /// <reference path="../../../../../../node_modules/@types/googlemaps/index.d.ts" />
 
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { ImageSize } from '../../../../../../shared/enums';
@@ -70,7 +69,6 @@ export class MapStateComponent implements OnInit {
   );
 
   constructor (
-    private route: ActivatedRoute,
     private seoService: SEOService,
     private mapService: MapService
   ) {

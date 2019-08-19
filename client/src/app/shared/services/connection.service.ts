@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { combineLatest, EMPTY, fromEvent, of } from 'rxjs';
+import { combineLatest, EMPTY, fromEvent } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ConnectionStatus } from '../enums';
 import { UIStateService } from '../state/ui';

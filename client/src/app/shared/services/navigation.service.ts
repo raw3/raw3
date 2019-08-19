@@ -1,4 +1,4 @@
-import { ApplicationRef, ElementRef, Inject, Injectable } from '@angular/core';
+import { ApplicationRef, ElementRef, Injectable } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { filter, first, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { UIStateService } from '../state/ui';
@@ -10,7 +10,6 @@ export class NavigationService {
   private readonly navigationHistory$ = this.uiStateService.navigationHistory$;
 
   constructor (
-    @Inject('window') private window: Window,
     private router: Router,
     private ref: ApplicationRef,
     private uiStateService: UIStateService

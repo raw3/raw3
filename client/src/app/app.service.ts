@@ -1,5 +1,5 @@
-import { ApplicationRef, ElementRef, Inject, Injectable } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ElementRef, Inject, Injectable } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { filter, map, startWith, tap } from 'rxjs/operators';
 import { ConnectionStatus, RoutePath } from './shared/enums';
 import { NavigationService, ResponsiveService, VersionService } from './shared/services';
@@ -33,8 +33,6 @@ export class AppService {
     private responsiveService: ResponsiveService,
     private versionService: VersionService,
     private router: Router,
-    private ref: ApplicationRef,
-    private route: ActivatedRoute,
     private uiStateService: UIStateService
   ) {
   }

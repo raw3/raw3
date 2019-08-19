@@ -15,9 +15,9 @@ COPY tsconfig.json ./
 COPY tslint.json ./
 COPY webpack.server.config.js ./
 
-RUN yarn install
+RUN yarn
 
-RUN npm run build:ssr
+RUN yarn build:ssr
 ENV PORT=80
 
 EXPOSE 80

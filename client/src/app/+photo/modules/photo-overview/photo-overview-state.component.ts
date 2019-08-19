@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { ImageSize } from '../../../../../../shared/enums';
 import { Photo } from '../../../../../../shared/models';
@@ -70,7 +69,6 @@ export class PhotoOverviewStateComponent {
 
   constructor (
     private photoOverviewService: PhotoOverviewService,
-    private route: ActivatedRoute,
     private seoService: SEOService
   ) {
   }
