@@ -11,7 +11,9 @@ COPY client ./client
 COPY server ./server
 COPY shared ./shared
 COPY angular.json ./
+COPY tsconfig.client.json ./
 COPY tsconfig.json ./
+COPY tsconfig.server.json ./
 COPY tslint.json ./
 
 RUN yarn

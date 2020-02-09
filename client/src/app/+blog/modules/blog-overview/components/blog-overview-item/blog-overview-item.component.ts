@@ -14,7 +14,7 @@ import { trackByIndexUtility } from '../../../../../shared/utilities';
       [attr.aria-label]="'Go to my blog called: ' + blog.title"
     >
       <article>
-        <raw3-image [image]="blog.prologue.image" height="20rem" (cacheImageSize)="cacheImageSize.emit($event)"></raw3-image>
+        <raw3-image [image]="blog.prologue.image" height="30rem" (cacheImageSize)="cacheImageSize.emit($event)"></raw3-image>
 
         <section>
           <span>{{ blog.date * 1000 | date: 'dd/MM/yyyy' }}</span>

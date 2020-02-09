@@ -32,7 +32,7 @@ export class MapComponent implements AfterViewInit {
       styles: mapStyle as MapTypeStyle[]
     });
 
-    this.markerCluster = new MarkerClusterer(this.map, this.markers, {
+    this.markerCluster = new MarkerClusterer.default(this.map, this.markers, {
       styles: clusterStyle
     });
   }

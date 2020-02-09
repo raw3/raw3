@@ -14,7 +14,7 @@ import { trackByIndexUtility } from '../../../../../shared/utilities';
       [attr.aria-label]="'Go to my project called: ' + project.title"
     >
       <article>
-        <raw3-image [image]="project.image" height="20rem" (cacheImageSize)="cacheImageSize.emit($event)"></raw3-image>
+        <raw3-image [image]="project.image" height="30rem" (cacheImageSize)="cacheImageSize.emit($event)"></raw3-image>
 
         <section>
           <span *ngIf="project.startDate">{{ project.startDate * 1000 | date: 'dd/MM/yyyy' }} - </span>
