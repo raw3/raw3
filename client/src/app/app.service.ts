@@ -14,7 +14,7 @@ export class AppService {
   readonly isDesktop$ = this.responsiveService.isDesktop$;
   readonly isMobile$ = this.responsiveService.isMobile$;
   readonly isHomePage$ = this.navigationEnds$.pipe(
-    map(({url}: NavigationEnd) => url === '/'),
+    map(({url}: NavigationEnd) => url === '/' || url.includes('/?')),
     startWith(this.router.url === '/')
   );
   readonly setConnectionStatus$ = this.connectionService.setConnectionStatus$;

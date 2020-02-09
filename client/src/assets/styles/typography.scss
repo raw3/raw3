@@ -55,7 +55,7 @@ a {
 }
 
 .clr--white {
-  color: rgba($clr-white, 0.87);
+  color: rgba($clr-white, $opacity-primary);
 }
 
 .link {

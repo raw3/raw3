@@ -1,4 +1,4 @@
-export const sortByDateUtility = (array: any) => {
+export const sortByDateUtility = (array: any[]) => {
   if (array.length <= 1) {
     return array;
   }

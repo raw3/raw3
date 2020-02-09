@@ -1,4 +1,4 @@
-export const mapStyle = [
+export const MAP_STYLE = [
   {elementType: 'geometry', stylers: [{color: '#adb5bd'}]},
   {
     featureType: 'administrative',

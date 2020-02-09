@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CheckboxComponent } from '@client/src/app/shared/components/checkbox/checkbox.component';
 import { BadgeComponent } from './components/badge/badge.component';
 import { IconButtonComponent } from './components/button/icon-button/icon-button.component';
 import { IconRouteButtonComponent } from './components/button/icon-route-button/icon-route-button.component';
@@ -12,6 +13,7 @@ import { SanitizePipe } from './pipes/sanitize.pipe';
 
 const components = [
   BadgeComponent,
+  CheckboxComponent,
   IconRouteButtonComponent,
   IconButtonComponent,
   SkeletonCardComponent,

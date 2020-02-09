@@ -1,4 +1,4 @@
-export const clusterStyle = [
+export const CLUSTER_STYLE = [
   {
     textColor: '#ffffff',
     textSize: 15,

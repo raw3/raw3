@@ -1,9 +1,11 @@
 /// <reference path="../../../../../../node_modules/@types/googlemaps/index.d.ts" />
 
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MapFilter } from '@client/src/app/+home/modules/map/enums/map-filter.enum';
 import { ImageSize } from '@shared/enums';
 import { PointOfInterestOption } from '@shared/types';
-import { BehaviorSubject, combineLatest } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { Blog, Photo, Project } from '../../../../../../shared/models';
 import { slideRightAnimation } from '../../../shared/animations';
@@ -18,6 +20,7 @@ import { MapService } from './map.service';
   template: `
     <ng-container *ngIf="pointsOfInterest$ | async as pointsOfInterest; else loading">
       <raw3-map [markers]="pointsOfInterest"></raw3-map>
+      <raw3-filter-container [filters]="mapFilters$ | async"></raw3-filter-container>
 
       <raw3-poi-container
         *ngIf="activePOI$ | async as activePOI"
@@ -38,47 +41,60 @@ import { MapService } from './map.service';
   `
 })
 export class MapStateComponent implements OnInit {
+  private readonly filterParamName = 'hide';
+
   readonly blogs$ = this.mapService.blogs$;
   readonly photos$ = this.mapService.photos$;
   readonly projects$ = this.mapService.projects$;
+  readonly mapFilters$: Observable<MapFilter[]> = this.route.queryParams.pipe(
+    map(params => params[this.filterParamName] || [])
+  );
 
   readonly activePOI$ = new BehaviorSubject<PointOfInterestOption>(null);
   readonly activePOIChange$ = this.activePOI$.pipe(
     filter(poi => !!poi),
     switchMap(poi => this.getActivePOIObservable$(poi))
   );
-  readonly pointsOfInterest$ = combineLatest([this.blogs$, this.photos$, this.projects$]).pipe(
+  readonly pointsOfInterest$: Observable<google.maps.Marker[]> = combineLatest([
+    this.blogs$,
+    this.photos$,
+    this.projects$,
+    this.mapFilters$
+  ]).pipe(
     filter(([blogs, photos, projects]) => blogs.length > 0 && photos.length > 0 && projects.length > 0),
-    map(([blogs, photos, projects]) => sortByDateUtility([...blogs, ...photos, ...projects])),
-    map(pointsOfInterest => pointsOfInterest.map(pointOfInterest => {
-      const marker = new google.maps.Marker({
-        position: pointOfInterest.location,
-        icon: {
-          scaledSize: {
-            width: 45,
-            height: 45
-          } as google.maps.Size,
-          url: `/assets/images/icons/${this.getPOIType(pointOfInterest)}-marker.svg`
-        }
-      });
-
-      marker.addListener('click', () => this.activePOI$.next(pointOfInterest));
-
-      return marker;
-    }))
+    map(([blogs, photos, projects, filters]) => sortByDateUtility([
+      ...(filters.includes(MapFilter.BLOGS) ? [] : blogs),
+      ...(filters.includes(MapFilter.PHOTOS) ? [] : photos),
+      ...(filters.includes(MapFilter.PROJECTS) ? [] : projects)
+    ])),
+    map(pointsOfInterest => pointsOfInterest.map(pointOfInterest => this.mapPointOfInterestToMapMarker(pointOfInterest)))
   );
 
   constructor (
-    private seoService: SEOService,
-    private mapService: MapService
+    private readonly seoService: SEOService,
+    private readonly mapService: MapService,
+    private readonly route: ActivatedRoute,
   ) {
   }
 
-  ngOnInit () {
-    this.seoService.setDefaultSEO();
+  private mapPointOfInterestToMapMarker (pointOfInterest: PointOfInterestOption) {
+    const marker = new google.maps.Marker({
+      position: pointOfInterest.location,
+      icon: {
+        scaledSize: {
+          width: 45,
+          height: 45
+        } as google.maps.Size,
+        url: `/assets/images/icons/${this.getPOIType(pointOfInterest)}-marker.svg`
+      }
+    });
+
+    marker.addListener('click', () => this.activePOI$.next(pointOfInterest));
+
+    return marker;
   }
 
-  getPOIType (poi: PointOfInterestOption) {
+  private getPOIType (poi: PointOfInterestOption) {
     switch (poi.constructor) {
       case Blog:
         return 'blog';
@@ -87,6 +103,10 @@ export class MapStateComponent implements OnInit {
       case Project:
         return 'project';
     }
+  }
+
+  ngOnInit () {
+    this.seoService.setDefaultSEO();
   }
 
   getActivePOIObservable$ (poi: PointOfInterestOption) {
