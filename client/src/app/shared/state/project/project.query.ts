@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { QueryEntity } from '@datorama/akita';
-import { Project } from '../../../../../../shared/models';
+import { Project } from '@shared/models';
 import { ProjectState, ProjectStore } from './project.store';
 
 @Injectable({providedIn: 'root'})

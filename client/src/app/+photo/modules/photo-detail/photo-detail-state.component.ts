@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { ImageSize } from '../../../../../../shared/enums';
-import { Photo } from '../../../../../../shared/models';
+import { ImageSize } from '@shared/enums';
+import { Photo } from '@shared/models';
 import { SEOService } from '../../../shared/services';
 import { PhotoDetailService } from './photo-detail.service';
 

@@ -1,8 +1,8 @@
 import { isPlatformServer } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Photo } from '@shared/models';
 import { EMPTY, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { Photo } from '../../../../../../shared/models';
 import { PhotoDataService } from './photo-data.service';
 import { PhotoQuery } from './photo.query';
 import { PhotoStore } from './photo.store';

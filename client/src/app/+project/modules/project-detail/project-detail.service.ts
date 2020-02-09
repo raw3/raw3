@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ImageSize } from '../../../../../../shared/enums';
-import { Project } from '../../../../../../shared/models';
+import { ImageSize } from '@shared/enums';
+import { Project } from '@shared/models';
 import { ProjectStateService } from '../../../shared/state/project';
 
 @Injectable({providedIn: 'root'})

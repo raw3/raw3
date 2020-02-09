@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { VennCategory } from '@shared/enums';
 import { BehaviorSubject } from 'rxjs';
-import { VennCategory } from '../../../../../../../../shared/enums';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

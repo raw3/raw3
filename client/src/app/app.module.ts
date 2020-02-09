@@ -22,7 +22,10 @@ import { LayoutModule } from './layout/layout.module';
     HttpClientModule,
     LayoutModule,
     environment.production ? [] : AkitaNgDevtools.forRoot({shallow: false}),
-    RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules, initialNavigation: 'enabled'}),
+    RouterModule.forRoot(appRoutes, {
+      preloadingStrategy: PreloadAllModules,
+      initialNavigation: 'enabled'
+    }),
     BrowserTransferStateModule,
     TransferHttpCacheModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})

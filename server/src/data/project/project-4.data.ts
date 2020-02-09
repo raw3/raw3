@@ -1,5 +1,5 @@
-import { VennCategory } from '../../../../shared/enums';
-import { Project } from '../../../../shared/models';
+import { VennCategory } from '@shared/enums';
+import { Project } from '@shared/models';
 
 export const project4Data: Project = {
   client: 'Blockchaingers Hackathon 2018',

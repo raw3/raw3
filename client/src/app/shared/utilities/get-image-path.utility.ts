@@ -1,4 +1,4 @@
-import { ImageSize } from '../../../../../shared/enums';
+import { ImageSize } from '@shared/enums';
 
 const imageSizeMap = {
   [ImageSize.XS]: 'xs',

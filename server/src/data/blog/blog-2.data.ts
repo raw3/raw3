@@ -1,5 +1,5 @@
-import { VennCategory } from '../../../../shared/enums';
-import { Blog } from '../../../../shared/models';
+import { VennCategory } from '@shared/enums';
+import { Blog } from '@shared/models';
 
 export const blog2Data: Blog = {
   date: 1522800000,

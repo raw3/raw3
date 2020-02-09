@@ -13,7 +13,6 @@ COPY shared ./shared
 COPY angular.json ./
 COPY tsconfig.json ./
 COPY tslint.json ./
-COPY webpack.server.config.js ./
 
 RUN yarn
 

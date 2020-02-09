@@ -1,5 +1,5 @@
-import { Badge, Paragraph } from '../types';
 import { PointOfInterest } from './point-of-interest.model';
+import { Badge, Paragraph } from '@shared/interfaces';
 
 export class Blog extends PointOfInterest {
   description: string;

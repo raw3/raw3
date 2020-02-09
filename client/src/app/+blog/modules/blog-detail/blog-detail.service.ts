@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ImageSize } from '../../../../../../shared/enums';
-import { Blog } from '../../../../../../shared/models';
-import { Paragraph } from '../../../../../../shared/types';
+import { ImageSize } from '@shared/enums';
+import { Blog } from '@shared/models';
+import { Paragraph } from '@shared/interfaces';
 import { BlogStateService } from '../../../shared/state/blog';
 import { BlogService } from '../../blog.service';
 

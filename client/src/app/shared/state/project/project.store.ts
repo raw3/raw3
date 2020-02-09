@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
-import { Timer } from '../../../../../../shared/enums';
-import { Project } from '../../../../../../shared/models';
+import { Timer } from '@shared/enums';
+import { Project } from '@shared/models';
 
 export interface ProjectState extends EntityState<Project> {
 }

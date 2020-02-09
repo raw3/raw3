@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ImageSize } from '@shared/enums';
+import { Blog } from '@shared/models';
+import { Paragraph } from '@shared/interfaces';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { ImageSize } from '../../../../../../shared/enums';
-import { Blog } from '../../../../../../shared/models';
-import { Paragraph } from '../../../../../../shared/types';
 import { SEOService } from '../../../shared/services';
 import { trackByIndexUtility } from '../../../shared/utilities';
 import { BlogDetailService } from './blog-detail.service';

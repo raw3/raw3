@@ -1,4 +1,4 @@
-import { Photo } from '../../../../shared/models';
+import { Photo } from '@shared/models';
 import { photo1Data } from './photo1.data';
 import { photo10Data } from './photo10.data';
 import { photo11Data } from './photo11.data';

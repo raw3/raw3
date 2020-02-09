@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { VennCategory } from '@shared/enums';
 import { BehaviorSubject } from 'rxjs';
 import { filter, map, startWith, tap } from 'rxjs/operators';
-import { VennCategory } from '../../../../../../shared/enums';
 import { SEOService } from '../../../shared/services';
 
 @Component({

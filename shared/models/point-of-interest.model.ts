@@ -1,4 +1,4 @@
-import { GEOLocation } from '../types';
+import { GEOLocation } from '@shared/interfaces';
 
 export class PointOfInterest {
   location: GEOLocation;

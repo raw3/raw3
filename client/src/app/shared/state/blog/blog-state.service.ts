@@ -1,8 +1,8 @@
 import { isPlatformServer } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Blog } from '@shared/models';
 import { EMPTY, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { Blog } from '../../../../../../shared/models';
 import { BlogDataService } from './blog-data.service';
 import { BlogQuery } from './blog.query';
 import { BlogStore } from './blog.store';

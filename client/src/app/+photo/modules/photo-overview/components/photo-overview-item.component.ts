@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { ImageSize } from '../../../../../../../shared/enums';
-import { Photo } from '../../../../../../../shared/models';
+import { ImageSize } from '@shared/enums';
+import { Photo } from '@shared/models';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

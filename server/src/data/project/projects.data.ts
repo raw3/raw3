@@ -1,4 +1,4 @@
-import { Project } from '../../../../shared/models';
+import { Project } from '@shared/models';
 import { project1Data } from './project-1.data';
 import { project2Data } from './project-2.data';
 import { project3Data } from './project-3.data';

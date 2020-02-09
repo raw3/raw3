@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ImageSize } from '../../../../../../shared/enums';
+import { ImageSize } from '@shared/enums';
 import { getImagePathUtility } from '../../utilities';
 
 @Injectable({providedIn: 'root'})

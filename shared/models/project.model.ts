@@ -1,4 +1,4 @@
-import { Badge, Image, Paragraph } from '../types';
+import { Badge, Image, Paragraph } from '@shared/interfaces';
 import { PointOfInterest } from './point-of-interest.model';
 
 export class Project extends PointOfInterest {

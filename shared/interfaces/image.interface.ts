@@ -1,6 +1,6 @@
-import { ImageSize } from '../enums';
+import { ImageSize } from '@shared/enums';
 
-export class Image {
+export interface Image {
   alt: string;
   cachedSizes: ImageSize[];
   caption?: string;

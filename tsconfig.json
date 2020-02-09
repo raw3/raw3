@@ -1,23 +1,35 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "declaration": false,
+    "module": "esnext",
     "emitDecoratorMetadata": true,
+    "downlevelIteration": true,
     "experimentalDecorators": true,
+    "importHelpers": true,
     "lib": [
-      "es2015",
-      "es2017",
+      "es2018",
       "dom"
     ],
     "moduleResolution": "node",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
-    "target": "es5",
+    "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "paths": {
+      "@shared/*": ["shared/*"],
+      "@client/*": ["client/*"],
+      "@server/*": ["server/*"]
+    }
   },
   "types": [
     "googlemaps"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
 }

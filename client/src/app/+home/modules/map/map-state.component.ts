@@ -1,13 +1,13 @@
 /// <reference path="../../../../../../node_modules/@types/googlemaps/index.d.ts" />
 
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ImageSize } from '@shared/enums';
+import { PointOfInterestOption } from '@shared/types';
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
-import { ImageSize } from '../../../../../../shared/enums';
 import { Blog, Photo, Project } from '../../../../../../shared/models';
 import { slideRightAnimation } from '../../../shared/animations';
 import { SEOService } from '../../../shared/services';
-import { PointOfInterestOption } from '../../../shared/types';
 import { sortByDateUtility } from '../../../shared/utilities';
 import { MapService } from './map.service';
 

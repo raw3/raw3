@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ImageSize } from '../../../../../../shared/enums';
-import { Photo } from '../../../../../../shared/models';
+import { ImageSize } from '@shared/enums';
+import { Photo } from '@shared/models';
 import { PhotoStateService } from '../../../shared/state/photo';
 
 @Injectable({providedIn: 'root'})

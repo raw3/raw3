@@ -1,4 +1,4 @@
-import { Image } from './image.type';
+import { Image } from './image.interface';
 
 export class Paragraph {
   body: string[];

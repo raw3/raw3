@@ -1,4 +1,4 @@
-import { Photo } from '../../../../shared/models';
+import { Photo } from '@shared/models';
 
 export const photo14Data: Photo = {
   image: {

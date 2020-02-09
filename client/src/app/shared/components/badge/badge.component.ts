@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Badge } from '../../../../../../shared/types';
+import { Badge } from '@shared/interfaces';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

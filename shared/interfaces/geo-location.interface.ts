@@ -1,4 +1,4 @@
-export class GEOLocation {
+export interface GEOLocation {
   lat: number;
   lng: number;
 }

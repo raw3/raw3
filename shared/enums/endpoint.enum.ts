@@ -1,5 +1,5 @@
 export const enum Endpoint {
-  Blogs = 'blogs',
-  Photos = 'photos',
-  Projects = 'projects'
+  Blogs = 'api/blogs',
+  Photos = 'api/photos',
+  Projects = 'api/projects'
 }

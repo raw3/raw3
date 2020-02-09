@@ -1,8 +1,8 @@
 import { isPlatformServer } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Project } from '@shared/models';
 import { EMPTY, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { Project } from '../../../../../../shared/models';
 import { ProjectDataService } from './project-data.service';
 import { ProjectQuery } from './project.query';
 import { ProjectStore } from './project.store';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { ImageSize } from '../../../../../shared/enums';
-import { Blog, Photo, Project } from '../../../../../shared/models';
+import { ImageSize } from '@shared/enums';
+import { Blog, Photo, Project } from '@shared/models';
 import { MetaContent } from '../types';
 import { getImagePathUtility } from '../utilities';
 

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { tap } from 'rxjs/operators';
-import { ImageSize } from '../../../../../../shared/enums';
-import { Project } from '../../../../../../shared/models';
+import { ImageSize } from '@shared/enums';
+import { Project } from '@shared/models';
 import { SocialMediaURL } from '../../../shared/enums';
 import { SEOService } from '../../../shared/services';
 import { trackByIndexUtility } from '../../../shared/utilities';

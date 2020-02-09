@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
-import { Timer } from '../../../../../../shared/enums';
-import { Photo } from '../../../../../../shared/models';
+import { Timer } from '@shared/enums';
+import { Photo } from '@shared/models';
 
 export interface PhotoState extends EntityState<Photo> {
   viewablePhotoCount: number;

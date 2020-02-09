@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { ImageSize } from '../../../../../../../../shared/enums';
-import { Blog, Photo, Project } from '../../../../../../../../shared/models';
-import { PointOfInterestOption } from '../../../../../shared/types';
+import { ImageSize } from '@shared/enums';
+import { Blog, Photo, Project } from '@shared/models';
+import { PointOfInterestOption } from '@shared/types';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,7 +26,7 @@ import { PointOfInterestOption } from '../../../../../shared/types';
   `
 })
 export class POIContainerComponent {
-  @Input() poi: PointOfInterestOption;
+  @Input() poi: PointOfInterestOption | any;
 
   @Output() close = new EventEmitter();
   @Output() cacheBlogImageSize = new EventEmitter<{ blog: Blog, size: ImageSize }>();

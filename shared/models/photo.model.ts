@@ -1,4 +1,4 @@
-import { Image } from '../types';
+import { Image } from '@shared/interfaces';
 import { PointOfInterest } from './point-of-interest.model';
 
 export class Photo extends PointOfInterest {
