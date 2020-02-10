@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
-import { BannerComponent } from './components/banner/banner.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { HeaderComponent } from './components/header/header.component';
-import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
-import { OfflineComponent } from './components/offline/offline.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { BannerComponent } from './banner/banner.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import { OfflineComponent } from './offline/offline.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 const components = [
   BannerComponent,

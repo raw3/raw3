@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { mapRoutes } from './home.routing';
-import { MapModule } from './modules/map/map.module';
+import { MapModule } from './map/map.module';
 
 @NgModule({
   imports: [

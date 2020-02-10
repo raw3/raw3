@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { ProjectDetailStateComponent } from './modules/project-detail/project-detail-state.component';
-import { ProjectOverviewStateComponent } from './modules/project-overview/project-overview-state.component';
+import { ProjectDetailStateComponent } from './project-detail/project-detail-state.component';
+import { ProjectOverviewStateComponent } from './project-overview/project-overview-state.component';
 
 export const projectRoutes: Routes = [
   {

@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
-import { BlankComponent } from './components/blank/blank.component';
-import { PassionPlaceComponent } from './components/passion-place/passion-place.component';
-import { PassionComponent } from './components/passion/passion.component';
-import { PlaceComponent } from './components/place/place.component';
-import { ProfessionPassionPlaceComponent } from './components/profession-passion-place/profession-passion-place.component';
-import { ProfessionPassionComponent } from './components/profession-passion/profession-passion.component';
-import { ProfessionPlaceComponent } from './components/profession-place/profession-place.component';
-import { ProfessionComponent } from './components/profession/profession.component';
-import { LogoStateComponent } from './modules/logo/logo-state.component';
+import { BlankComponent } from './about-content/blank/blank.component';
+import { PassionPlaceComponent } from './about-content/passion-place/passion-place.component';
+import { PassionComponent } from './about-content/passion/passion.component';
+import { PlaceComponent } from './about-content/place/place.component';
+import { ProfessionPassionPlaceComponent } from './about-content/profession-passion-place/profession-passion-place.component';
+import { ProfessionPassionComponent } from './about-content/profession-passion/profession-passion.component';
+import { ProfessionPlaceComponent } from './about-content/profession-place/profession-place.component';
+import { ProfessionComponent } from './about-content/profession/profession.component';
+import { LogoStateComponent } from './logo/logo-state.component';
 
 export const aboutRoutes: Routes = [
   {
