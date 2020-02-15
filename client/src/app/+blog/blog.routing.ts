@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
-import { BlogDetailStateComponent } from './blog-detail/blog-detail-state.component';
-import { BlogOverviewStateComponent } from './blog-overview/blog-overview-state.component';
+import { BlogDetailComponent } from '@client/src/app/+blog/blog-detail/blog-detail.component';
+import { BlogOverviewComponent } from '@client/src/app/+blog/blog-overview/blog-overview.component';
 
 export const blogRoutes: Routes = [
   {
     path: '',
-    component: BlogOverviewStateComponent
+    component: BlogOverviewComponent
   },
   {
     path: ':url',
-    component: BlogDetailStateComponent
+    component: BlogDetailComponent
   }
 ];

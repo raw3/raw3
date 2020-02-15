@@ -31,7 +31,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 })
 export class HeaderComponent {
   @Input() menuIsOpen = false;
-  @Input() headerTitle;
+  @Input() headerTitle: string;
 
   @Output() open = new EventEmitter<boolean>();
 }

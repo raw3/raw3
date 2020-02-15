@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
+import { BlogStateService } from '@client/src/app/shared/state/blog/blog-state.service';
+import { PhotoStateService } from '@client/src/app/shared/state/photo/photo-state.service';
+import { ProjectStateService } from '@client/src/app/shared/state/project/project-state.service';
+import { cacheImageSizeUtility } from '@client/src/app/shared/utilities';
 import { ImageSize } from '@shared/enums';
 import { Blog, Photo, Project } from '@shared/models';
-import { BlogStateService } from '../../shared/state/blog';
-import { PhotoStateService } from '../../shared/state/photo';
-import { ProjectStateService } from '../../shared/state/project';
 
 @Injectable({providedIn: 'root'})
 export class MapService {
-  readonly blogs$ = this.blogStateService.blogs$;
-  readonly photos$ = this.photoStateService.photos$;
-  readonly projects$ = this.projectStateService.projects$;
+  readonly blogList$ = this.blogStateService.blogList$;
+  readonly photoList$ = this.photoStateService.photoList$;
+  readonly projectList$ = this.projectStateService.projectList$;
 
   constructor (
     private blogStateService: BlogStateService,
@@ -18,22 +19,17 @@ export class MapService {
   ) {
   }
 
-  cacheBlogImageSize (blog: Blog, size: ImageSize) {
-    const cachedSizes = [...blog.prologue.image.cachedSizes, size];
-    const newBlog: Blog = {...blog, prologue: {...blog.prologue, image: {...blog.prologue.image, cachedSizes}}};
-    this.blogStateService.cacheImageSize(newBlog);
+  cacheBlogPrologueImageSize$ (blog: Blog, size: ImageSize) {
+    const updatedBlog = {...blog, prologue: {...blog.prologue, ...cacheImageSizeUtility(blog.prologue, size)}};
+    return this.blogStateService.updateEntityState$(new Blog(updatedBlog));
   }
 
-  cachePhotoImageSize (photo: Photo, size: ImageSize) {
-    const cachedSizes = [...photo.image.cachedSizes, size];
-    const newPhoto: Photo = {...photo, image: {...photo.image, cachedSizes}};
-    this.photoStateService.cacheImageSize(newPhoto);
+  cachePhotoImageSize$ (photo: Photo, size: ImageSize) {
+    return this.photoStateService.updateEntityState$(new Photo(cacheImageSizeUtility(photo, size)));
   }
 
-  cacheProjectImageSize (project: Project, size: ImageSize) {
-    const cachedSizes = [...project.image.cachedSizes, size];
-    const newProject: Project = {...project, image: {...project.image, cachedSizes}};
-    this.projectStateService.cacheImageSize(newProject);
+  cacheProjectImageSize$ (project: Project, size: ImageSize) {
+    return this.projectStateService.updateEntityState$(new Project(cacheImageSizeUtility(project, size)));
   }
 
   blog$ (url: string) {

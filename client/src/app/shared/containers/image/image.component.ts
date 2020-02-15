@@ -61,7 +61,7 @@ export class ImageComponent implements OnChanges {
   }
 
   ngOnChanges ({image}: SimpleChanges) {
-    if (image) {
+    if (!!image) {
       setTimeout(() => this.isLoading$.next(true), this.flickerDelayFix);
     }
   }

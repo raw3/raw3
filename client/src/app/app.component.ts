@@ -53,7 +53,6 @@ export class AppComponent implements AfterViewInit, OnInit, OnDestroy {
   }
 
   ngOnInit () {
-    this.appService.updateMobileHeader$.pipe(takeUntil(this.destroy$)).subscribe();
     this.appService.setConnectionStatus$.subscribe();
     this.appService.availableUpdate$.pipe(
       tap(() => this.updateAvailable$.next(true)),

@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
-import { PhotoDetailStateComponent } from './photo-detail/photo-detail-state.component';
-import { PhotoOverviewStateComponent } from './photo-overview/photo-overview-state.component';
+import { PhotoDetailComponent } from '@client/src/app/+photo/photo-detail/photo-detail.component';
+import { PhotoOverviewComponent } from '@client/src/app/+photo/photo-overview/photo-overview.component';
 
 export const photoRoutes: Routes = [
   {
     path: '',
-    component: PhotoOverviewStateComponent
+    component: PhotoOverviewComponent
   },
   {
     path: ':url',
-    component: PhotoDetailStateComponent
+    component: PhotoDetailComponent
   }
 ];

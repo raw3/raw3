@@ -1,22 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { DataServiceType } from '@client/src/app/shared/types';
 import { Endpoint } from '@shared/enums';
-import { Project } from '@shared/models';
+import { Photo, Project } from '@shared/models';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { sortByDateUtility } from '../../utilities';
 
 @Injectable({providedIn: 'root'})
-export class ProjectDataService {
-  private readonly url = Endpoint.Projects;
+export class ProjectDataService implements DataServiceType<Project> {
+  readonly url = Endpoint.Projects;
 
   constructor (private http: HttpClient) {
   }
 
-  getProjects$ () {
-    return this.http.get<Project[]>(this.url).pipe(map(projects => sortByDateUtility(projects)));
+  getEntityList$ (): Observable<Project[]> {
+    return this.http.get<Project[]>(this.url).pipe(map(entityList => entityList.map((entity => new Project(entity)))));
   }
 
-  getProject$ (url: string) {
-    return this.http.get<Project>(`${this.url}/${url}`);
+  getEntity$ (selector: string): Observable<Project> {
+    return this.http.get<Project>(`${this.url}/${selector}`).pipe(map(entity => new Project(entity)));
   }
 }

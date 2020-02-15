@@ -1,76 +1,49 @@
-import { isPlatformServer } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { StateService } from '@client/src/app/shared/services';
+import { StateServiceType } from '@client/src/app/shared/types';
 import { Photo } from '@shared/models';
-import { EMPTY, of } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { BehaviorSubject, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 import { PhotoDataService } from './photo-data.service';
-import { PhotoQuery } from './photo.query';
-import { PhotoStore } from './photo.store';
+
+interface PhotoState {
+  [url: string]: Photo;
+}
 
 @Injectable({providedIn: 'root'})
-export class PhotoStateService {
-  private readonly cachedPhotos$ = this.photoQuery.selectAll().pipe(
-    map(photos => photos.map(photo => new Photo(photo)))
+export class PhotoStateService implements StateServiceType<Photo> {
+  private readonly photoListState$ = new BehaviorSubject<PhotoState>({});
+  private readonly photoCountState$ = new BehaviorSubject<number>(6);
+
+  readonly stateSelector = 'url';
+
+  readonly photoCount$ = this.photoCountState$.asObservable();
+  readonly photoList$ = this.photoListState$.asObservable().pipe(
+    switchMap(photoListState => Object.values(photoListState).length === 0 ? this.loadEntityList$() : of(Object.values(photoListState)))
   );
 
-  readonly viewablePhotoCount$ = this.photoQuery.selectViewablePhotoCount$;
-  readonly photos$ = this.photoQuery.selectHasCache().pipe(
-    switchMap(cached => {
-      if (isPlatformServer(this.platformID)) {
-        return of([]);
-      }
-
-      return cached ? this.cachedPhotos$ : this.fetchPhotos$();
-    })
-  );
-
-  constructor (
-    @Inject(PLATFORM_ID) private platformID: Object,
-    private photoDataService: PhotoDataService,
-    private photoQuery: PhotoQuery,
-    private photoStore: PhotoStore
-  ) {
+  constructor (private readonly photoDataService: PhotoDataService) {
   }
 
-  private fetchPhotos$ () {
-    return this.photoDataService.getPhotos$().pipe(
-      tap(photos => this.photoStore.set(photos)),
-      map(photos => photos.map(photo => new Photo(photo)))
+  photo$ (selector: string) {
+    return this.photoListState$.pipe(
+      switchMap(photoListState => !photoListState[selector] ? this.loadEntity$(selector) : of(photoListState[selector]))
     );
   }
 
-  private cachedPhoto$ (url: string) {
-    return this.photoQuery.selectEntity(url);
+  loadEntityList$ () {
+    return StateService.loadEntityListAndUpdateState$(this.photoDataService.getEntityList$(), this.photoListState$, this.stateSelector);
   }
 
-  private fetchPhoto$ (url: string) {
-    return this.photoDataService.getPhoto$(url).pipe(
-      tap(photo => this.photoStore.add(photo)),
-      map(photo => new Photo(photo))
-    );
+  loadEntity$ (selector: string) {
+    return StateService.loadEntityAndUpdateState$(this.photoDataService.getEntity$(selector), this.photoListState$, this.stateSelector, selector);
   }
 
-  photo$ (url: string) {
-    return this.cachedPhoto$(url).pipe(
-      switchMap(photo => {
-        if (isPlatformServer(this.platformID)) {
-          return EMPTY;
-        }
-
-        if (!photo) {
-          return this.fetchPhoto$(url);
-        }
-
-        return of(new Photo(photo));
-      })
-    );
+  updateEntityState$ (entity: Photo) {
+    return StateService.updateEntityState$(new Photo(entity), this.photoListState$, this.stateSelector);
   }
 
-  cacheImageSize (photo: Photo) {
-    this.photoStore.update(photo.url, photo);
-  }
-
-  updateViewablePhotoCount (viewablePhotoCount: number) {
-    this.photoStore.update({viewablePhotoCount});
+  updatePhotoCount (count: number) {
+    this.photoCountState$.next(count);
   }
 }

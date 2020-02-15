@@ -1,71 +1,43 @@
-import { isPlatformServer } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { StateService } from '@client/src/app/shared/services';
+import { BlogDataService } from '@client/src/app/shared/state/blog/blog-data.service';
+import { StateServiceType } from '@client/src/app/shared/types';
 import { Blog } from '@shared/models';
-import { EMPTY, of } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { BlogDataService } from './blog-data.service';
-import { BlogQuery } from './blog.query';
-import { BlogStore } from './blog.store';
+import { BehaviorSubject, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
+interface BlogState {
+  [url: string]: Blog;
+}
 
 @Injectable({providedIn: 'root'})
-export class BlogStateService {
-  private readonly cachedBlogs$ = this.blogQuery.selectAll().pipe(
-    map(blogs => blogs.map(blog => new Blog(blog)))
+export class BlogStateService implements StateServiceType<Blog> {
+  private readonly blogListState$ = new BehaviorSubject<BlogState>({});
+
+  readonly stateSelector = 'url';
+
+  readonly blogList$ = this.blogListState$.asObservable().pipe(
+    switchMap(blogListState => Object.values(blogListState).length === 0 ? this.loadEntityList$() : of(Object.values(blogListState)))
   );
 
-  readonly blogs$ = this.blogQuery.selectHasCache().pipe(
-    switchMap(cached => {
-      if (isPlatformServer(this.platformID)) {
-        return of([]);
-      }
-
-      return cached ? this.cachedBlogs$ : this.fetchBlogs$();
-    })
-  );
-
-  constructor (
-    @Inject(PLATFORM_ID) private platformID: Object,
-    private blogDataService: BlogDataService,
-    private blogQuery: BlogQuery,
-    private blogStore: BlogStore
-  ) {
+  constructor (private readonly blogDataService: BlogDataService) {
   }
 
-  private fetchBlogs$ () {
-    return this.blogDataService.getBlogs$().pipe(
-      tap(blogs => this.blogStore.set(blogs)),
-      map(blogs => blogs.map(blog => new Blog(blog)))
+  blog$ (selector: string) {
+    return this.blogListState$.pipe(
+      switchMap(blogListState => !blogListState[selector] ? this.loadEntity$(selector) : of(blogListState[selector]))
     );
   }
 
-  private cachedBlog$ (url: string) {
-    return this.blogQuery.selectEntity(url);
+  loadEntityList$ () {
+    return StateService.loadEntityListAndUpdateState$(this.blogDataService.getEntityList$(), this.blogListState$, this.stateSelector);
   }
 
-  private fetchBlog$ (url: string) {
-    return this.blogDataService.getBlog$(url).pipe(
-      tap(blog => this.blogStore.add(blog)),
-      map(blog => new Blog(blog))
-    );
+  loadEntity$ (selector: string) {
+    return StateService.loadEntityAndUpdateState$(this.blogDataService.getEntity$(selector), this.blogListState$, this.stateSelector, selector);
   }
 
-  blog$ (url: string) {
-    return this.cachedBlog$(url).pipe(
-      switchMap(blog => {
-        if (isPlatformServer(this.platformID)) {
-          return EMPTY;
-        }
-
-        if (!blog) {
-          return this.fetchBlog$(url);
-        }
-
-        return of(new Blog(blog));
-      })
-    );
-  }
-
-  cacheImageSize (blog: Blog) {
-    this.blogStore.update(blog.url, blog);
+  updateEntityState$ (entity: Blog) {
+    return StateService.updateEntityState$(new Blog(entity), this.blogListState$, this.stateSelector);
   }
 }

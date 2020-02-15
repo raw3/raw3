@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ImageSize } from '@shared/enums';
 import { Project } from '@shared/models';
-import { trackByIndexUtility } from '../../../../shared/utilities';
+import { trackByIndexUtility } from '../../shared/utilities';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

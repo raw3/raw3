@@ -1,71 +1,43 @@
-import { isPlatformServer } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { StateService } from '@client/src/app/shared/services';
+import { ProjectDataService } from '@client/src/app/shared/state/project/project-data.service';
+import { StateServiceType } from '@client/src/app/shared/types';
 import { Project } from '@shared/models';
-import { EMPTY, of } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { ProjectDataService } from './project-data.service';
-import { ProjectQuery } from './project.query';
-import { ProjectStore } from './project.store';
+import { BehaviorSubject, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
+interface ProjectState {
+  [url: string]: Project;
+}
 
 @Injectable({providedIn: 'root'})
-export class ProjectStateService {
-  private readonly cachedProjects$ = this.projectQuery.selectAll().pipe(
-    map(projects => projects.map(project => new Project(project)))
+export class ProjectStateService implements StateServiceType<Project> {
+  private readonly projectListState$ = new BehaviorSubject<ProjectState>({});
+
+  readonly stateSelector = 'url';
+
+  readonly projectList$ = this.projectListState$.asObservable().pipe(
+    switchMap(projectListState => Object.values(projectListState).length === 0 ? this.loadEntityList$() : of(Object.values(projectListState)))
   );
 
-  readonly projects$ = this.projectQuery.selectHasCache().pipe(
-    switchMap(cached => {
-      if (isPlatformServer(this.platformID)) {
-        return of([]);
-      }
-
-      return cached ? this.cachedProjects$ : this.fetchProjects$();
-    })
-  );
-
-  constructor (
-    @Inject(PLATFORM_ID) private platformID: Object,
-    private projectDataService: ProjectDataService,
-    private projectQuery: ProjectQuery,
-    private projectStore: ProjectStore
-  ) {
+  constructor (private readonly projectDataService: ProjectDataService) {
   }
 
-  private fetchProjects$ () {
-    return this.projectDataService.getProjects$().pipe(
-      tap(projects => this.projectStore.set(projects)),
-      map(projects => projects.map(project => new Project(project)))
+  project$ (selector: string) {
+    return this.projectListState$.pipe(
+      switchMap(projectListState => !projectListState[selector] ? this.loadEntity$(selector) : of(projectListState[selector]))
     );
   }
 
-  private cachedProject$ (url: string) {
-    return this.projectQuery.selectEntity(url);
+  loadEntityList$ () {
+    return StateService.loadEntityListAndUpdateState$(this.projectDataService.getEntityList$(), this.projectListState$, this.stateSelector);
   }
 
-  private fetchProject$ (url: string) {
-    return this.projectDataService.getProject$(url).pipe(
-      tap(project => this.projectStore.add(project)),
-      map(project => new Project(project))
-    );
+  loadEntity$ (selector: string) {
+    return StateService.loadEntityAndUpdateState$(this.projectDataService.getEntity$(selector), this.projectListState$, this.stateSelector, selector);
   }
 
-  project$ (url: string) {
-    return this.cachedProject$(url).pipe(
-      switchMap(project => {
-        if (isPlatformServer(this.platformID)) {
-          return EMPTY;
-        }
-
-        if (!project) {
-          return this.fetchProject$(url);
-        }
-
-        return of(new Project(project));
-      })
-    );
-  }
-
-  cacheImageSize (project: Project) {
-    this.projectStore.update(project.url, project);
+  updateEntityState$ (entity: Project) {
+    return StateService.updateEntityState$(new Project(entity), this.projectListState$, this.stateSelector);
   }
 }

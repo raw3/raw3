@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AboutComponent } from '@client/src/app/+about/about.component';
 import { BlankComponent } from './about-content/blank/blank.component';
 import { PassionPlaceComponent } from './about-content/passion-place/passion-place.component';
 import { PassionComponent } from './about-content/passion/passion.component';
@@ -7,12 +8,11 @@ import { ProfessionPassionPlaceComponent } from './about-content/profession-pass
 import { ProfessionPassionComponent } from './about-content/profession-passion/profession-passion.component';
 import { ProfessionPlaceComponent } from './about-content/profession-place/profession-place.component';
 import { ProfessionComponent } from './about-content/profession/profession.component';
-import { LogoStateComponent } from './logo/logo-state.component';
 
 export const aboutRoutes: Routes = [
   {
     path: '',
-    component: LogoStateComponent,
+    component: AboutComponent,
     children: [
       {
         path: '',

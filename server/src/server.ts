@@ -1,4 +1,5 @@
 import 'zone.js/dist/zone-node';
+import 'reflect-metadata';
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as bodyParser from 'body-parser';
@@ -19,7 +20,7 @@ export function app () {
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
-    bootstrap: AppServerModule,
+    bootstrap: AppServerModule
   }));
 
   server.set('view engine', 'html');
@@ -38,7 +39,7 @@ export function app () {
 
   // All regular routes use the Universal engine
   server.get('*', (req, res) => {
-    res.render(indexHtml, { req, providers: [{ provide: APP_BASE_HREF, useValue: req.baseUrl }] });
+    res.render(indexHtml, {req, providers: [{provide: APP_BASE_HREF, useValue: req.baseUrl}]});
   });
 
   return server;

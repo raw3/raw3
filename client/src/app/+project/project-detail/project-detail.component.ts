@@ -1,15 +1,15 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProjectService } from '@client/src/app/+project/project.service';
 import { ImageSize } from '@shared/enums';
 import { Project } from '@shared/models';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { SEOService } from '../../shared/services';
 import { trackByIndexUtility } from '../../shared/utilities';
-import { ProjectDetailService } from './project-detail.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['project-detail-state.component.scss'],
+  styleUrls: ['project-detail.component.scss'],
   template: `
     <article class="container--narrow">
       <ng-container *ngIf="project$ | async as project; else loading">
@@ -52,25 +52,30 @@ import { ProjectDetailService } from './project-detail.service';
     </ng-template>
   `
 })
-export class ProjectDetailStateComponent {
+export class ProjectDetailComponent implements OnInit {
   private readonly url$ = this.route.params.pipe(map(({url}) => url));
 
   readonly project$ = this.url$.pipe(
-    switchMap(url => this.projectDetailService.project$(url).pipe(
-      tap(project => this.seoService.setProjectDetailSEO(project))
-    ))
+    switchMap(url => this.projectService.project$(url))
   );
 
+  readonly ImageSize = ImageSize;
   readonly trackByIndex = trackByIndexUtility;
 
   constructor (
-    private projectDetailService: ProjectDetailService,
+    private projectService: ProjectService,
     private route: ActivatedRoute,
     private seoService: SEOService
   ) {
   }
 
+  ngOnInit () {
+    this.project$.pipe(
+      take(1)
+    ).subscribe(project => this.seoService.setProjectDetailSEO(project));
+  }
+
   cacheImageSize (project: Project, size: ImageSize) {
-    this.projectDetailService.cacheImageSize(project, size);
+    this.projectService.cacheImageSize$(project, size).pipe(take(1)).subscribe();
   }
 }

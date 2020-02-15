@@ -1,16 +1,16 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BlogService } from '@client/src/app/+blog/blog.service';
 import { ImageSize } from '@shared/enums';
-import { Blog } from '@shared/models';
 import { Paragraph } from '@shared/interfaces';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { Blog } from '@shared/models';
+import { map, switchMap, take } from 'rxjs/operators';
 import { SEOService } from '../../shared/services';
 import { trackByIndexUtility } from '../../shared/utilities';
-import { BlogDetailService } from './blog-detail.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['blog-detail-state.component.scss'],
+  styleUrls: ['blog-detail.component.scss'],
   template: `
     <article class="container--narrow">
       <ng-container *ngIf="blog$ | async as blog; else loading">
@@ -59,29 +59,34 @@ import { BlogDetailService } from './blog-detail.service';
     </ng-template>
   `
 })
-export class BlogDetailStateComponent {
+export class BlogDetailComponent implements OnInit {
   private readonly url$ = this.route.params.pipe(map(({url}) => url));
 
   readonly blog$ = this.url$.pipe(
-    switchMap(url => this.blogDetailService.blog$(url).pipe(
-      tap(blog => this.seoService.setBlogDetailSEO(blog))
-    ))
+    switchMap(url => this.blogService.blog$(url))
   );
 
+  readonly ImageSize = ImageSize;
   readonly trackByIndex = trackByIndexUtility;
 
   constructor (
-    private blogDetailService: BlogDetailService,
+    private blogService: BlogService,
     private route: ActivatedRoute,
     private seoService: SEOService
   ) {
   }
 
-  cachePrologueImageSize (blog, size) {
-    this.blogDetailService.cachePrologueImageSize(blog, size);
+  ngOnInit () {
+    this.blog$.pipe(
+      take(1)
+    ).subscribe(blog => this.seoService.setBlogDetailSEO(blog));
+  }
+
+  cachePrologueImageSize (blog: Blog, size: ImageSize) {
+    this.blogService.cachePrologueImageSize$(blog, size).pipe(take(1)).subscribe();
   }
 
   cacheParagraphImageSize (blog: Blog, paragraph: Paragraph, size: ImageSize) {
-    this.blogDetailService.cacheParagraphImageSize(blog, paragraph, size);
+    this.blogService.cacheParagraphImageSize$(blog, paragraph, size).pipe(take(1)).subscribe();
   }
 }

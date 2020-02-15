@@ -1,15 +1,15 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { PhotoService } from '@client/src/app/+photo/photo.service';
 import { ImageSize } from '@shared/enums';
 import { Photo } from '@shared/models';
-import { tap } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { SocialMediaURL } from '../../shared/enums';
 import { SEOService } from '../../shared/services';
 import { trackByIndexUtility } from '../../shared/utilities';
-import { PhotoOverviewService } from './photo-overview.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['photo-overview-state.component.scss'],
+  styleUrls: ['photo-overview.component.scss'],
   template: `
     <header class="container--narrow">
       <h1 class="desktop">Photography</h1>
@@ -25,17 +25,17 @@ import { PhotoOverviewService } from './photo-overview.service';
     </header>
 
     <div class="item-container">
-      <ng-container *ngIf="photos$ | async as photos; else loading">
+      <ng-container *ngIf="photoList$ | async as photoList; else loading">
         <app-photo-overview-item
-          *ngFor="let photo of photos | slice: 0: (viewablePhotoCount$ | async); trackBy: trackByIndex"
+          *ngFor="let photo of photoList | slice: 0: (photoCount$ | async); trackBy: trackByIndex"
           [photo]="photo"
           (cacheImageSize)="cacheImageSize(photo, $event)"
         ></app-photo-overview-item>
 
-        <footer *ngIf="viewablePhotoCount$ | async as viewablePhotoCount">
+        <footer>
           <raw3-icon-button
-            *ngIf="viewablePhotoCount < photos.length"
-            (click)="increaseViewableImages(viewablePhotoCount)"
+            *ngIf="(photoCount$ | async) < photoList.length"
+            (click)="increasePhotoCount()"
             icon="plus"
             description="See more photos"
           ></raw3-icon-button>
@@ -53,31 +53,31 @@ import { PhotoOverviewService } from './photo-overview.service';
     </ng-template>
   `
 })
-export class PhotoOverviewStateComponent {
-  readonly photos$ = this.photoOverviewService.photos$.pipe(
-    tap(photos => {
-      if (photos.length > 0) {
-        this.seoService.setPhotoOverviewSEO(photos[0]);
-      }
-    })
-  );
-  readonly viewablePhotoCount$ = this.photoOverviewService.viewablePhotoCount$;
+export class PhotoOverviewComponent implements OnInit {
+  readonly photoCount$ = this.photoService.photoCount$;
+  readonly photoList$ = this.photoService.photoList$;
 
   readonly fiveHundredPixURL = SocialMediaURL.FiveHundredPix;
   readonly instagramURL = SocialMediaURL.Instagram;
   readonly trackByIndex = trackByIndexUtility;
 
   constructor (
-    private photoOverviewService: PhotoOverviewService,
+    private photoService: PhotoService,
     private seoService: SEOService
   ) {
   }
 
-  cacheImageSize (photo: Photo, size: ImageSize) {
-    this.photoOverviewService.cacheImageSize(photo, size);
+  ngOnInit () {
+    this.photoList$.pipe(
+      take(1)
+    ).subscribe(photoList => this.seoService.setPhotoOverviewSEO(photoList[0]));
   }
 
-  increaseViewableImages (count: number) {
-    this.photoOverviewService.updateViewablePhotoCount(count + 6);
+  cacheImageSize (photo: Photo, size: ImageSize) {
+    this.photoService.cacheImageSize$(photo, size).pipe(take(1)).subscribe();
+  }
+
+  increasePhotoCount () {
+    this.photoService.increasePhotoCount$(6).pipe(take(1)).subscribe();
   }
 }

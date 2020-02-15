@@ -1,10 +1,9 @@
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
@@ -21,7 +20,6 @@ import { LayoutModule } from './layout/layout.module';
     BrowserModule.withServerTransition({appId: 'raw3'}),
     HttpClientModule,
     LayoutModule,
-    environment.production ? [] : AkitaNgDevtools.forRoot({shallow: false}),
     RouterModule.forRoot(appRoutes, {
       preloadingStrategy: PreloadAllModules,
       initialNavigation: 'enabled'

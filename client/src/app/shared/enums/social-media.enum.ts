@@ -1,4 +1,4 @@
-export const enum SocialMediaURL {
+export enum SocialMediaURL {
   Facebook = 'https://www.facebook.com/raw3.io',
   Instagram = 'https://www.instagram.com/richandrwols/',
   Linkedin = 'https://www.linkedin.com/in/rawols/',

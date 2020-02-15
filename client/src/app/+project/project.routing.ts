@@ -1,14 +1,14 @@
 import { Routes } from '@angular/router';
-import { ProjectDetailStateComponent } from './project-detail/project-detail-state.component';
-import { ProjectOverviewStateComponent } from './project-overview/project-overview-state.component';
+import { ProjectDetailComponent } from '@client/src/app/+project/project-detail/project-detail.component';
+import { ProjectOverviewComponent } from '@client/src/app/+project/project-overview/project-overview.component';
 
 export const projectRoutes: Routes = [
   {
     path: '',
-    component: ProjectOverviewStateComponent
+    component: ProjectOverviewComponent
   },
   {
     path: ':url',
-    component: ProjectDetailStateComponent
+    component: ProjectDetailComponent
   }
 ];

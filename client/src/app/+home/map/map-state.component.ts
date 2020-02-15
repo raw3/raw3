@@ -6,7 +6,7 @@ import { MapFilter } from '@client/src/app/+home/map/enums/map-filter.enum';
 import { ImageSize } from '@shared/enums';
 import { PointOfInterestOption } from '@shared/types';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { filter, map, switchMap } from 'rxjs/operators';
+import { filter, map, switchMap, take } from 'rxjs/operators';
 import { Blog, Photo, Project } from '@shared/models';
 import { slideRightAnimation } from '../../shared/animations';
 import { SEOService } from '../../shared/services';
@@ -43,9 +43,9 @@ import { MapService } from './map.service';
 export class MapStateComponent implements OnInit {
   private readonly filterParamName = 'hide';
 
-  readonly blogs$ = this.mapService.blogs$;
-  readonly photos$ = this.mapService.photos$;
-  readonly projects$ = this.mapService.projects$;
+  readonly blogList$ = this.mapService.blogList$;
+  readonly photoList$ = this.mapService.photoList$;
+  readonly projectList$ = this.mapService.projectList$;
   readonly mapFilters$: Observable<MapFilter[]> = this.route.queryParams.pipe(
     map(params => params[this.filterParamName] || [])
   );
@@ -56,24 +56,28 @@ export class MapStateComponent implements OnInit {
     switchMap(poi => this.getActivePOIObservable$(poi))
   );
   readonly pointsOfInterest$: Observable<google.maps.Marker[]> = combineLatest([
-    this.blogs$,
-    this.photos$,
-    this.projects$,
+    this.blogList$,
+    this.photoList$,
+    this.projectList$,
     this.mapFilters$
   ]).pipe(
-    filter(([blogs, photos, projects]) => blogs.length > 0 && photos.length > 0 && projects.length > 0),
-    map(([blogs, photos, projects, filters]) => sortByDateUtility([
-      ...(filters.includes(MapFilter.BLOGS) ? [] : blogs),
-      ...(filters.includes(MapFilter.PHOTOS) ? [] : photos),
-      ...(filters.includes(MapFilter.PROJECTS) ? [] : projects)
+    filter(([blogList, photoList, projectList, _]) =>
+      Object.keys(blogList).length > 0 &&
+      Object.keys(photoList).length > 0 &&
+      Object.keys(projectList).length > 0
+    ),
+    map(([blogList, photoList, projectList, filters]) => sortByDateUtility([
+      ...(filters.includes(MapFilter.BLOGS) ? [] : Object.values(blogList)),
+      ...(filters.includes(MapFilter.PHOTOS) ? [] : Object.values(photoList)),
+      ...(filters.includes(MapFilter.PROJECTS) ? [] : Object.values(projectList))
     ])),
-    map(pointsOfInterest => pointsOfInterest.map(pointOfInterest => this.mapPointOfInterestToMapMarker(pointOfInterest)))
+    map(pointOfInterestList => pointOfInterestList.map(pointOfInterest => this.mapPointOfInterestToMapMarker(pointOfInterest)))
   );
 
   constructor (
     private readonly seoService: SEOService,
     private readonly mapService: MapService,
-    private readonly route: ActivatedRoute,
+    private readonly route: ActivatedRoute
   ) {
   }
 
@@ -121,14 +125,14 @@ export class MapStateComponent implements OnInit {
   }
 
   cacheBlogImageSize (blog: { blog: Blog, size: ImageSize }) {
-    this.mapService.cacheBlogImageSize(blog.blog, blog.size);
+    this.mapService.cacheBlogPrologueImageSize$(blog.blog, blog.size).pipe(take(1)).subscribe();
   }
 
-  cachePhotoImageSize (photo: { photo: Photo, size: ImageSize }) {
-    this.mapService.cachePhotoImageSize(photo.photo, photo.size);
+  cachePhotoImageSize ({photo, size}) {
+    this.mapService.cachePhotoImageSize$(photo, size).pipe(take(1)).subscribe();
   }
 
   cacheProjectImageSize (project: { project: Project, size: ImageSize }) {
-    this.mapService.cacheProjectImageSize(project.project, project.size);
+    this.mapService.cacheProjectImageSize$(project.project, project.size).pipe(take(1)).subscribe();
   }
 }

@@ -3,11 +3,11 @@ import { NavigationEnd, Router } from '@angular/router';
 import { VennCategory } from '@shared/enums';
 import { BehaviorSubject } from 'rxjs';
 import { filter, map, startWith, tap } from 'rxjs/operators';
-import { SEOService } from '../../shared/services';
+import { SEOService } from '../shared/services';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['logo-state.component.scss'],
+  styleUrls: ['about.component.scss'],
   template: `
     <section>
       <raw3-venn [activePart]="activePart$ | async" [currentRoute]="currentRoute$ | async" (navigate)="navigateTo($event)"></raw3-venn>
@@ -18,7 +18,7 @@ import { SEOService } from '../../shared/services';
     </section>
   `
 })
-export class LogoStateComponent implements OnInit {
+export class AboutComponent implements OnInit {
   readonly currentRoute$ = new BehaviorSubject<string>(this.router.url);
   readonly activePart$ = this.router.events.pipe(
     filter(event => event instanceof NavigationEnd),

@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { PhotoDetailModule } from './photo-detail/photo-detail.module';
-import { PhotoOverviewModule } from './photo-overview/photo-overview.module';
+import { PhotoDetailComponent } from '@client/src/app/+photo/photo-detail/photo-detail.component';
+import { PhotoOverviewItemComponent } from '@client/src/app/+photo/photo-overview-item/photo-overview-item.component';
+import { PhotoOverviewComponent } from '@client/src/app/+photo/photo-overview/photo-overview.component';
+import { PhotoService } from '@client/src/app/+photo/photo.service';
+import { SharedModule } from '@client/src/app/shared/shared.module';
 import { photoRoutes } from './photo.routing';
 
 @NgModule({
-  imports: [
-    PhotoDetailModule,
-    PhotoOverviewModule,
-    RouterModule.forChild(photoRoutes)
-  ]
+  declarations: [PhotoDetailComponent, PhotoOverviewComponent, PhotoOverviewItemComponent],
+  imports: [SharedModule, RouterModule.forChild(photoRoutes)],
+  providers: [PhotoService]
 })
 export class PhotoModule {
 }

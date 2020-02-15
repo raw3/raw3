@@ -1,14 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { ImageSize } from '@shared/enums';
 import { Photo } from '@shared/models';
 import { SEOService } from '../../shared/services';
-import { PhotoDetailService } from './photo-detail.service';
+import { PhotoService } from '../photo.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['photo-detail-state.component.scss'],
+  styleUrls: ['photo-detail.component.scss'],
   template: `
     <div class="backdrop">
       <ng-container *ngIf="photo$ | async as photo; else loading">
@@ -36,25 +36,29 @@ import { PhotoDetailService } from './photo-detail.service';
     </ng-template>
   `
 })
-export class PhotoDetailStateComponent {
+export class PhotoDetailComponent implements OnInit {
   private readonly url$ = this.route.params.pipe(map(({url}) => url));
 
   readonly photo$ = this.url$.pipe(
-    switchMap(url => this.photoDetailService.photo$(url).pipe(
-      tap(photo => this.seoService.setPhotoDetailSEO(photo))
-    ))
+    switchMap(url => this.photoService.photo$(url))
   );
 
   readonly ImageSize = ImageSize;
 
   constructor (
-    private photoDetailService: PhotoDetailService,
+    private photoService: PhotoService,
     private route: ActivatedRoute,
     private seoService: SEOService
   ) {
   }
 
+  ngOnInit () {
+    this.photo$.pipe(
+      take(1)
+    ).subscribe(photo => this.seoService.setPhotoDetailSEO(photo));
+  }
+
   cacheImageSize (photo: Photo, size: ImageSize) {
-    this.photoDetailService.cacheImageSize(photo, size);
+    this.photoService.cacheImageSize$(photo, size).pipe(take(1)).subscribe();
   }
 }

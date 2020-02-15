@@ -1,22 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { DataServiceType } from '@client/src/app/shared/types';
 import { Endpoint } from '@shared/enums';
 import { Blog } from '@shared/models';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { sortByDateUtility } from '../../utilities';
 
 @Injectable({providedIn: 'root'})
-export class BlogDataService {
-  private readonly url = Endpoint.Blogs;
+export class BlogDataService implements DataServiceType<Blog> {
+  readonly url = Endpoint.Blogs;
 
   constructor (private http: HttpClient) {
   }
 
-  getBlogs$ () {
-    return this.http.get<Blog[]>(this.url).pipe(map(blogs => sortByDateUtility(blogs)));
+  getEntityList$ (): Observable<Blog[]> {
+    return this.http.get<Blog[]>(this.url).pipe(map(entityList => entityList.map((entity => new Blog(entity)))));
   }
 
-  getBlog$ (url: string) {
-    return this.http.get<Blog>(`${this.url}/${url}`);
+  getEntity$ (selector: string): Observable<Blog> {
+    return this.http.get<Blog>(`${this.url}/${selector}`).pipe(map(entity => new Blog(entity)));
   }
 }
