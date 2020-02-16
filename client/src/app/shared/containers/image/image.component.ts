@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { AnimationTime } from '@client/src/app/shared/enums';
 import { ImageSize } from '@shared/enums';
 import { Image } from '@shared/interfaces';
 import { BehaviorSubject } from 'rxjs';
@@ -39,7 +40,7 @@ import { ImageService } from './image.service';
   `
 })
 export class ImageComponent implements OnChanges {
-  private readonly flickerDelayFixInMilliseconds = 50;
+  private readonly flickerDelayFixInMilliseconds = AnimationTime.FIX;
 
   @Input() height = 'auto';
   @Input() image: Image;

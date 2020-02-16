@@ -1,7 +1,7 @@
 export const enum RoutePath {
-  About = 'about',
-  Blogs = 'blogs',
-  Home = '',
-  Photos = 'photos',
-  Projects = 'projects'
+  ABOUT = 'about',
+  BLOGS = 'blogs',
+  HOME = '',
+  PHOTOS = 'photos',
+  PROJECTS = 'projects'
 }

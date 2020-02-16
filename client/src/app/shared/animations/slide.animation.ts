@@ -1,6 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
+import { AnimationTime } from '@client/src/app/shared/enums';
 
-const duration = 300;
+const duration = AnimationTime.MEDIUM;
 
 export const slideRightAnimation = trigger('slideRight', [
   transition(':enter', [

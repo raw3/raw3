@@ -49,9 +49,9 @@ import { SocialMediaURL } from '../../../shared/enums';
   `
 })
 export class FooterComponent {
-  readonly emailAddress = SocialMediaURL.Email;
-  readonly instagramURL = SocialMediaURL.Instagram;
-  readonly fiveHundredPixURL = SocialMediaURL.FiveHundredPix;
-  readonly linkedinURL = SocialMediaURL.Linkedin;
-  readonly facebookURL = SocialMediaURL.Facebook;
+  readonly emailAddress = SocialMediaURL.EMAIL;
+  readonly instagramURL = SocialMediaURL.INSTAGRAM;
+  readonly fiveHundredPixURL = SocialMediaURL.FIVE_HUNDRED_PIX;
+  readonly linkedinURL = SocialMediaURL.LINKEDIN;
+  readonly facebookURL = SocialMediaURL.FACEBOOK;
 }

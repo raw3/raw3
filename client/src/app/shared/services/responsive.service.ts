@@ -16,7 +16,7 @@ export class ResponsiveService {
   readonly isDesktop$ = this.window instanceof Window ? this.screenWidth$.pipe(map(this.isDesktop)) : of(true);
   readonly isMobile$ = this.window instanceof Window ? this.screenWidth$.pipe(map(this.isMobile)) : of(true);
 
-  constructor (@Inject('window') private window: Window) {
+  constructor (@Inject('window') private readonly window: Window) {
   }
 
   private isDesktop (screenWidth: number) {

@@ -15,7 +15,7 @@ export class AppService {
     startWith(this.router.url === '/' || this.router.url.includes('/?'))
   );
   readonly setConnectionStatus$ = this.connectionService.setConnectionStatus$;
-  readonly isOffline$ = this.connectionService.connectionStatus$.pipe(map(status => status === ConnectionStatus.Offline));
+  readonly isOffline$ = this.connectionService.connectionStatus$.pipe(map(status => status === ConnectionStatus.OFFLINE));
   readonly headerTitle$ = this.headerService.headerTitle$;
   readonly availableUpdate$ = this.versionService.availableUpdate$;
 

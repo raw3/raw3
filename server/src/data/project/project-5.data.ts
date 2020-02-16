@@ -34,51 +34,51 @@ export const project5Data: Project = {
   roles: [
     {
       text: 'UI designer',
-      venn: VennCategory.Purple
+      venn: VennCategory.PURPLE
     },
     {
       text: 'visual designer',
-      venn: VennCategory.Red
+      venn: VennCategory.RED
     },
     {
       text: 'full-stack developer',
-      venn: VennCategory.Blue
+      venn: VennCategory.BLUE
     },
     {
       text: 'Angular',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'PWA',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'SSR',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'TypeScript',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'JavaScript',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'HTML & SCSS',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'NodeJS',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'Nginx',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'Docker',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     }
   ],
   title: 'raw3.io',

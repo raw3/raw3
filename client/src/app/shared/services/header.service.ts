@@ -19,15 +19,15 @@ export class HeaderService {
 
   private static getRouteTitle (path: RoutePath) {
     switch (path) {
-      case RoutePath.About:
+      case RoutePath.ABOUT:
         return 'About';
-      case RoutePath.Blogs:
+      case RoutePath.BLOGS:
         return 'Blogs';
-      case RoutePath.Photos:
+      case RoutePath.PHOTOS:
         return 'Photography';
-      case RoutePath.Projects:
+      case RoutePath.PROJECTS:
         return 'Projects';
-      case RoutePath.Home:
+      case RoutePath.HOME:
       default:
         return 'Home';
     }

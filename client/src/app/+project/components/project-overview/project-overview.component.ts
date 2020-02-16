@@ -17,9 +17,10 @@ import { trackByIndexUtility } from '../../../shared/utilities';
       <p>Here are some of the projects I worked on during my career. These range from developing enterprise solutions in a
         team to designing business solutions as a single consultant. I have experience working with international
         corporations and flexible start-ups. I also like to compete in hackathons.</p>
-      <p>Add me on <a [href]="SocialMediaURL.Linkedin" target="_blank" rel="noreferrer" aria-label="Link to my linkedIn page" class="link">LinkedIn</a>
+      <p>Add me on <a [href]="SocialMediaURL.LINKEDIN" target="_blank" rel="noreferrer" aria-label="Link to my linkedIn page" class="link">LinkedIn</a>
         if you'd like to connect or <a
-          href="mailto:{{SocialMediaURL.Email}}" target="_blank" rel="noreferrer" class="link" aria-label="Send me an email">send me a message</a> if
+          href="mailto:{{SocialMediaURL.EMAIL}}" target="_blank" rel="noreferrer" class="link" aria-label="Send me an email">send me a
+          message</a> if
         you'd like to work with me.</p>
     </header>
 
@@ -39,17 +40,13 @@ import { trackByIndexUtility } from '../../../shared/utilities';
     </ng-template>
   `
 })
-export class ProjectOverviewComponent implements OnInit {
+export class ProjectOverviewComponent {
   readonly SocialMediaURL = SocialMediaURL;
   readonly projectList$ = this.projectService.projectList$;
 
   readonly trackByIndex = trackByIndexUtility;
 
   constructor (private readonly projectService: ProjectService) {
-  }
-
-  ngOnInit () {
-    this.projectService.loadProjectList$().pipe(take(1)).subscribe();
   }
 
   cacheImageSize (project: Project, size: ImageSize) {

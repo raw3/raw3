@@ -5,11 +5,11 @@ import { APIUtility } from '../utilities/api.utility';
 
 export class PhotoAPI {
   static createAPI (server: Express): void {
-    server.get(`/${Endpoint.Photos}`, (request: Request, response: Response, next: NextFunction) => {
+    server.get(`/${Endpoint.PHOTOS}`, (request: Request, response: Response, next: NextFunction) => {
       APIUtility.getAll(request, response, next, photosData);
     });
 
-    server.get(`/${Endpoint.Photos}/:url`, (request: Request, response: Response, next: NextFunction) => {
+    server.get(`/${Endpoint.PHOTOS}/:url`, (request: Request, response: Response, next: NextFunction) => {
       APIUtility.getByURL(request, response, next, photosData);
     });
   }

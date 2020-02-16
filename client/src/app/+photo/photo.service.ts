@@ -10,10 +10,13 @@ import { map, tap, withLatestFrom } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class PhotoService {
-  readonly photoList$ = this.photoStateService.photoList$;
+  readonly photoList$ = this.photoStateService.photoList$.pipe(
+    tap(photoList => this.seoService.setPhotoOverviewSEO(photoList[0]))
+  );
+
   readonly photoCount$ = this.photoStateService.photoCount$;
   readonly previousURL$ = this.navigationService.previousRoute$.pipe(
-    map(route => route || `/${RoutePath.Photos}`)
+    map(route => route || `/${RoutePath.PHOTOS}`)
   );
 
   constructor (
@@ -26,12 +29,6 @@ export class PhotoService {
   photo$ (url: string) {
     return this.photoStateService.photo$(url).pipe(
       tap(photo => this.seoService.setPhotoDetailSEO(photo))
-    );
-  }
-
-  loadPhotoList$ () {
-    return this.photoStateService.loadEntityList$().pipe(
-      tap(photoList => this.seoService.setPhotoOverviewSEO(photoList[0]))
     );
   }
 

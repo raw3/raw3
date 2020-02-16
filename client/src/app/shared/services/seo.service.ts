@@ -13,8 +13,8 @@ export class SEOService {
   private readonly defaultImageType = 'image/jpg';
 
   constructor (
-    private meta: Meta,
-    private title: Title
+    private readonly meta: Meta,
+    private readonly title: Title
   ) {
   }
 

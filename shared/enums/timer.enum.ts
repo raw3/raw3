@@ -1,3 +1,3 @@
 export const enum Timer {
-  Hour = 3600000
+  HOUR = 3600000
 }

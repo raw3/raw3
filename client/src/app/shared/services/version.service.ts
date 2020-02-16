@@ -6,6 +6,6 @@ import { map } from 'rxjs/operators';
 export class VersionService {
   readonly availableUpdate$ = this.swUpdate.available.pipe(map(event => !!event.available));
 
-  constructor (private swUpdate: SwUpdate) {
+  constructor (private readonly swUpdate: SwUpdate) {
   }
 }

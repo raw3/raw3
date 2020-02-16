@@ -9,9 +9,11 @@ import { map, tap } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class ProjectService {
-  readonly projectList$ = this.projectStateService.projectList$;
+  readonly projectList$ = this.projectStateService.projectList$.pipe(
+    tap(projectList => this.seoService.setProjectOverviewSEO(projectList[0]))
+  );
   readonly previousURL$ = this.navigationService.previousRoute$.pipe(
-    map(route => route || `/${RoutePath.Photos}`)
+    map(route => route || `/${RoutePath.PROJECTS}`)
   );
 
   constructor (
@@ -24,12 +26,6 @@ export class ProjectService {
   project$ (url: string) {
     return this.projectStateService.project$(url).pipe(
       tap(project => this.seoService.setProjectDetailSEO(project))
-    );
-  }
-
-  loadProjectList$ () {
-    return this.projectStateService.loadEntityList$().pipe(
-      tap(projectList => this.seoService.setProjectOverviewSEO(projectList[0]))
     );
   }
 

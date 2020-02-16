@@ -17,7 +17,7 @@ import { trackByIndexUtility } from '../../../shared/utilities';
       <p>By request from friends and family I have decided to write blogs. I try to limit my subjects to the approach I
         take for aspects of my digital nomad lifestyle and explain what eventually did and did not work for me, aside from
         how I personally experienced it. I also try to be funny.</p>
-      <p>Follow me on <a [href]="SocialMediaURL.Facebook" target="_blank" rel="noreferrer" aria-label="Link to my Facebook page"
+      <p>Follow me on <a [href]="SocialMediaURL.FACEBOOK" target="_blank" rel="noreferrer" aria-label="Link to my Facebook page"
                          class="link">Facebook</a> to stay
         up-to-date with my latest blogs.</p>
     </header>
@@ -38,17 +38,13 @@ import { trackByIndexUtility } from '../../../shared/utilities';
     </ng-template>
   `
 })
-export class BlogOverviewComponent implements OnInit {
+export class BlogOverviewComponent {
   readonly SocialMediaURL = SocialMediaURL;
   readonly blogList$ = this.blogService.blogList$;
 
   readonly trackByIndex = trackByIndexUtility;
 
   constructor (private readonly blogService: BlogService) {
-  }
-
-  ngOnInit () {
-    this.blogService.loadBlogList$().pipe(take(1)).subscribe();
   }
 
   cacheImageSize (blog: Blog, size: ImageSize) {

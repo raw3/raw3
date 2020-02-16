@@ -29,27 +29,27 @@ export const project1Data: Project = {
   roles: [
     {
       text: 'pitcher',
-      venn: VennCategory.Purple
+      venn: VennCategory.PURPLE
     },
     {
       text: 'front-end developer',
-      venn: VennCategory.Blue
+      venn: VennCategory.BLUE
     },
     {
       text: 'Angular',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'TypeScript',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'JavaScript',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'HTML & SCSS',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     }
   ],
   title: 'Social fabric',

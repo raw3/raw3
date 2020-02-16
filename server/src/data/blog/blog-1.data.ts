@@ -7,11 +7,11 @@ export const blog1Data: Blog = {
   keywords: [
     {
       text: 'travel',
-      venn: VennCategory.Yellow
+      venn: VennCategory.YELLOW
     },
     {
       text: 'freelancing',
-      venn: VennCategory.Blue
+      venn: VennCategory.BLUE
     }
   ],
   prologue: {

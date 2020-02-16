@@ -1,3 +1,4 @@
+export * from './animation-time.enum';
 export * from './breakpoint.enum';
 export * from './connection-status.enum';
 export * from './query-params.enum';

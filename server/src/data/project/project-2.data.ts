@@ -29,23 +29,23 @@ export const project2Data: Project = {
   roles: [
     {
       text: 'lead front-end developer',
-      venn: VennCategory.Blue
+      venn: VennCategory.BLUE
     },
     {
       text: 'Angular',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'TypeScript',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'JavaScript',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'HTML & SCSS',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     }
   ],
   title: 'we.trade',

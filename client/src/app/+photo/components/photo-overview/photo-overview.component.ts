@@ -4,7 +4,6 @@ import { ImageSize } from '@shared/enums';
 import { Photo } from '@shared/models';
 import { take } from 'rxjs/operators';
 import { SocialMediaURL } from '../../../shared/enums';
-import { SEOService } from '../../../shared/services';
 import { trackByIndexUtility } from '../../../shared/utilities';
 
 @Component({
@@ -53,20 +52,16 @@ import { trackByIndexUtility } from '../../../shared/utilities';
     </ng-template>
   `
 })
-export class PhotoOverviewComponent implements OnInit {
+export class PhotoOverviewComponent {
   readonly photoCount$ = this.photoService.photoCount$;
   readonly photoList$ = this.photoService.photoList$;
 
-  readonly fiveHundredPixURL = SocialMediaURL.FiveHundredPix;
-  readonly instagramURL = SocialMediaURL.Instagram;
+  readonly fiveHundredPixURL = SocialMediaURL.FIVE_HUNDRED_PIX;
+  readonly instagramURL = SocialMediaURL.INSTAGRAM;
 
   readonly trackByIndex = trackByIndexUtility;
 
   constructor (private readonly photoService: PhotoService) {
-  }
-
-  ngOnInit () {
-    this.photoService.loadPhotoList$().pipe(take(1)).subscribe();
   }
 
   cacheImageSize (photo: Photo, size: ImageSize) {

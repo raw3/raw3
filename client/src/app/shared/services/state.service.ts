@@ -10,7 +10,7 @@ export class StateService {
     return listRequest$.pipe(
       withLatestFrom(state$),
       map(([list, state]) => sortByDateUtility([...list, ...Object.values(state)])),
-      tap(photoList => state$.next(arrayToObjectByKeyUtility(photoList, key)))
+      tap(entityList => state$.next(arrayToObjectByKeyUtility(entityList, key)))
     );
   }
 

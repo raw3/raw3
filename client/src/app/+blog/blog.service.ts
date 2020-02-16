@@ -10,9 +10,11 @@ import { map, tap } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class BlogService {
-  readonly blogList$ = this.blogStateService.blogList$;
+  readonly blogList$ = this.blogStateService.blogList$.pipe(
+    tap(blogList => this.seoService.setBlogOverviewSEO(blogList[0]))
+  );
   readonly previousURL$ = this.navigationService.previousRoute$.pipe(
-    map(route => route || `/${RoutePath.Blogs}`)
+    map(route => route || `/${RoutePath.BLOGS}`)
   );
 
   constructor (
@@ -25,12 +27,6 @@ export class BlogService {
   blog$ (url: string) {
     return this.blogStateService.blog$(url).pipe(
       tap(blog => this.seoService.setBlogDetailSEO(blog))
-    );
-  }
-
-  loadBlogList$ () {
-    return this.blogStateService.loadEntityList$().pipe(
-      tap(blogList => this.seoService.setBlogOverviewSEO(blogList[0]))
     );
   }
 

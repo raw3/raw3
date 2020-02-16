@@ -8,9 +8,9 @@ import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class PhotoDataService implements DataServiceType<Photo> {
-  readonly url = Endpoint.Photos;
+  readonly url = Endpoint.PHOTOS;
 
-  constructor (private http: HttpClient) {
+  constructor (private readonly http: HttpClient) {
   }
 
   getEntityList$ (): Observable<Photo[]> {

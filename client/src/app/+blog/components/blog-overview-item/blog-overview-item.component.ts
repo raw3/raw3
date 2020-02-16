@@ -36,5 +36,5 @@ export class BlogOverviewItemComponent {
   @Input() blog: Blog;
   @Output() cacheImageSize = new EventEmitter<ImageSize>();
 
-  trackByIndex = trackByIndexUtility;
+  readonly trackByIndex = trackByIndexUtility;
 }

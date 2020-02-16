@@ -17,7 +17,7 @@ export class BlogStateService implements StateServiceType<Blog> {
   readonly stateSelector = 'url';
 
   readonly blogList$ = this.blogListState$.asObservable().pipe(
-    switchMap(blogListState => Object.values(blogListState).length === 0 ? this.loadEntityList$() : of(Object.values(blogListState)))
+    switchMap(blogListState => Object.values(blogListState).length <= 1 ? this.loadEntityList$() : of(Object.values(blogListState)))
   );
 
   constructor (private readonly blogDataService: BlogDataService) {

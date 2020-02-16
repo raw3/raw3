@@ -7,15 +7,15 @@ export const blog2Data: Blog = {
   keywords: [
     {
       text: 'travel',
-      venn: VennCategory.Yellow
+      venn: VennCategory.YELLOW
     },
     {
       text: 'architecture',
-      venn: VennCategory.Red
+      venn: VennCategory.RED
     },
     {
       text: 'digital nomad',
-      venn: VennCategory.Green
+      venn: VennCategory.GREEN
     }
   ],
   prologue: {

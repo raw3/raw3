@@ -20,7 +20,7 @@ export class PhotoStateService implements StateServiceType<Photo> {
 
   readonly photoCount$ = this.photoCountState$.asObservable();
   readonly photoList$ = this.photoListState$.asObservable().pipe(
-    switchMap(photoListState => Object.values(photoListState).length === 0 ? this.loadEntityList$() : of(Object.values(photoListState)))
+    switchMap(photoListState => Object.values(photoListState).length <= 1 ? this.loadEntityList$() : of(Object.values(photoListState)))
   );
 
   constructor (private readonly photoDataService: PhotoDataService) {

@@ -8,9 +8,9 @@ import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class BlogDataService implements DataServiceType<Blog> {
-  readonly url = Endpoint.Blogs;
+  readonly url = Endpoint.BLOGS;
 
-  constructor (private http: HttpClient) {
+  constructor (private readonly http: HttpClient) {
   }
 
   getEntityList$ (): Observable<Blog[]> {

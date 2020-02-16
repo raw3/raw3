@@ -1,9 +1,9 @@
 export enum VennCategory {
-  Blue = 'profession',
-  Purple = 'profession-passion',
-  Red = 'passion',
-  Orange = 'passion-place',
-  Yellow = 'place',
-  Green = 'profession-place',
-  White = 'profession-passion-place'
+  BLUE = 'profession',
+  PURPLE = 'profession-passion',
+  RED = 'passion',
+  ORANGE = 'passion-place',
+  YELLOW = 'place',
+  GREEN = 'profession-place',
+  WHITE = 'profession-passion-place'
 }

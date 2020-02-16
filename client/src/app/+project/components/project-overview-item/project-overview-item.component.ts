@@ -37,5 +37,5 @@ export class ProjectOverviewItemComponent {
   @Input() project: Project;
   @Output() cacheImageSize = new EventEmitter<ImageSize>();
 
-  trackByIndex = trackByIndexUtility;
+  readonly trackByIndex = trackByIndexUtility;
 }

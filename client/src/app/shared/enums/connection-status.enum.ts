@@ -1,4 +1,4 @@
 export const enum ConnectionStatus {
-  Online = 'online',
-  Offline = 'offline'
+  ONLINE = 'online',
+  OFFLINE = 'offline'
 }

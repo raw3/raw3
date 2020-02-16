@@ -28,31 +28,31 @@ export const project4Data: Project = {
   roles: [
     {
       text: 'UI designer',
-      venn: VennCategory.Purple
+      venn: VennCategory.PURPLE
     },
     {
       text: 'visual designer',
-      venn: VennCategory.Red
+      venn: VennCategory.RED
     },
     {
       text: 'front-end developer',
-      venn: VennCategory.Blue
+      venn: VennCategory.BLUE
     },
     {
       text: 'Angular',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'TypeScript',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'JavaScript',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     },
     {
       text: 'HTML & SCSS',
-      venn: VennCategory.White
+      venn: VennCategory.WHITE
     }
   ],
   title: 'Medichain',

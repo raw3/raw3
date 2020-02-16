@@ -15,8 +15,8 @@ export class NavigationService {
   readonly navigationStarts$ = this.router.events.pipe(filter(event => event instanceof NavigationStart));
 
   constructor (
-    private router: Router,
-    private ref: ApplicationRef,
+    private readonly router: Router,
+    private readonly ref: ApplicationRef,
   ) {
   }
 

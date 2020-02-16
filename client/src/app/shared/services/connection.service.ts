@@ -5,12 +5,12 @@ import { ConnectionStatus } from '../enums';
 
 @Injectable({providedIn: 'root'})
 export class ConnectionService {
-  readonly connectionStatus$ = new BehaviorSubject(ConnectionStatus.Online);
+  readonly connectionStatus$ = new BehaviorSubject(ConnectionStatus.ONLINE);
   readonly onlineStatus$ = fromEvent(this.window, 'online').pipe(
-    tap(() => this.connectionStatus$.next(ConnectionStatus.Online))
+    tap(() => this.connectionStatus$.next(ConnectionStatus.ONLINE))
   );
   readonly offlineStatus$ = fromEvent(this.window, 'offline').pipe(
-    tap(() => this.connectionStatus$.next(ConnectionStatus.Offline))
+    tap(() => this.connectionStatus$.next(ConnectionStatus.OFFLINE))
   );
 
   readonly setConnectionStatus$ = this.window instanceof Window

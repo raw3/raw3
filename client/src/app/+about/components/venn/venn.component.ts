@@ -21,11 +21,11 @@ import { BehaviorSubject } from 'rxjs';
       </defs>
       <polygon
         [attr.fill]="'url(' + currentRoute + '#blue)'"
-        [routerLink]="hasState(activePart, [VennCategory.Blue]) ? '/about' : VennCategory.Blue"
-        [class.hover]="hasState(activePart, [VennCategory.Blue]) ? false : hasState(hoverPart$ | async, [VennCategory.Blue, VennCategory.Green, VennCategory.Purple, VennCategory.White])"
-        [class.active]="hasState(activePart, [VennCategory.Blue, VennCategory.Green, VennCategory.Purple, VennCategory.White])"
-        (mouseover)="hoverPart$.next(VennCategory.Blue)"
-        (keyup.enter)="hasState(activePart, [VennCategory.Blue]) ? navigate.emit(null) : navigate.emit(VennCategory.Blue)"
+        [routerLink]="hasState(activePart, [VennCategory.BLUE]) ? '/about' : VennCategory.BLUE"
+        [class.hover]="hasState(activePart, [VennCategory.BLUE]) ? false : hasState(hoverPart$ | async, [VennCategory.BLUE, VennCategory.GREEN, VennCategory.PURPLE, VennCategory.WHITE])"
+        [class.active]="hasState(activePart, [VennCategory.BLUE, VennCategory.GREEN, VennCategory.PURPLE, VennCategory.WHITE])"
+        (mouseover)="hoverPart$.next(VennCategory.BLUE)"
+        (keyup.enter)="hasState(activePart, [VennCategory.BLUE]) ? navigate.emit(null) : navigate.emit(VennCategory.BLUE)"
         points="200.1,6.8 7,58.7 58.7,251.2 161.5,148"
         role="button"
         aria-label="Read about my profession"
@@ -40,11 +40,11 @@ import { BehaviorSubject } from 'rxjs';
       </defs>
       <polygon
         [attr.fill]="'url(' + currentRoute + '#red)'"
-        [routerLink]="hasState(activePart, [VennCategory.Red]) ? '/about' : VennCategory.Red"
-        [class.hover]="hasState(activePart, [VennCategory.Red]) ? false : hasState(hoverPart$ | async, [VennCategory.Red, VennCategory.Orange, VennCategory.Purple, VennCategory.White])"
-        [class.active]="hasState(activePart, [VennCategory.Red, VennCategory.Orange, VennCategory.Purple, VennCategory.White])"
-        (mouseover)="hoverPart$.next(VennCategory.Red)"
-        (keyup.enter)="hasState(activePart, [VennCategory.Red]) ? navigate.emit(null) : navigate.emit(VennCategory.Red)"
+        [routerLink]="hasState(activePart, [VennCategory.RED]) ? '/about' : VennCategory.RED"
+        [class.hover]="hasState(activePart, [VennCategory.RED]) ? false : hasState(hoverPart$ | async, [VennCategory.RED, VennCategory.ORANGE, VennCategory.PURPLE, VennCategory.WHITE])"
+        [class.active]="hasState(activePart, [VennCategory.RED, VennCategory.ORANGE, VennCategory.PURPLE, VennCategory.WHITE])"
+        (mouseover)="hoverPart$.next(VennCategory.RED)"
+        (keyup.enter)="hasState(activePart, [VennCategory.RED]) ? navigate.emit(null) : navigate.emit(VennCategory.RED)"
         points="341.7,251.9 393.2,58.8 200.7,7.3 237.8,148.5 "
         role="button"
         aria-label="Read about my passion"
@@ -59,11 +59,11 @@ import { BehaviorSubject } from 'rxjs';
       </defs>
       <polygon
         [attr.fill]="'url(' + currentRoute + '#yellow)'"
-        [routerLink]="hasState(activePart, [VennCategory.Yellow]) ? '/about' : VennCategory.Yellow"
-        [class.hover]="hasState(activePart, [VennCategory.Yellow]) ? false : hasState(hoverPart$ | async, [VennCategory.Yellow, VennCategory.Green, VennCategory.Orange, VennCategory.White])"
-        [class.active]="hasState(activePart, [VennCategory.Yellow, VennCategory.Green, VennCategory.Orange, VennCategory.White])"
-        (mouseover)="hoverPart$.next(VennCategory.Yellow)"
-        (keyup.enter)="hasState(activePart, [VennCategory.Yellow]) ? navigate.emit(null) : navigate.emit(VennCategory.Yellow)"
+        [routerLink]="hasState(activePart, [VennCategory.YELLOW]) ? '/about' : VennCategory.YELLOW"
+        [class.hover]="hasState(activePart, [VennCategory.YELLOW]) ? false : hasState(hoverPart$ | async, [VennCategory.YELLOW, VennCategory.GREEN, VennCategory.ORANGE, VennCategory.WHITE])"
+        [class.active]="hasState(activePart, [VennCategory.YELLOW, VennCategory.GREEN, VennCategory.ORANGE, VennCategory.WHITE])"
+        (mouseover)="hoverPart$.next(VennCategory.YELLOW)"
+        (keyup.enter)="hasState(activePart, [VennCategory.YELLOW]) ? navigate.emit(null) : navigate.emit(VennCategory.YELLOW)"
         points="341.1,250.9 199.6,392.1 58.7,251.2 201.2,213.8"
         role="button"
         aria-label="Read about my place"
@@ -78,11 +78,11 @@ import { BehaviorSubject } from 'rxjs';
       </defs>
       <polygon
         [attr.fill]="'url(' + currentRoute + '#purple)'"
-        [routerLink]="hasState(activePart, [VennCategory.Purple]) ? '/about' : VennCategory.Purple"
-        [class.hover]="hasState(activePart, [VennCategory.Purple]) ? false : hasState(hoverPart$ | async, [VennCategory.Purple, VennCategory.White])"
-        [class.active]="hasState(activePart, [VennCategory.Purple, VennCategory.White])"
-        (mouseover)="hoverPart$.next(VennCategory.Purple)"
-        (keyup.enter)="hasState(activePart, [VennCategory.Purple]) ? navigate.emit(null) : navigate.emit(VennCategory.Purple)"
+        [routerLink]="hasState(activePart, [VennCategory.PURPLE]) ? '/about' : VennCategory.PURPLE"
+        [class.hover]="hasState(activePart, [VennCategory.PURPLE]) ? false : hasState(hoverPart$ | async, [VennCategory.PURPLE, VennCategory.WHITE])"
+        [class.active]="hasState(activePart, [VennCategory.PURPLE, VennCategory.WHITE])"
+        (mouseover)="hoverPart$.next(VennCategory.PURPLE)"
+        (keyup.enter)="hasState(activePart, [VennCategory.PURPLE]) ? navigate.emit(null) : navigate.emit(VennCategory.PURPLE)"
         points="200.7,7.3 237.8,148.5 200.1,110.4 161.5,148"
         role="button"
         aria-label="Read about the combination of my profession and passion"
@@ -97,11 +97,11 @@ import { BehaviorSubject } from 'rxjs';
       </defs>
       <polygon
         [attr.fill]="'url(' + currentRoute + '#orange)'"
-        [routerLink]="hasState(activePart, [VennCategory.Orange]) ? '/about' : VennCategory.Orange"
-        [class.hover]="hasState(activePart, [VennCategory.Orange]) ? false : hasState(hoverPart$ | async, [VennCategory.Orange, VennCategory.White])"
-        [class.active]="hasState(activePart, [VennCategory.Orange, VennCategory.White])"
-        (mouseover)="hoverPart$.next(VennCategory.Orange)"
-        (keyup.enter)="hasState(activePart, [VennCategory.Orange]) ? navigate.emit(null) : navigate.emit(VennCategory.Orange)"
+        [routerLink]="hasState(activePart, [VennCategory.ORANGE]) ? '/about' : VennCategory.ORANGE"
+        [class.hover]="hasState(activePart, [VennCategory.ORANGE]) ? false : hasState(hoverPart$ | async, [VennCategory.ORANGE, VennCategory.WHITE])"
+        [class.active]="hasState(activePart, [VennCategory.ORANGE, VennCategory.WHITE])"
+        (mouseover)="hoverPart$.next(VennCategory.ORANGE)"
+        (keyup.enter)="hasState(activePart, [VennCategory.ORANGE]) ? navigate.emit(null) : navigate.emit(VennCategory.ORANGE)"
         points="339.9,252.9 201.2,213.8 251.9,200.1 237.8,148.5"
         role="button"
         aria-label="Read about the combination of my passion and place"
@@ -116,11 +116,11 @@ import { BehaviorSubject } from 'rxjs';
       </defs>
       <polygon
         [attr.fill]="'url(' + currentRoute + '#green)'"
-        [routerLink]="hasState(activePart, [VennCategory.Green]) ? '/about' : VennCategory.Green"
-        [class.hover]="hasState(activePart, [VennCategory.Green]) ? false : hasState(hoverPart$ | async, [VennCategory.Green, VennCategory.White])"
-        [class.active]="hasState(activePart, [VennCategory.Green, VennCategory.White])"
-        (mouseover)="hoverPart$.next(VennCategory.Green)"
-        (keyup.enter)="hasState(activePart, [VennCategory.Green]) ? navigate.emit(null) : navigate.emit(VennCategory.Green)"
+        [routerLink]="hasState(activePart, [VennCategory.GREEN]) ? '/about' : VennCategory.GREEN"
+        [class.hover]="hasState(activePart, [VennCategory.GREEN]) ? false : hasState(hoverPart$ | async, [VennCategory.GREEN, VennCategory.WHITE])"
+        [class.active]="hasState(activePart, [VennCategory.GREEN, VennCategory.WHITE])"
+        (mouseover)="hoverPart$.next(VennCategory.GREEN)"
+        (keyup.enter)="hasState(activePart, [VennCategory.GREEN]) ? navigate.emit(null) : navigate.emit(VennCategory.GREEN)"
         role="button"
         aria-label="Read about the combination of my profession and place"
         points="58.7,251.2 161.5,148 149.4,200.1 199.1,214.2"
@@ -135,11 +135,11 @@ import { BehaviorSubject } from 'rxjs';
       </defs>
       <polygon
         [attr.fill]="'url(' + currentRoute + '#white)'"
-        [routerLink]="hasState(activePart, [VennCategory.White]) ? '/about' : VennCategory.White"
-        [class.hover]="hasState(activePart, [VennCategory.White]) ? false : hasState(hoverPart$ | async, [VennCategory.White])"
-        [class.active]="hasState(activePart, [VennCategory.White])"
-        (mouseover)="hoverPart$.next(VennCategory.White)"
-        (keyup.enter)="hasState(activePart, [VennCategory.White]) ? navigate.emit(null) : navigate.emit(VennCategory.White)"
+        [routerLink]="hasState(activePart, [VennCategory.WHITE]) ? '/about' : VennCategory.WHITE"
+        [class.hover]="hasState(activePart, [VennCategory.WHITE]) ? false : hasState(hoverPart$ | async, [VennCategory.WHITE])"
+        [class.active]="hasState(activePart, [VennCategory.WHITE])"
+        (mouseover)="hoverPart$.next(VennCategory.WHITE)"
+        (keyup.enter)="hasState(activePart, [VennCategory.WHITE]) ? navigate.emit(null) : navigate.emit(VennCategory.WHITE)"
         points="161.5,148 147.3,200.8 201.2,213.8 251.9,200.1 237.2,147.4 200.1,110.4"
         role="button"
         aria-label="Read about the combination of my profession, passion and place"
@@ -188,43 +188,43 @@ export class VennComponent {
 
   getPreviousLink (part: VennCategory) {
     switch (part) {
-      case VennCategory.Blue:
-        return VennCategory.White;
-      case VennCategory.Red:
-        return VennCategory.Blue;
-      case VennCategory.Yellow:
-        return VennCategory.Red;
-      case VennCategory.Purple:
-        return VennCategory.Yellow;
-      case VennCategory.Orange:
-        return VennCategory.Purple;
-      case VennCategory.Green:
-        return VennCategory.Orange;
-      case VennCategory.White:
-        return VennCategory.Green;
+      case VennCategory.BLUE:
+        return VennCategory.WHITE;
+      case VennCategory.RED:
+        return VennCategory.BLUE;
+      case VennCategory.YELLOW:
+        return VennCategory.RED;
+      case VennCategory.PURPLE:
+        return VennCategory.YELLOW;
+      case VennCategory.ORANGE:
+        return VennCategory.PURPLE;
+      case VennCategory.GREEN:
+        return VennCategory.ORANGE;
+      case VennCategory.WHITE:
+        return VennCategory.GREEN;
       default:
-        return VennCategory.White;
+        return VennCategory.WHITE;
     }
   }
 
   getNextLink (part: VennCategory) {
     switch (part) {
-      case VennCategory.Blue:
-        return VennCategory.Red;
-      case VennCategory.Red:
-        return VennCategory.Yellow;
-      case VennCategory.Yellow:
-        return VennCategory.Purple;
-      case VennCategory.Purple:
-        return VennCategory.Orange;
-      case VennCategory.Orange:
-        return VennCategory.Green;
-      case VennCategory.Green:
-        return VennCategory.White;
-      case VennCategory.White:
-        return VennCategory.Blue;
+      case VennCategory.BLUE:
+        return VennCategory.RED;
+      case VennCategory.RED:
+        return VennCategory.YELLOW;
+      case VennCategory.YELLOW:
+        return VennCategory.PURPLE;
+      case VennCategory.PURPLE:
+        return VennCategory.ORANGE;
+      case VennCategory.ORANGE:
+        return VennCategory.GREEN;
+      case VennCategory.GREEN:
+        return VennCategory.WHITE;
+      case VennCategory.WHITE:
+        return VennCategory.BLUE;
       default:
-        return VennCategory.Blue;
+        return VennCategory.BLUE;
     }
   }
 }

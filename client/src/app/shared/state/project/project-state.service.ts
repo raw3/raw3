@@ -17,7 +17,7 @@ export class ProjectStateService implements StateServiceType<Project> {
   readonly stateSelector = 'url';
 
   readonly projectList$ = this.projectListState$.asObservable().pipe(
-    switchMap(projectListState => Object.values(projectListState).length === 0 ? this.loadEntityList$() : of(Object.values(projectListState)))
+    switchMap(projectListState => Object.values(projectListState).length <= 1 ? this.loadEntityList$() : of(Object.values(projectListState)))
   );
 
   constructor (private readonly projectDataService: ProjectDataService) {

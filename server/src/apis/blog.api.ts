@@ -5,11 +5,11 @@ import { APIUtility } from '../utilities/api.utility';
 
 export class BlogAPI {
   static createAPI (server: Express): void {
-    server.get(`/${Endpoint.Blogs}`, (request: Request, response: Response, next: NextFunction) => {
+    server.get(`/${Endpoint.BLOGS}`, (request: Request, response: Response, next: NextFunction) => {
       APIUtility.getAll(request, response, next, blogsData);
     });
 
-    server.get(`/${Endpoint.Blogs}/:url`, (request: Request, response: Response, next: NextFunction) => {
+    server.get(`/${Endpoint.BLOGS}/:url`, (request: Request, response: Response, next: NextFunction) => {
       APIUtility.getByURL(request, response, next, blogsData);
     });
   }

@@ -1,7 +1,8 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { AnimationTime } from '@client/src/app/shared/enums';
 
-const duration = 400;
-const delay = 50;
+const duration = AnimationTime.MEDIUM;
+const delay = AnimationTime.FIX;
 
 export const fadeToggleAnimation = trigger('fadeToggle', [
   state('*', style({opacity: '0'})),
