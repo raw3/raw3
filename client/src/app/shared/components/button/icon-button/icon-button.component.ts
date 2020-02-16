@@ -4,7 +4,7 @@ import { ButtonColor, ButtonIcon } from '../../../types';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'raw3-icon-button',
-  styleUrls: ['icon-button.component.scss'],
+  styleUrls: ['./icon-button.component.scss'],
   template: `
     <button
         class="clr--white icon raw3-{{ icon }} button--{{ color }}"

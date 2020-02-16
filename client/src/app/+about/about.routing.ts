@@ -1,13 +1,13 @@
 import { Routes } from '@angular/router';
 import { AboutComponent } from '@client/src/app/+about/about.component';
-import { BlankComponent } from './about-content/blank/blank.component';
-import { PassionPlaceComponent } from './about-content/passion-place/passion-place.component';
-import { PassionComponent } from './about-content/passion/passion.component';
-import { PlaceComponent } from './about-content/place/place.component';
-import { ProfessionPassionPlaceComponent } from './about-content/profession-passion-place/profession-passion-place.component';
-import { ProfessionPassionComponent } from './about-content/profession-passion/profession-passion.component';
-import { ProfessionPlaceComponent } from './about-content/profession-place/profession-place.component';
-import { ProfessionComponent } from './about-content/profession/profession.component';
+import { BlankComponent } from './components/about-content/blank.component';
+import { PassionPlaceComponent } from './components/about-content/passion-place.component';
+import { PassionComponent } from './components/about-content/passion.component';
+import { PlaceComponent } from './components/about-content/place.component';
+import { ProfessionPassionPlaceComponent } from './components/about-content/profession-passion-place.component';
+import { ProfessionPassionComponent } from './components/about-content/profession-passion.component';
+import { ProfessionPlaceComponent } from './components/about-content/profession-place.component';
+import { ProfessionComponent } from './components/about-content/profession.component';
 
 export const aboutRoutes: Routes = [
   {

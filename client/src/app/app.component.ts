@@ -8,7 +8,7 @@ import { slideRightAnimation, slideTopAnimation } from './shared/animations';
   animations: [slideRightAnimation, slideTopAnimation],
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-root',
-  styleUrls: ['app.component.scss'],
+  styleUrls: ['./app.component.scss'],
   template: `
     <raw3-banner *ngIf="updateAvailable$ | async" (update)="updateVersion()" @slideTop></raw3-banner>
     <raw3-sidebar *ngIf="isDesktop$ | async" class="desktop" [class.banner-offset]="updateAvailable$ | async"></raw3-sidebar>

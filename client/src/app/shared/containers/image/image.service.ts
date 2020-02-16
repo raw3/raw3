@@ -4,7 +4,7 @@ import { getImagePathUtility } from '../../utilities';
 
 @Injectable({providedIn: 'root'})
 export class ImageService {
-  private parseBackgroundImageURL (size: ImageSize, path: string) {
+  private static parseBackgroundImageURL (size: ImageSize, path: string) {
     return `url("${getImagePathUtility(size, path)}")`;
   }
 
@@ -21,7 +21,7 @@ export class ImageService {
       return 'none';
     }
 
-    return this.parseBackgroundImageURL(size, path);
+    return ImageService.parseBackgroundImageURL(size, path);
   }
 
   setLoadingSizePath (size: ImageSize, path: string, maxImageSize: ImageSize) {

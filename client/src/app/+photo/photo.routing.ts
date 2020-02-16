@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { PhotoDetailComponent } from '@client/src/app/+photo/photo-detail/photo-detail.component';
-import { PhotoOverviewComponent } from '@client/src/app/+photo/photo-overview/photo-overview.component';
+import { PhotoDetailComponent } from '@client/src/app/+photo/components/photo-detail/photo-detail.component';
+import { PhotoOverviewComponent } from '@client/src/app/+photo/components/photo-overview/photo-overview.component';
 
 export const photoRoutes: Routes = [
   {

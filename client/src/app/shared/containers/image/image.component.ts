@@ -12,7 +12,7 @@ import { ImageService } from './image.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [ImageService],
   selector: 'raw3-image',
-  styleUrls: ['image.component.scss'],
+  styleUrls: ['./image.component.scss'],
   template: `
     <figure
       *ngIf="exists(cachedSize$ | async) as cachedSize"
@@ -39,7 +39,7 @@ import { ImageService } from './image.service';
   `
 })
 export class ImageComponent implements OnChanges {
-  private readonly flickerDelayFix = 50;
+  private readonly flickerDelayFixInMilliseconds = 50;
 
   @Input() height = 'auto';
   @Input() image: Image;
@@ -62,7 +62,7 @@ export class ImageComponent implements OnChanges {
 
   ngOnChanges ({image}: SimpleChanges) {
     if (!!image) {
-      setTimeout(() => this.isLoading$.next(true), this.flickerDelayFix);
+      setTimeout(() => this.isLoading$.next(true), this.flickerDelayFixInMilliseconds);
     }
   }
 

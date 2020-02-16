@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'raw3-skeleton-card',
-  styleUrls: ['skeleton-card.component.scss'],
+  styleUrls: ['./skeleton-card.component.scss'],
   template: `
     <div class="skeleton skeleton-card" [style.height]="height">
       <div class="skeleton-block"></div>

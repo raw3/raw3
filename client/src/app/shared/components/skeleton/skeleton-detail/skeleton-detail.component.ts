@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'raw3-skeleton-detail',
-  styleUrls: ['skeleton-detail.component.scss'],
+  styleUrls: ['./skeleton-detail.component.scss'],
   template: `
     <div class="skeleton-container">
       <div class="skeleton skeleton-line--text"></div>

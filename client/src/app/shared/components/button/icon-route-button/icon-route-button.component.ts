@@ -4,7 +4,7 @@ import { ButtonColor, ButtonIcon } from '../../../types';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'raw3-icon-route-button',
-  styleUrls: ['icon-route-button.component.scss'],
+  styleUrls: ['./icon-route-button.component.scss'],
   template: `
     <ng-container *ngTemplateOutlet="isExternal ? externalRoute : internalRoute"></ng-container>
 

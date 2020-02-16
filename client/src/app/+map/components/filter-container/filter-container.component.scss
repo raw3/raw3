@@ -1,0 +1,16 @@
+@import 'global';
+
+:host {
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+raw3-checkbox {
+  margin-bottom: 1rem;
+  pointer-events: auto;
+}

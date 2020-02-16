@@ -4,7 +4,7 @@ import { RoutePath } from './shared/enums';
 export const appRoutes: Routes = [
   {
     path: RoutePath.Home,
-    loadChildren: () => import('./+home/home.module').then(m => m.HomeModule)
+    loadChildren: () => import('./+map/map.module').then(m => m.MapModule)
   },
   {
     path: RoutePath.About,

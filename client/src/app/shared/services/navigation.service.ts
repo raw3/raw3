@@ -3,9 +3,13 @@ import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { filter, first, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
+interface NavigationScrollHistory {
+  [route: string]: number;
+}
+
 @Injectable({providedIn: 'root'})
 export class NavigationService {
-  readonly navigationHistory$ = new BehaviorSubject({'/': 0});
+  readonly navigationHistory$ = new BehaviorSubject<NavigationScrollHistory>({'/': 0});
   readonly navigationEnds$ = this.router.events.pipe(filter(event => event instanceof NavigationEnd));
   readonly navigationStarts$ = this.router.events.pipe(filter(event => event instanceof NavigationStart));
 

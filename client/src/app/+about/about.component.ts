@@ -7,7 +7,7 @@ import { SEOService } from '../shared/services';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['about.component.scss'],
+  styleUrls: ['./about.component.scss'],
   template: `
     <section>
       <raw3-venn [activePart]="activePart$ | async" [currentRoute]="currentRoute$ | async" (navigate)="navigateTo($event)"></raw3-venn>
