@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BlogService } from '@client/src/app/+blog/blog.service';
 import { ImageSize } from '@shared/enums';
 import { Blog } from '@shared/models';
@@ -38,7 +38,7 @@ import { trackByIndexUtility } from '../../../shared/utilities';
     </ng-template>
   `
 })
-export class BlogOverviewComponent {
+export class BlogOverviewComponent implements OnInit {
   readonly SocialMediaURL = SocialMediaURL;
   readonly blogList$ = this.blogService.blogList$;
 
@@ -48,6 +48,12 @@ export class BlogOverviewComponent {
     private readonly blogService: BlogService,
     private readonly seoService: SEOService
   ) {
+  }
+
+  ngOnInit () {
+    this.blogService.loadBlogList$().pipe(
+      take(1)
+    ).subscribe(blogList => this.seoService.setBlogOverviewSEO(blogList[0]));
   }
 
   cacheImageSize (blog: Blog, size: ImageSize) {

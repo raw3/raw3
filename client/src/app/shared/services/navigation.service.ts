@@ -9,6 +9,7 @@ interface NavigationScrollHistory {
 
 @Injectable({providedIn: 'root'})
 export class NavigationService {
+  readonly previousRoute$ = new BehaviorSubject<string>(null);
   readonly navigationHistory$ = new BehaviorSubject<NavigationScrollHistory>({'/': 0});
   readonly navigationEnds$ = this.router.events.pipe(filter(event => event instanceof NavigationEnd));
   readonly navigationStarts$ = this.router.events.pipe(filter(event => event instanceof NavigationStart));
@@ -28,6 +29,7 @@ export class NavigationService {
       filter(({url}: NavigationStart) => !this.scrollExceptions(url)),
       withLatestFrom(this.navigationHistory$),
       switchMap(([event, history]) => {
+        this.previousRoute$.next(this.router.url);
         this.navigationHistory$.next({...history, [this.router.url]: scrollElement.nativeElement.scrollTop});
 
         if (event.navigationTrigger === 'popstate') {

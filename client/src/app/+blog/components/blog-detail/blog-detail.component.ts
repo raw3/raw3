@@ -4,6 +4,7 @@ import { BlogService } from '@client/src/app/+blog/blog.service';
 import { ImageSize } from '@shared/enums';
 import { Paragraph } from '@shared/interfaces';
 import { Blog } from '@shared/models';
+import { Observable } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 import { SEOService } from '../../../shared/services';
 import { trackByIndexUtility } from '../../../shared/utilities';
@@ -46,8 +47,8 @@ import { trackByIndexUtility } from '../../../shared/utilities';
         </section>
 
         <raw3-icon-route-button
-          link="/blogs"
-          description="Close this page and go to the blog overview page"
+          [link]="previousURL$ | async"
+          description="Close this page and go to the previous page or blog overview page"
           icon="cross"
           class="button--fixed"
         ></raw3-icon-route-button>
@@ -62,7 +63,8 @@ import { trackByIndexUtility } from '../../../shared/utilities';
 export class BlogDetailComponent implements OnInit {
   private readonly url$ = this.route.params.pipe(map(({url}) => url));
 
-  readonly blog$ = this.url$.pipe(
+  readonly previousURL$ = this.blogService.previousURL$;
+  readonly blog$: Observable<Blog> = this.url$.pipe(
     switchMap(url => this.blogService.blog$(url))
   );
 
@@ -72,7 +74,7 @@ export class BlogDetailComponent implements OnInit {
   constructor (
     private blogService: BlogService,
     private route: ActivatedRoute,
-    private seoService: SEOService
+    private seoService: SEOService,
   ) {
   }
 

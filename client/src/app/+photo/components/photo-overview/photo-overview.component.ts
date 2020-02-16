@@ -68,7 +68,7 @@ export class PhotoOverviewComponent implements OnInit {
   }
 
   ngOnInit () {
-    this.photoList$.pipe(
+    this.photoService.loadPhotoList$().pipe(
       take(1)
     ).subscribe(photoList => this.seoService.setPhotoOverviewSEO(photoList[0]));
   }

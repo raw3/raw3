@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 import { ImageSize } from '@shared/enums';
 import { Photo } from '@shared/models';
@@ -21,8 +22,8 @@ import { PhotoService } from '../../photo.service';
         ></raw3-image>
 
         <raw3-icon-route-button
-          link="/photos"
-          description="Close this page and go to the photo overview page"
+          [link]="previousURL$ | async"
+          description="Close this page and go to the previous page or photo overview page"
           icon="cross"
           class="button--fixed"
         ></raw3-icon-route-button>
@@ -39,7 +40,8 @@ import { PhotoService } from '../../photo.service';
 export class PhotoDetailComponent implements OnInit {
   private readonly url$ = this.route.params.pipe(map(({url}) => url));
 
-  readonly photo$ = this.url$.pipe(
+  readonly previousURL$ = this.photoService.previousURL$;
+  readonly photo$: Observable<Photo> = this.url$.pipe(
     switchMap(url => this.photoService.photo$(url))
   );
 

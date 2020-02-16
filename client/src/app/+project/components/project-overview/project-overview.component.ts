@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ProjectService } from '@client/src/app/+project/project.service';
 import { take, tap } from 'rxjs/operators';
 import { ImageSize } from '@shared/enums';
@@ -39,7 +39,7 @@ import { trackByIndexUtility } from '../../../shared/utilities';
     </ng-template>
   `
 })
-export class ProjectOverviewComponent {
+export class ProjectOverviewComponent implements OnInit {
   readonly SocialMediaURL = SocialMediaURL;
   readonly projectList$ = this.projectService.projectList$;
 
@@ -49,6 +49,12 @@ export class ProjectOverviewComponent {
     private projectService: ProjectService,
     private seoService: SEOService
   ) {
+  }
+
+  ngOnInit () {
+    this.projectService.loadProjectList$().pipe(
+      take(1)
+    ).subscribe(projectList => this.seoService.setProjectOverviewSEO(projectList[0]));
   }
 
   cacheImageSize (project: Project, size: ImageSize) {

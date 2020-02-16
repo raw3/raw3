@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from '@client/src/app/+project/project.service';
 import { ImageSize } from '@shared/enums';
 import { Project } from '@shared/models';
+import { Observable } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 import { SEOService } from '../../../shared/services';
 import { trackByIndexUtility } from '../../../shared/utilities';
@@ -39,8 +40,8 @@ import { trackByIndexUtility } from '../../../shared/utilities';
         </section>
 
         <raw3-icon-route-button
-          link="/projects"
-          description="Close this page and go to the project overview page"
+          [link]="previousURL$ | async"
+          description="Close this page and go to the previous page or project overview page"
           icon="cross"
           class="button--fixed"
         ></raw3-icon-route-button>
@@ -55,7 +56,8 @@ import { trackByIndexUtility } from '../../../shared/utilities';
 export class ProjectDetailComponent implements OnInit {
   private readonly url$ = this.route.params.pipe(map(({url}) => url));
 
-  readonly project$ = this.url$.pipe(
+  readonly previousURL$ = this.projectService.previousURL$;
+  readonly project$: Observable<Project> = this.url$.pipe(
     switchMap(url => this.projectService.project$(url))
   );
 

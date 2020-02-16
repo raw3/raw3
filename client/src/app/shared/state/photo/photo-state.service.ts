@@ -12,8 +12,9 @@ interface PhotoState {
 
 @Injectable({providedIn: 'root'})
 export class PhotoStateService implements StateServiceType<Photo> {
+  private readonly initialPhotoCount = 6;
   private readonly photoListState$ = new BehaviorSubject<PhotoState>({});
-  private readonly photoCountState$ = new BehaviorSubject<number>(6);
+  private readonly photoCountState$ = new BehaviorSubject<number>(this.initialPhotoCount);
 
   readonly stateSelector = 'url';
 
