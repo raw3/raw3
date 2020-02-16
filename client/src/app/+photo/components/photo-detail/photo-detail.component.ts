@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 import { ImageSize } from '@shared/enums';
 import { Photo } from '@shared/models';
-import { SEOService } from '../../../shared/services';
 import { PhotoService } from '../../photo.service';
 
 @Component({
@@ -37,7 +36,7 @@ import { PhotoService } from '../../photo.service';
     </ng-template>
   `
 })
-export class PhotoDetailComponent implements OnInit {
+export class PhotoDetailComponent {
   private readonly url$ = this.route.params.pipe(map(({url}) => url));
 
   readonly previousURL$ = this.photoService.previousURL$;
@@ -48,16 +47,9 @@ export class PhotoDetailComponent implements OnInit {
   readonly ImageSize = ImageSize;
 
   constructor (
-    private photoService: PhotoService,
-    private route: ActivatedRoute,
-    private seoService: SEOService
+    private readonly photoService: PhotoService,
+    private readonly route: ActivatedRoute,
   ) {
-  }
-
-  ngOnInit () {
-    this.photo$.pipe(
-      take(1)
-    ).subscribe(photo => this.seoService.setPhotoDetailSEO(photo));
   }
 
   cacheImageSize (photo: Photo, size: ImageSize) {

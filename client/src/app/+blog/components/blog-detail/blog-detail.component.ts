@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlogService } from '@client/src/app/+blog/blog.service';
 import { ImageSize } from '@shared/enums';
@@ -6,7 +6,6 @@ import { Paragraph } from '@shared/interfaces';
 import { Blog } from '@shared/models';
 import { Observable } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
-import { SEOService } from '../../../shared/services';
 import { trackByIndexUtility } from '../../../shared/utilities';
 
 @Component({
@@ -60,7 +59,7 @@ import { trackByIndexUtility } from '../../../shared/utilities';
     </ng-template>
   `
 })
-export class BlogDetailComponent implements OnInit {
+export class BlogDetailComponent {
   private readonly url$ = this.route.params.pipe(map(({url}) => url));
 
   readonly previousURL$ = this.blogService.previousURL$;
@@ -72,16 +71,9 @@ export class BlogDetailComponent implements OnInit {
   readonly trackByIndex = trackByIndexUtility;
 
   constructor (
-    private blogService: BlogService,
-    private route: ActivatedRoute,
-    private seoService: SEOService,
+    private readonly blogService: BlogService,
+    private readonly route: ActivatedRoute,
   ) {
-  }
-
-  ngOnInit () {
-    this.blog$.pipe(
-      take(1)
-    ).subscribe(blog => this.seoService.setBlogDetailSEO(blog));
   }
 
   cachePrologueImageSize (blog: Blog, size: ImageSize) {

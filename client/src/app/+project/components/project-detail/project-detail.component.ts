@@ -1,11 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from '@client/src/app/+project/project.service';
 import { ImageSize } from '@shared/enums';
 import { Project } from '@shared/models';
 import { Observable } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
-import { SEOService } from '../../../shared/services';
 import { trackByIndexUtility } from '../../../shared/utilities';
 
 @Component({
@@ -53,7 +52,7 @@ import { trackByIndexUtility } from '../../../shared/utilities';
     </ng-template>
   `
 })
-export class ProjectDetailComponent implements OnInit {
+export class ProjectDetailComponent {
   private readonly url$ = this.route.params.pipe(map(({url}) => url));
 
   readonly previousURL$ = this.projectService.previousURL$;
@@ -62,19 +61,13 @@ export class ProjectDetailComponent implements OnInit {
   );
 
   readonly ImageSize = ImageSize;
+
   readonly trackByIndex = trackByIndexUtility;
 
   constructor (
-    private projectService: ProjectService,
-    private route: ActivatedRoute,
-    private seoService: SEOService
+    private readonly projectService: ProjectService,
+    private readonly route: ActivatedRoute,
   ) {
-  }
-
-  ngOnInit () {
-    this.project$.pipe(
-      take(1)
-    ).subscribe(project => this.seoService.setProjectDetailSEO(project));
   }
 
   cacheImageSize (project: Project, size: ImageSize) {

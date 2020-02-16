@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { RoutePath } from '@client/src/app/shared/enums';
-import { NavigationService } from '@client/src/app/shared/services';
+import { NavigationService, SEOService } from '@client/src/app/shared/services';
 import { PhotoStateService } from '@client/src/app/shared/state/photo/photo-state.service';
 import { cacheImageSizeUtility } from '@client/src/app/shared/utilities';
 import { ImageSize } from '@shared/enums';
@@ -18,16 +18,21 @@ export class PhotoService {
 
   constructor (
     private readonly photoStateService: PhotoStateService,
-    private readonly navigationService: NavigationService
+    private readonly navigationService: NavigationService,
+    private readonly seoService: SEOService
   ) {
   }
 
   photo$ (url: string) {
-    return this.photoStateService.photo$(url);
+    return this.photoStateService.photo$(url).pipe(
+      tap(photo => this.seoService.setPhotoDetailSEO(photo))
+    );
   }
 
   loadPhotoList$ () {
-    return this.photoStateService.loadEntityList$();
+    return this.photoStateService.loadEntityList$().pipe(
+      tap(photoList => this.seoService.setPhotoOverviewSEO(photoList[0]))
+    );
   }
 
   cacheImageSize$ (photo: Photo, size: ImageSize) {

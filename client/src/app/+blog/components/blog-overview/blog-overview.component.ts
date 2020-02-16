@@ -44,16 +44,11 @@ export class BlogOverviewComponent implements OnInit {
 
   readonly trackByIndex = trackByIndexUtility;
 
-  constructor (
-    private readonly blogService: BlogService,
-    private readonly seoService: SEOService
-  ) {
+  constructor (private readonly blogService: BlogService) {
   }
 
   ngOnInit () {
-    this.blogService.loadBlogList$().pipe(
-      take(1)
-    ).subscribe(blogList => this.seoService.setBlogOverviewSEO(blogList[0]));
+    this.blogService.loadBlogList$().pipe(take(1)).subscribe();
   }
 
   cacheImageSize (blog: Blog, size: ImageSize) {

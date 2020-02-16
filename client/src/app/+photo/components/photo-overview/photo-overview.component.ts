@@ -59,18 +59,14 @@ export class PhotoOverviewComponent implements OnInit {
 
   readonly fiveHundredPixURL = SocialMediaURL.FiveHundredPix;
   readonly instagramURL = SocialMediaURL.Instagram;
+
   readonly trackByIndex = trackByIndexUtility;
 
-  constructor (
-    private photoService: PhotoService,
-    private seoService: SEOService
-  ) {
+  constructor (private readonly photoService: PhotoService) {
   }
 
   ngOnInit () {
-    this.photoService.loadPhotoList$().pipe(
-      take(1)
-    ).subscribe(photoList => this.seoService.setPhotoOverviewSEO(photoList[0]));
+    this.photoService.loadPhotoList$().pipe(take(1)).subscribe();
   }
 
   cacheImageSize (photo: Photo, size: ImageSize) {

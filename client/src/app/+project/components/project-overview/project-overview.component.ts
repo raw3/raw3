@@ -45,16 +45,11 @@ export class ProjectOverviewComponent implements OnInit {
 
   readonly trackByIndex = trackByIndexUtility;
 
-  constructor (
-    private projectService: ProjectService,
-    private seoService: SEOService
-  ) {
+  constructor (private readonly projectService: ProjectService) {
   }
 
   ngOnInit () {
-    this.projectService.loadProjectList$().pipe(
-      take(1)
-    ).subscribe(projectList => this.seoService.setProjectOverviewSEO(projectList[0]));
+    this.projectService.loadProjectList$().pipe(take(1)).subscribe();
   }
 
   cacheImageSize (project: Project, size: ImageSize) {

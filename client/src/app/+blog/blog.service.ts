@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { RoutePath } from '@client/src/app/shared/enums';
-import { NavigationService } from '@client/src/app/shared/services';
+import { NavigationService, SEOService } from '@client/src/app/shared/services';
 import { BlogStateService } from '@client/src/app/shared/state/blog/blog-state.service';
 import { cacheImageSizeUtility } from '@client/src/app/shared/utilities';
 import { ImageSize } from '@shared/enums';
 import { Paragraph } from '@shared/interfaces';
 import { Blog } from '@shared/models';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class BlogService {
@@ -17,16 +17,21 @@ export class BlogService {
 
   constructor (
     private readonly blogStateService: BlogStateService,
-    private readonly navigationService: NavigationService
+    private readonly navigationService: NavigationService,
+    private readonly seoService: SEOService
   ) {
   }
 
   blog$ (url: string) {
-    return this.blogStateService.blog$(url);
+    return this.blogStateService.blog$(url).pipe(
+      tap(blog => this.seoService.setBlogDetailSEO(blog))
+    );
   }
 
   loadBlogList$ () {
-    return this.blogStateService.loadEntityList$();
+    return this.blogStateService.loadEntityList$().pipe(
+      tap(blogList => this.seoService.setBlogOverviewSEO(blogList[0]))
+    );
   }
 
   cachePrologueImageSize$ (blog: Blog, size: ImageSize) {

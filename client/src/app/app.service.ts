@@ -20,13 +20,13 @@ export class AppService {
   readonly availableUpdate$ = this.versionService.availableUpdate$;
 
   constructor (
-    @Inject('window') private window: Window,
-    private connectionService: ConnectionService,
-    private headerService: HeaderService,
-    private navigationService: NavigationService,
-    private responsiveService: ResponsiveService,
-    private versionService: VersionService,
-    private router: Router,
+    @Inject('window') private readonly window: Window,
+    private readonly connectionService: ConnectionService,
+    private readonly headerService: HeaderService,
+    private readonly navigationService: NavigationService,
+    private readonly responsiveService: ResponsiveService,
+    private readonly versionService: VersionService,
+    private readonly router: Router,
   ) {
   }
 

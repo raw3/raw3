@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { RoutePath } from '@client/src/app/shared/enums';
-import { NavigationService } from '@client/src/app/shared/services';
+import { NavigationService, SEOService } from '@client/src/app/shared/services';
 import { ProjectStateService } from '@client/src/app/shared/state/project/project-state.service';
 import { cacheImageSizeUtility } from '@client/src/app/shared/utilities';
 import { ImageSize } from '@shared/enums';
 import { Project } from '@shared/models';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class ProjectService {
@@ -16,16 +16,21 @@ export class ProjectService {
 
   constructor (
     private readonly projectStateService: ProjectStateService,
-    private readonly navigationService: NavigationService
+    private readonly navigationService: NavigationService,
+    private readonly seoService: SEOService
   ) {
   }
 
   project$ (url: string) {
-    return this.projectStateService.project$(url);
+    return this.projectStateService.project$(url).pipe(
+      tap(project => this.seoService.setProjectDetailSEO(project))
+    );
   }
 
   loadProjectList$ () {
-    return this.projectStateService.loadEntityList$();
+    return this.projectStateService.loadEntityList$().pipe(
+      tap(projectList => this.seoService.setProjectOverviewSEO(projectList[0]))
+    );
   }
 
   cacheImageSize$ (project: Project, size: ImageSize) {
