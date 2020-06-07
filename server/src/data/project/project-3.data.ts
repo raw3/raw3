@@ -1,14 +1,12 @@
 import { VennCategory } from '@shared/enums';
-import { Project } from '@shared/models';
+import { ProjectData } from '@shared/interfaces';
 
-export const project3Data: Project = {
+export const project3Data: ProjectData = {
   client: 'unchain.io',
-  date: 1520121600,
   description: 'An application to enable organisations to <b>integrate</b> their applications and devices with <b>blockchain networks</b>.',
   image: {
     alt: 'unchain.io logo blockchain integration viual',
     path: 'raw3-connect-gateway.jpg',
-    cachedSizes: [],
     title: 'Unchain.io visual with logo'
   },
   paragraph: {
@@ -51,8 +49,11 @@ export const project3Data: Project = {
   ],
   title: 'Connect Gateway',
   url: 'connect-gateway',
-  location: {
-    lat: -41.450918,
-    lng: 147.136022
+  pointOfInterest: {
+    date: 1520121600,
+    location: {
+      lat: -41.450918,
+      lng: 147.136022
+    }
   }
 };

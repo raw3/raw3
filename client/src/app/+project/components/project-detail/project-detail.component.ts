@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Project } from '@client/src/app/+project';
 import { ProjectService } from '@client/src/app/+project/project.service';
 import { ImageSize } from '@shared/enums';
-import { Project } from '@shared/models';
 import { Observable } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 import { trackByIndexUtility } from '../../../shared/utilities';
@@ -14,7 +14,7 @@ import { trackByIndexUtility } from '../../../shared/utilities';
     <article class="container--narrow">
       <ng-container *ngIf="project$ | async as project; else loading">
         <span *ngIf="project.startDate">{{ project.startDate * 1000 | date: 'dd/MM/yyyy' }} -</span>
-        <span>{{ project.date * 1000 | date: 'dd/MM/yyyy' }}</span>
+        <span>{{ project.pointOfInterest.date * 1000 | date: 'dd/MM/yyyy' }}</span>
         <h1 [innerHTML]="project.title"></h1>
 
         <h3 *ngIf="project.client" [innerHTML]="project.client"></h3>

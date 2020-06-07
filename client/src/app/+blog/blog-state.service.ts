@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
+import { BlogDataService } from '@client/src/app/+blog/blog-data.service';
+import { Blog } from '@client/src/app/+blog/blog.interface';
 import { StateService } from '@client/src/app/shared/services';
-import { BlogDataService } from '@client/src/app/shared/state/blog/blog-data.service';
 import { StateServiceType } from '@client/src/app/shared/types';
-import { Blog } from '@shared/models';
 import { BehaviorSubject, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-interface BlogState {
+interface State {
   [url: string]: Blog;
 }
 
 @Injectable({providedIn: 'root'})
 export class BlogStateService implements StateServiceType<Blog> {
-  private readonly blogListState$ = new BehaviorSubject<BlogState>({});
+  private readonly blogListState$ = new BehaviorSubject<State>({});
 
   readonly stateSelector = 'url';
 
@@ -38,6 +38,6 @@ export class BlogStateService implements StateServiceType<Blog> {
   }
 
   updateEntityState$ (entity: Blog) {
-    return StateService.updateEntityState$(new Blog(entity), this.blogListState$, this.stateSelector);
+    return StateService.updateEntityState$(entity, this.blogListState$, this.stateSelector);
   }
 }

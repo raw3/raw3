@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Photo } from '@client/src/app/+photo';
 import { Observable } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 import { ImageSize } from '@shared/enums';
-import { Photo } from '@shared/models';
 import { PhotoService } from '../../photo.service';
 
 @Component({

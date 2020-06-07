@@ -1,8 +1,7 @@
 import { VennCategory } from '@shared/enums';
-import { Blog } from '@shared/models';
+import { BlogData } from '@shared/interfaces';
 
-export const blog2Data: Blog = {
-  date: 1522800000,
+export const blog2Data: BlogData = {
   description: 'The six steps I took to buy and pimp a campervan in Australia.',
   keywords: [
     {
@@ -26,7 +25,6 @@ export const blog2Data: Blog = {
     image: {
       alt: 'Campervan life digital nomad forest laptop cozy',
       caption: 'Not having a house does not equal not having a home.',
-      cachedSizes: [],
       path: 'raw3-how-i-bought-and-pimped-a-campervan-1.jpg',
       title: 'Campervan in nature'
     },
@@ -52,7 +50,6 @@ export const blog2Data: Blog = {
       image: {
         alt: 'Campervan ugly interior DIY demolish',
         caption: 'The previous interior of Mary. It felt good to utterly destroy it.',
-        cachedSizes: [],
         path: 'raw3-how-i-bought-and-pimped-a-campervan-2.jpg',
         title: 'Old campervan interior'
       },
@@ -75,7 +72,6 @@ export const blog2Data: Blog = {
       image: {
         alt: 'Campervan flat tire metaphor Australian bureaucracy',
         caption: 'A flat tire is very representative of Australian bureaucracy: it takes long and is an unexpected hindrance to your plans.',
-        cachedSizes: [],
         path: 'raw3-how-i-bought-and-pimped-a-campervan-3.jpg',
         title: 'Flat tire as reference to australian bureaucracy'
       },
@@ -99,7 +95,6 @@ export const blog2Data: Blog = {
       image: {
         alt: 'Campervan mechanic car-bridge maintenance repairs',
         caption: 'Checking your car mechanically might be expensive, but driving safely should be prioritized.',
-        cachedSizes: [],
         path: 'raw3-how-i-bought-and-pimped-a-campervan-4.jpg',
         title: 'Campervan at the mechanic'
       },
@@ -122,7 +117,6 @@ export const blog2Data: Blog = {
       image: {
         alt: 'Campervan DIY double bed desk design',
         caption: 'My campervan with the desk rotated down to transform into a double bed.',
-        cachedSizes: [],
         path: 'raw3-how-i-bought-and-pimped-a-campervan-5.jpg',
         title: 'Campervan double bed interior'
       },
@@ -147,7 +141,6 @@ export const blog2Data: Blog = {
       image: {
         alt: 'Campervan DIY wooden floor interior',
         caption: 'I chose an old weathered wooden floor to give an old ship look to Mary.',
-        cachedSizes: [],
         path: 'raw3-how-i-bought-and-pimped-a-campervan-6.jpg',
         title: 'Wooden floor in campervan'
       },
@@ -164,7 +157,6 @@ export const blog2Data: Blog = {
       image: {
         alt: 'Campervan horizon desert straight road',
         caption: 'Driving for hours with no single soul on the road felt incredibly liberating.',
-        cachedSizes: [],
         path: 'raw3-how-i-bought-and-pimped-a-campervan-7.jpg',
         title: 'Driving on a long empty road'
       },
@@ -175,8 +167,11 @@ export const blog2Data: Blog = {
   ],
   title: 'How I bought and pimped a <b>campervan</b>',
   url: 'how-i-bought-and-pimped-a-campervan',
-  location: {
-    lat: -31.962289,
-    lng: 115.842431
+  pointOfInterest: {
+    date: 1522800000,
+    location: {
+      lat: -31.962289,
+      lng: 115.842431
+    }
   }
 };

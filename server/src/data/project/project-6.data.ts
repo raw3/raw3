@@ -1,14 +1,12 @@
 import { VennCategory } from '@shared/enums';
-import { Project } from '@shared/models';
+import { ProjectData } from '@shared/interfaces';
 
-export const project6Data: Project = {
+export const project6Data: ProjectData = {
   client: 'Fridina',
-  date: 1536019200,
   description: 'A client <b>maintenance management system</b> for mechanics to automate administration and centralizing their data.',
   image: {
     alt: 'maintenance management sytem website on laptop in campervan with ocean view',
     path: 'raw3-fridina.jpg',
-    cachedSizes: [],
     title: 'maintenance management sytem website on laptop in campervan with ocean view'
   },
   paragraph: {
@@ -67,8 +65,11 @@ export const project6Data: Project = {
   ],
   title: 'Maintenance Management System',
   url: 'maintenance-management-system',
-  location: {
-    lat: -14.912070,
-    lng: 133.083421
+  pointOfInterest: {
+    date: 1536019200,
+    location: {
+      lat: -14.912070,
+      lng: 133.083421
+    }
   }
 };

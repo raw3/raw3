@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Blog } from '@client/src/app/+blog';
 import { ImageSize } from '@shared/enums';
-import { Blog } from '@shared/models';
 import { trackByIndexUtility } from '../../../shared/utilities';
 
 @Component({
@@ -17,7 +17,7 @@ import { trackByIndexUtility } from '../../../shared/utilities';
         <raw3-image [image]="blog.prologue.image" height="30rem" (cacheImageSize)="cacheImageSize.emit($event)"></raw3-image>
 
         <section>
-          <span>{{ blog.date * 1000 | date: 'dd/MM/yyyy' }}</span>
+          <span>{{ blog.pointOfInterest.date * 1000 | date: 'dd/MM/yyyy' }}</span>
           <h2 [innerHTML]="blog.title"></h2>
 
           <raw3-badge *ngFor="let keyword of blog.keywords; trackBy: trackByIndex" [badge]="keyword"></raw3-badge>

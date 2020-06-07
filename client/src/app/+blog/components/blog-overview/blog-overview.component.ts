@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Blog } from '@client/src/app/+blog';
 import { BlogService } from '@client/src/app/+blog/blog.service';
 import { ImageSize } from '@shared/enums';
-import { Blog } from '@shared/models';
 import { take } from 'rxjs/operators';
 import { SocialMediaURL } from '../../../shared/enums';
-import { SEOService } from '../../../shared/services';
 import { trackByIndexUtility } from '../../../shared/utilities';
 
 @Component({

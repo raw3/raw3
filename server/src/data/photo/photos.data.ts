@@ -1,4 +1,4 @@
-import { Photo } from '@shared/models';
+import { PhotoData } from '@shared/interfaces';
 import { photo1Data } from './photo1.data';
 import { photo10Data } from './photo10.data';
 import { photo11Data } from './photo11.data';
@@ -36,7 +36,7 @@ import { photo34Data } from './photo34.data';
 import { photo35Data } from './photo35.data';
 import { photo36Data } from './photo36.data';
 
-export const photosData: Photo[] = [
+export const photosData: PhotoData[] = [
   photo1Data,
   photo2Data,
   photo3Data,

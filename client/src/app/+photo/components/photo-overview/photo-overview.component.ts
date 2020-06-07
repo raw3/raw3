@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Photo } from '@client/src/app/+photo';
 import { PhotoService } from '@client/src/app/+photo/photo.service';
 import { ImageSize } from '@shared/enums';
-import { Photo } from '@shared/models';
 import { take } from 'rxjs/operators';
 import { SocialMediaURL } from '../../../shared/enums';
 import { trackByIndexUtility } from '../../../shared/utilities';

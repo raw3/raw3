@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Blog } from '@client/src/app/+blog';
+import { Photo } from '@client/src/app/+photo';
+import { Project } from '@client/src/app/+project';
 import { ImageSize } from '@shared/enums';
-import { Blog, Photo, Project } from '@shared/models';
 import { PointOfInterestOption } from '@shared/types';
 
 @Component({

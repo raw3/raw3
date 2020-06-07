@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Entity } from '@client/src/app/shared/interfaces';
 import { arrayToObjectByKeyUtility, sortByDateUtility } from '@client/src/app/shared/utilities';
-import { PointOfInterest } from '@shared/models';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
 export class StateService {
-  static loadEntityListAndUpdateState$<T extends PointOfInterest, K extends keyof T> (listRequest$: Observable<T[]>, state$: BehaviorSubject<{ [key: string]: T }>, key: K) {
+  static loadEntityListAndUpdateState$<T extends Entity, K extends keyof T> (listRequest$: Observable<T[]>, state$: BehaviorSubject<{ [key: string]: T }>, key: K) {
     return listRequest$.pipe(
       withLatestFrom(state$),
       map(([list, state]) => sortByDateUtility([...list, ...Object.values(state)])),
@@ -14,7 +14,7 @@ export class StateService {
     );
   }
 
-  static loadEntityAndUpdateState$<T extends PointOfInterest, K extends keyof T> (entityRequest$: Observable<T>, state$: BehaviorSubject<{ [key: string]: T }>, key: K, value: string) {
+  static loadEntityAndUpdateState$<T extends Entity, K extends keyof T> (entityRequest$: Observable<T>, state$: BehaviorSubject<{ [key: string]: T }>, key: K, value: string) {
     return of(null).pipe(
       withLatestFrom(state$),
       switchMap((([, state]) => {
@@ -29,7 +29,7 @@ export class StateService {
     );
   }
 
-  static updateEntityState$<T extends PointOfInterest, K extends keyof T> (entity: T, state$: BehaviorSubject<{ [key: string]: T }>, key: K) {
+  static updateEntityState$<T extends Entity, K extends keyof T> (entity: T, state$: BehaviorSubject<{ [key: string]: T }>, key: K) {
     return of(null).pipe(
       withLatestFrom(state$),
       tap(([, state]) => state$.next(StateService.getUpdatedState(entity, state, key))),
@@ -37,7 +37,7 @@ export class StateService {
     );
   }
 
-  private static getUpdatedState<T extends PointOfInterest, K extends keyof T> (entity: T, state: { [key: string]: T }, key: K): { [key: string]: T } {
+  private static getUpdatedState<T extends Entity, K extends keyof T> (entity: T, state: { [key: string]: T }, key: K): { [key: string]: T } {
     if (state === {}) {
       return {[entity[key as string]]: entity};
     }

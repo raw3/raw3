@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Project } from '@client/src/app/+project/project.interface';
 import { RoutePath } from '@client/src/app/shared/enums';
 import { NavigationService, SEOService } from '@client/src/app/shared/services';
-import { ProjectStateService } from '@client/src/app/shared/state/project/project-state.service';
+import { ProjectStateService } from '@client/src/app/+project/project-state.service';
 import { cacheImageSizeUtility } from '@client/src/app/shared/utilities';
 import { ImageSize } from '@shared/enums';
-import { Project } from '@shared/models';
 import { map, tap } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
@@ -30,6 +30,6 @@ export class ProjectService {
   }
 
   cacheImageSize$ (project: Project, size: ImageSize) {
-    return this.projectStateService.updateEntityState$(new Project(cacheImageSizeUtility(project, size)));
+    return this.projectStateService.updateEntityState$(cacheImageSizeUtility(project, size));
   }
 }

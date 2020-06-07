@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Badge } from '@shared/interfaces';
+import { KeywordData } from '@shared/interfaces';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -10,5 +10,5 @@ import { Badge } from '@shared/interfaces';
   `
 })
 export class BadgeComponent {
-  @Input() badge: Badge;
+  @Input() badge: KeywordData;
 }

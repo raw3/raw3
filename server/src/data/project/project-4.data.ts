@@ -1,15 +1,13 @@
 import { VennCategory } from '@shared/enums';
-import { Project } from '@shared/models';
+import { ProjectData } from '@shared/interfaces';
 
-export const project4Data: Project = {
+export const project4Data: ProjectData = {
   client: 'Blockchaingers Hackathon 2018',
   startDate: 1522886400,
-  date: 1523145600,
   description: 'A <b>logistics system</b> for medicine distribution, with <b>blockchain and IoT</b> as the underlying disrupting technologies.',
   image: {
     alt: 'winners Blockchaingers Hackathon 2018 Global Digital Identity track',
     path: 'raw3-medichain.jpg',
-    cachedSizes: [],
     title: 'Winners Blockchaingers Hackathon 2018 Global Digital Identity track'
   },
   paragraph: {
@@ -57,8 +55,11 @@ export const project4Data: Project = {
   ],
   title: 'Medichain',
   url: 'medichain',
-  location: {
-    lat: 53.211226,
-    lng: 6.539113
+  pointOfInterest: {
+    date: 1523145600,
+    location: {
+      lat: 53.211226,
+      lng: 6.539113
+    }
   }
 };

@@ -19,6 +19,3 @@ COPY tslint.json ./
 RUN yarn
 
 RUN yarn build:ssr
-ENV PORT=80
-
-EXPOSE 80

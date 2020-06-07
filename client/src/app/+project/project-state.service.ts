@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
+import { Project } from '@client/src/app/+project/project.interface';
 import { StateService } from '@client/src/app/shared/services';
-import { ProjectDataService } from '@client/src/app/shared/state/project/project-data.service';
+import { ProjectDataService } from '@client/src/app/+project/project-data.service';
 import { StateServiceType } from '@client/src/app/shared/types';
-import { Project } from '@shared/models';
 import { BehaviorSubject, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-interface ProjectState {
+interface State {
   [url: string]: Project;
 }
 
 @Injectable({providedIn: 'root'})
 export class ProjectStateService implements StateServiceType<Project> {
-  private readonly projectListState$ = new BehaviorSubject<ProjectState>({});
+  private readonly projectListState$ = new BehaviorSubject<State>({});
 
   readonly stateSelector = 'url';
 
@@ -38,6 +38,6 @@ export class ProjectStateService implements StateServiceType<Project> {
   }
 
   updateEntityState$ (entity: Project) {
-    return StateService.updateEntityState$(new Project(entity), this.projectListState$, this.stateSelector);
+    return StateService.updateEntityState$(entity, this.projectListState$, this.stateSelector);
   }
 }

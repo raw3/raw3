@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Blog } from '@client/src/app/+blog';
 import { BlogService } from '@client/src/app/+blog/blog.service';
+import { Paragraph } from '@client/src/app/shared/interfaces';
 import { ImageSize } from '@shared/enums';
-import { Paragraph } from '@shared/interfaces';
-import { Blog } from '@shared/models';
 import { Observable } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
 import { trackByIndexUtility } from '../../../shared/utilities';
@@ -14,7 +14,7 @@ import { trackByIndexUtility } from '../../../shared/utilities';
   template: `
     <article class="container--narrow">
       <ng-container *ngIf="blog$ | async as blog; else loading">
-        <span>{{ blog.date * 1000 | date: 'dd/MM/yyyy' }}</span>
+        <span>{{ blog.pointOfInterest.date * 1000 | date: 'dd/MM/yyyy' }}</span>
         <h1 [innerHTML]="blog.title"></h1>
 
         <raw3-badge *ngFor="let keyword of blog.keywords; trackBy: trackByIndex" [badge]="keyword"></raw3-badge>

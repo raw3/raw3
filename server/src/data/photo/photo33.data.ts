@@ -1,17 +1,18 @@
-import { Photo } from '@shared/models';
+import { PhotoData } from '@shared/interfaces';
 
-export const photo33Data: Photo = {
+export const photo33Data: PhotoData = {
   image: {
     alt: 'bird couple',
     caption: 'Bird couple.',
     path: 'raw3-birds.jpg',
-    cachedSizes: [],
     title: 'Birds'
   },
   url: 'birds',
-  date: 1534432321,
-  location: {
-    lat: -17.879066,
-    lng: 122.338628
+  pointOfInterest: {
+    date: 1534432321,
+    location: {
+      lat: -17.879066,
+      lng: 122.338628
+    }
   }
 };

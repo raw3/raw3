@@ -1,15 +1,13 @@
 import { VennCategory } from '@shared/enums';
-import { Project } from '@shared/models';
+import { ProjectData } from '@shared/interfaces';
 
-export const project1Data: Project = {
+export const project1Data: ProjectData = {
   client: 'Dutch Blockchain Hackathon 2017',
   startDate: 1486684800,
-  date: 1486857600,
   description: 'A <b>digital passport</b> for refugees using local <b>biometric data</b> stored in a <b>blockchain</b>.',
   image: {
     alt: 'winners Dutch Blockchain Hackathon 2017 Identity track',
     path: 'raw3-social-fabric.jpg',
-    cachedSizes: [],
     title: 'Winners Dutch Blockchain Hackathon 2017 Identity track'
   },
   paragraph: {
@@ -54,8 +52,11 @@ export const project1Data: Project = {
   ],
   title: 'Social fabric',
   url: 'social-fabric',
-  location: {
-    lat: 53.210102,
-    lng: 6.567911
+  pointOfInterest: {
+    date: 1486857600,
+    location: {
+      lat: 53.210102,
+      lng: 6.567911
+    }
   }
 };

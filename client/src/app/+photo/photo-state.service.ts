@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
+import { PhotoDataService } from '@client/src/app/+photo/photo-data.service';
+import { Photo } from '@client/src/app/+photo/photo.interface';
 import { StateService } from '@client/src/app/shared/services';
 import { StateServiceType } from '@client/src/app/shared/types';
-import { Photo } from '@shared/models';
 import { BehaviorSubject, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { PhotoDataService } from './photo-data.service';
 
-interface PhotoState {
+interface State {
   [url: string]: Photo;
 }
 
 @Injectable({providedIn: 'root'})
 export class PhotoStateService implements StateServiceType<Photo> {
   private readonly initialPhotoCount = 6;
-  private readonly photoListState$ = new BehaviorSubject<PhotoState>({});
   private readonly photoCountState$ = new BehaviorSubject<number>(this.initialPhotoCount);
+  private readonly photoListState$ = new BehaviorSubject<State>({});
 
   readonly stateSelector = 'url';
 
@@ -41,7 +41,7 @@ export class PhotoStateService implements StateServiceType<Photo> {
   }
 
   updateEntityState$ (entity: Photo) {
-    return StateService.updateEntityState$(new Photo(entity), this.photoListState$, this.stateSelector);
+    return StateService.updateEntityState$(entity, this.photoListState$, this.stateSelector);
   }
 
   updatePhotoCount (count: number) {

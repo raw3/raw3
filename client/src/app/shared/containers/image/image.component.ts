@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { AnimationTime } from '@client/src/app/shared/enums';
+import { Image } from '@client/src/app/shared/interfaces';
 import { ImageSize } from '@shared/enums';
-import { Image } from '@shared/interfaces';
 import { BehaviorSubject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { fadeAnimation, fadeToggleAnimation } from '../../animations';

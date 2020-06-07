@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Blog, BlogStateService } from '@client/src/app/+blog';
 import { MapFilter } from '@client/src/app/+map/enums/map-filter.enum';
-import { BlogStateService } from '@client/src/app/shared/state/blog/blog-state.service';
-import { PhotoStateService } from '@client/src/app/shared/state/photo/photo-state.service';
-import { ProjectStateService } from '@client/src/app/shared/state/project/project-state.service';
+import { Photo, PhotoStateService } from '@client/src/app/+photo';
+import { Project, ProjectStateService } from '@client/src/app/+project';
 import { cacheImageSizeUtility, sortByDateUtility } from '@client/src/app/shared/utilities';
 import { ImageSize } from '@shared/enums';
-import { Blog, Photo, Project } from '@shared/models';
 import { PointOfInterestOption } from '@shared/types';
 import { BehaviorSubject, combineLatest, of } from 'rxjs';
 import { map, switchMap, take } from 'rxjs/operators';
@@ -18,18 +17,18 @@ export class MapService {
 
   readonly staticActivePointOfInterest$ = new BehaviorSubject<PointOfInterestOption>(null);
   readonly activePointOfInterest$ = this.staticActivePointOfInterest$.pipe(
-    switchMap(pointOfInterest => {
-      if (!pointOfInterest) {
+    switchMap(option => {
+      if (!option) {
         return of(null);
       }
 
-      switch (pointOfInterest.constructor) {
+      switch (option.constructor) {
         case Blog:
-          return this.blogStateService.blog$(pointOfInterest.url);
+          return this.blogStateService.blog$(option.url);
         case Photo:
-          return this.photoStateService.photo$(pointOfInterest.url);
+          return this.photoStateService.photo$(option.url);
         case Project:
-          return this.projectStateService.project$(pointOfInterest.url);
+          return this.projectStateService.project$(option.url);
         default:
           return of(null);
       }
@@ -51,8 +50,8 @@ export class MapService {
     ]);
   }
 
-  private static getPointOfInterestType (poi: PointOfInterestOption) {
-    switch (poi.constructor) {
+  private static getPointOfInterestType (option: PointOfInterestOption) {
+    switch (option.constructor) {
       case Blog:
         return 'blog';
       case Photo:
@@ -62,45 +61,45 @@ export class MapService {
     }
   }
 
-  private mapPointOfInterestToMapMarker (pointOfInterest: PointOfInterestOption) {
+  private mapPointOfInterestToMapMarker (option: PointOfInterestOption) {
     const marker = new google.maps.Marker({
-      position: pointOfInterest.location,
+      position: option.pointOfInterest.location,
       icon: {
         scaledSize: {
           width: 45,
           height: 45
         } as google.maps.Size,
-        url: `/assets/images/icons/${MapService.getPointOfInterestType(pointOfInterest)}-marker.svg`
+        url: `/assets/images/icons/${MapService.getPointOfInterestType(option)}-marker.svg`
       }
     });
 
-    marker.addListener('click', () => this.staticActivePointOfInterest$.next(pointOfInterest));
+    marker.addListener('click', () => this.staticActivePointOfInterest$.next(option));
 
     return marker;
   }
 
-  mapPointOfInterestListToMapMarkers (pointOfInterestList: PointOfInterestOption[]) {
-    return pointOfInterestList.map(pointOfInterest => this.mapPointOfInterestToMapMarker(pointOfInterest));
+  private mapPointOfInterestListToMapMarkers (optionList: PointOfInterestOption[]) {
+    return optionList.map(option => this.mapPointOfInterestToMapMarker(option));
   }
 
   getPointOfInterestMapMarkers$ (filters: MapFilter[]) {
     return combineLatest([this.blogList$, this.photoList$, this.projectList$]).pipe(
       map(([blogList, photoList, projectList]) => MapService.filterPointOfInterestList(blogList, photoList, projectList, filters)),
-      map(pointOfInterestList => this.mapPointOfInterestListToMapMarkers(pointOfInterestList)),
+      map(optionList => this.mapPointOfInterestListToMapMarkers(optionList)),
       take(1)
     );
   }
 
   cacheBlogPrologueImageSize$ (blog: Blog, size: ImageSize) {
-    const updatedBlog = {...blog, prologue: {...blog.prologue, ...cacheImageSizeUtility(blog.prologue, size)}};
-    return this.blogStateService.updateEntityState$(new Blog(updatedBlog));
+    const newBlog = ({...blog, prologue: {...blog.prologue, ...cacheImageSizeUtility(blog.prologue, size)}});
+    return this.blogStateService.updateEntityState$(newBlog as Blog);
   }
 
   cachePhotoImageSize$ (photo: Photo, size: ImageSize) {
-    return this.photoStateService.updateEntityState$(new Photo(cacheImageSizeUtility(photo, size)));
+    return this.photoStateService.updateEntityState$(cacheImageSizeUtility(photo, size));
   }
 
   cacheProjectImageSize$ (project: Project, size: ImageSize) {
-    return this.projectStateService.updateEntityState$(new Project(cacheImageSizeUtility(project, size)));
+    return this.projectStateService.updateEntityState$(cacheImageSizeUtility(project, size));
   }
 }

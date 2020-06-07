@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Blog } from '@client/src/app/+blog/blog.interface';
 import { RoutePath } from '@client/src/app/shared/enums';
+import { Paragraph } from '@client/src/app/shared/interfaces';
 import { NavigationService, SEOService } from '@client/src/app/shared/services';
-import { BlogStateService } from '@client/src/app/shared/state/blog/blog-state.service';
+import { BlogStateService } from '@client/src/app/+blog/blog-state.service';
 import { cacheImageSizeUtility } from '@client/src/app/shared/utilities';
 import { ImageSize } from '@shared/enums';
-import { Paragraph } from '@shared/interfaces';
-import { Blog } from '@shared/models';
 import { map, tap } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
@@ -32,7 +32,7 @@ export class BlogService {
 
   cachePrologueImageSize$ (blog: Blog, size: ImageSize) {
     const newBlog = {...blog, prologue: {...blog.prologue, ...cacheImageSizeUtility(blog.prologue, size)}};
-    return this.blogStateService.updateEntityState$(new Blog(newBlog));
+    return this.blogStateService.updateEntityState$(newBlog as Blog);
   }
 
   cacheParagraphImageSize$ (blog: Blog, paragraph: Paragraph, size: ImageSize) {
@@ -40,6 +40,6 @@ export class BlogService {
     const updatedBlog = {...blog, paragraphs: [...blog.paragraphs]};
     updatedBlog.paragraphs[indexOfParagraph] = cacheImageSizeUtility(paragraph, size);
 
-    return this.blogStateService.updateEntityState$(new Blog(updatedBlog));
+    return this.blogStateService.updateEntityState$(updatedBlog as Blog);
   }
 }

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Project } from '@client/src/app/+project';
 import { ImageSize } from '@shared/enums';
-import { Project } from '@shared/models';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -16,7 +16,7 @@ import { Project } from '@shared/models';
 
       <raw3-image [image]="project.image" height="15rem" (cacheImageSize)="cacheImageSize.emit($event)"></raw3-image>
 
-      <span>{{ project.date * 1000 | date: 'dd/MM/yyyy' }}</span>
+      <span>{{ project.pointOfInterest.date * 1000 | date: 'dd/MM/yyyy' }}</span>
       <h3 [innerHTML]="project.title"></h3>
       <p [innerHTML]="project.description"></p>
     </a>

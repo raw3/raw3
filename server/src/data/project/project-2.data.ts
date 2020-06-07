@@ -1,15 +1,13 @@
 import { VennCategory } from '@shared/enums';
-import { Project } from '@shared/models';
+import { ProjectData } from '@shared/interfaces';
 
-export const project2Data: Project = {
+export const project2Data: ProjectData = {
   client: 'IBM',
   startDate: 1498867200,
-  date: 1513555200,
   description: 'A <b>blockchain</b> based <b>trade platform</b> that enhances the overall customer experience when trading internationally.',
   image: {
     alt: 'we.trade platform application on laptop',
     path: 'raw3-we-trade.jpg',
-    cachedSizes: [],
     title: 'we.trade platform application'
   },
   paragraph: {
@@ -50,8 +48,11 @@ export const project2Data: Project = {
   ],
   title: 'we.trade',
   url: 'we-trade',
-  location: {
-    lat: 53.215407,
-    lng: 6.570238
+  pointOfInterest: {
+    date: 1513555200,
+    location: {
+      lat: 53.215407,
+      lng: 6.570238
+    }
   }
 };

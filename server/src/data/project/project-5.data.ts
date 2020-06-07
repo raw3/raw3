@@ -1,15 +1,13 @@
 import { VennCategory } from '@shared/enums';
-import { Project } from '@shared/models';
+import { ProjectData } from '@shared/interfaces';
 
-export const project5Data: Project = {
-  date: 1533254400,
+export const project5Data: ProjectData = {
   description: `My <b>personal website</b> using an Angular front-end and NodeJS back-end, complying with the latest <b>Progressive Web Application</b>
  standards and including <b>Server Side Rendering</b>.`,
   git: 'https://www.github.com/raw3/raw3',
   image: {
     alt: 'raw3 raw3.io digital nomad portfolio website campervan sunset',
     path: 'raw3-raw3-io.jpg',
-    cachedSizes: [],
     title: 'raw3.io portfolio website on laptop in campervan with sunset'
   },
   paragraph: {
@@ -83,8 +81,11 @@ export const project5Data: Project = {
   ],
   title: 'raw3.io',
   url: 'raw3-io',
-  location: {
-    lat: -21.930989,
-    lng: 114.122270
+  pointOfInterest: {
+    date: 1533254400,
+    location: {
+      lat: -21.930989,
+      lng: 114.122270
+    }
   }
 };

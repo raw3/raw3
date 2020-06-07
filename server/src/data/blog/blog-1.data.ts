@@ -1,8 +1,7 @@
 import { VennCategory } from '@shared/enums';
-import { Blog } from '@shared/models';
+import { BlogData } from '@shared/interfaces';
 
-export const blog1Data: Blog = {
-  date: 1516838400,
+export const blog1Data: BlogData = {
   description: 'The six steps I took to quit my job and become a digital nomad.',
   keywords: [
     {
@@ -26,7 +25,6 @@ export const blog1Data: Blog = {
     image: {
       alt: 'Rocky cliffs with surfer waves at coast Sydney',
       caption: 'Amazing views accompany the lifestyle of the digital nomad.',
-      cachedSizes: [],
       path: 'raw3-surfers-demise.jpg',
       title: 'Amazing views for the digital nomad'
     },
@@ -51,7 +49,6 @@ export const blog1Data: Blog = {
       image: {
         alt: 'Tropical island San Blas Panama ocean palms',
         caption: 'One of the islands I would stay at in Panama. They prepared amazing lobster there.',
-        cachedSizes: [],
         path: 'raw3-how-i-started-as-a-digital-nomad-2.jpg',
         title: 'Tropical San Blas island for reflection'
       },
@@ -75,7 +72,6 @@ export const blog1Data: Blog = {
       image: {
         alt: 'Sydney Opera House from Sydney bridge Harbour',
         caption: 'Australia might be an expensive country, but the culture is very open to backpackers.',
-        cachedSizes: [],
         path: 'raw3-how-i-started-as-a-digital-nomad-3.jpg',
         title: 'Australia Sydney Opera House'
       },
@@ -108,7 +104,6 @@ export const blog1Data: Blog = {
       image: {
         alt: 'Campervan at building depot DIY',
         caption: 'Your way of accommodation highly influences your necessary budget.',
-        cachedSizes: [],
         path: 'raw3-how-i-started-as-a-digital-nomad-4.jpg',
         title: 'Campervan as budget accommodation'
       },
@@ -132,7 +127,6 @@ export const blog1Data: Blog = {
       image: {
         alt: 'Photoshopped crying CEO as metaphor leaving IBM Richard Wols',
         caption: 'IBM\'s CEO didn\'t actually cry when I quit the company. In case people sue me for this image.',
-        cachedSizes: [],
         path: 'raw3-how-i-started-as-a-digital-nomad-5.jpg',
         title: 'Crying me and Ginni Rometti'
       },
@@ -169,7 +163,6 @@ export const blog1Data: Blog = {
       image: {
         alt: 'Mutianyu Great Wall of China long road Richard Wols',
         caption: 'The path to become a successful freelancer is long.',
-        cachedSizes: [],
         path: 'raw3-how-i-started-as-a-digital-nomad-6.jpg',
         title: 'Great Wall as path to freelancer'
       },
@@ -191,7 +184,6 @@ export const blog1Data: Blog = {
       image: {
         alt: 'Airport Schiphol walking to gate Richard Wols',
         caption: 'Saying goodbye to friends was my final hurdle in going on my lifelong adventure.',
-        cachedSizes: [],
         path: 'raw3-how-i-started-as-a-digital-nomad-7.jpg',
         title: 'Saying goodbye to friends at the airport'
       },
@@ -209,8 +201,11 @@ export const blog1Data: Blog = {
   ],
   title: 'How I started as a <b>Digital Nomad</b>',
   url: 'how-i-started-as-a-digital-nomad',
-  location: {
-    lat: -33.920057,
-    lng: 151.203693
-  }
+  pointOfInterest: {
+    date: 1516838400,
+    location: {
+      lat: -33.920057,
+      lng: 151.203693
+    }
+  },
 };

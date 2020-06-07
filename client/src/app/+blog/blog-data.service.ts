@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Blog } from '@client/src/app/+blog/blog.interface';
 import { DataServiceType } from '@client/src/app/shared/types';
 import { Endpoint } from '@shared/enums';
-import { Blog } from '@shared/models';
+import { BlogData } from '@shared/interfaces';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -14,10 +15,10 @@ export class BlogDataService implements DataServiceType<Blog> {
   }
 
   getEntityList$ (): Observable<Blog[]> {
-    return this.http.get<Blog[]>(this.url).pipe(map(entityList => entityList.map((entity => new Blog(entity)))));
+    return this.http.get<BlogData[]>(this.url).pipe(map(entityList => entityList.map((entity => new Blog(entity)))));
   }
 
   getEntity$ (selector: string): Observable<Blog> {
-    return this.http.get<Blog>(`${this.url}/${selector}`).pipe(map(entity => new Blog(entity)));
+    return this.http.get<BlogData>(`${this.url}/${selector}`).pipe(map(entity => new Blog(entity)));
   }
 }

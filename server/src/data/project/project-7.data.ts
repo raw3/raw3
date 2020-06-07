@@ -1,15 +1,13 @@
 import { VennCategory } from '@shared/enums';
-import { Project } from '@shared/models';
+import { ProjectData } from '@shared/interfaces';
 
-export const project7Data: Project = {
+export const project7Data: ProjectData = {
   client: 'Blockport',
   startDate: 1541667600,
-  date: 1560330000,
   description: 'A <b>crypto currency exchange</b> focused on social trading and being the most user-friendly in the market.',
   image: {
     alt: 'blockport crypto currency exchange website on laptop behind bricks',
     path: 'raw3-blockport.jpg',
-    cachedSizes: [],
     title: 'blockport crypto currency exchange website on laptop behind bricks'
   },
   paragraph: {
@@ -51,8 +49,11 @@ export const project7Data: Project = {
   ],
   title: 'Blockport',
   url: 'blockport',
-  location: {
-    lat: 52.395918,
-    lng: 4.874689
+  pointOfInterest: {
+    date: 1560330000,
+    location: {
+      lat: 52.395918,
+      lng: 4.874689
+    }
   }
 };

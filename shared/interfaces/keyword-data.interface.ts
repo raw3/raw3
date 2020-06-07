@@ -1,6 +1,6 @@
 import { VennCategory } from '@shared/enums';
 
-export interface Badge {
+export interface KeywordData {
   text: string;
   venn: VennCategory;
 }

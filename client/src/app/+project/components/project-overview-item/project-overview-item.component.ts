@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { Project } from '@client/src/app/+project';
 import { ImageSize } from '@shared/enums';
-import { Project } from '@shared/models';
 import { trackByIndexUtility } from '../../../shared/utilities';
 
 @Component({
@@ -18,7 +18,7 @@ import { trackByIndexUtility } from '../../../shared/utilities';
 
         <section>
           <span *ngIf="project.startDate">{{ project.startDate * 1000 | date: 'dd/MM/yyyy' }} - </span>
-          <span>{{ project.date * 1000 | date: 'dd/MM/yyyy' }}</span>
+          <span>{{ project.pointOfInterest.date * 1000 | date: 'dd/MM/yyyy' }}</span>
           <h2 [innerHTML]="project.title"></h2>
 
           <raw3-badge *ngFor="let role of project.roles; trackBy: trackByIndex" [badge]="role"></raw3-badge>
