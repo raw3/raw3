@@ -131,7 +131,7 @@ export class SEOService {
 
   setDefaultSEO () {
     this.setPageMetaInformation({
-      description: `${this.name} - A digital nomad photographing the world as a freelance programmer.
+      description: `raw3 - Freelance programmer travelling and photographing the world.
         Check out my world photography, read my blogs about the digital nomad life, and see my portfolio programming projects.`,
       image: {
         alt: 'The logo of raw3 raw3.io',
@@ -140,7 +140,7 @@ export class SEOService {
         url: `https://raw3.io/assets/images/logo/raw3-logo.jpg`,
         width: '600'
       },
-      title: 'raw3 - freelance digital nomad programmer photographing the world',
+      title: 'raw3 - Freelance programmer travelling and photographing the world',
       twitterCard: 'summary'
     });
   }

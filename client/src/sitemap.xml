@@ -267,6 +267,21 @@
             <image:title>Watch tower</image:title>
             <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
         </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-bridge-creek.jpg</image:loc>
+            <image:title>Bridge creek</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-mountain-fields.jpg</image:loc>
+            <image:title>Mountain fields</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
+        <image:image>
+            <image:loc>http://raw3.io/assets/images/photos/lg/raw3-northern-lights.jpg</image:loc>
+            <image:title>Northern lights</image:title>
+            <image:license>https://creativecommons.org/licenses/by-nc/4.0/legalcode</image:license>
+        </image:image>
     </url>
     <url>
         <loc>https://raw3.io/projects</loc>

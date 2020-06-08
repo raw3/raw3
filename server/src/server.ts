@@ -56,32 +56,12 @@ export function app () {
   return server;
 }
 
-async function preloadBlogs () {
-  const blogs = await BlogModel.find();
+async function preloadData<T extends { url: string }> (data: T[], model: mongoose.Model<mongoose.Document>) {
+  const entities = await model.find();
 
-  if (!blogs || !blogs.length) {
-    blogsData.forEach(blog => {
-      new BlogModel(blog).save().then(() => console.log(`Blog ${blog.title} added to the database!`));
-    });
-  }
-}
-
-async function preloadPhotos () {
-  const photos = await PhotoModel.find();
-
-  if (!photos || !photos.length) {
-    photosData.forEach(photo => {
-      new PhotoModel(photo).save().then(() => console.log(`Photo ${photo.image.title} added to the database!`));
-    });
-  }
-}
-
-async function preloadProjects () {
-  const projects = await ProjectModel.find();
-
-  if (!projects || !projects.length) {
-    projectsData.forEach(project => {
-      new ProjectModel(project).save().then(() => console.log(`Project ${project.title} added to the database!`));
+  if (!entities || !entities.length) {
+    data.forEach(entity => {
+      new model(entity).save().then(() => console.log(`Entity ${entity.url} added to the database!`));
     });
   }
 }
@@ -94,9 +74,9 @@ function run () {
   mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
 
   // Preload data in the database
-  preloadBlogs();
-  preloadPhotos();
-  preloadProjects();
+  preloadData(blogsData, BlogModel);
+  preloadData(photosData, PhotoModel);
+  preloadData(projectsData, ProjectModel);
 
   server.listen(port, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);

@@ -1,3 +1,6 @@
+import { photo37Data } from '@server/src/data/photo/photo37.data';
+import { photo38Data } from '@server/src/data/photo/photo38.data';
+import { photo39Data } from '@server/src/data/photo/photo39.data';
 import { PhotoData } from '@shared/interfaces';
 import { photo1Data } from './photo1.data';
 import { photo10Data } from './photo10.data';
@@ -72,5 +75,8 @@ export const photosData: PhotoData[] = [
   photo33Data,
   photo34Data,
   photo35Data,
-  photo36Data
+  photo36Data,
+  photo37Data,
+  photo38Data,
+  photo39Data
 ];
