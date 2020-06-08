@@ -1,7 +1,8 @@
 import { Entity, Image, Paragraph } from '@client/src/app/shared/interfaces';
-import { KeywordData, PointOfInterestData, ProjectData } from '@shared/interfaces';
+import { KeywordData, PointOfInterestData } from '@shared/interfaces';
 
-export class Project implements Entity {
+export interface Project extends Entity {
+  type: 'project';
   url: string;
   client?: string;
   startDate?: number;
@@ -12,18 +13,4 @@ export class Project implements Entity {
   roles: KeywordData[];
   title: string;
   pointOfInterest: PointOfInterestData;
-
-  constructor (data: ProjectData) {
-    Object.assign(this, data);
-
-    this.image.cachedSizes = [];
-
-    if (this.paragraph.image) {
-      this.paragraph.image.cachedSizes = [];
-    }
-  }
-
-  update (data: Project) {
-    Object.assign(this, {...this, ...data});
-  }
 }

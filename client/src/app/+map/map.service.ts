@@ -22,12 +22,12 @@ export class MapService {
         return of(null);
       }
 
-      switch (option.constructor) {
-        case Blog:
+      switch (option.type) {
+        case 'blog':
           return this.blogStateService.blog$(option.url);
-        case Photo:
+        case 'photo':
           return this.photoStateService.photo$(option.url);
-        case Project:
+        case 'project':
           return this.projectStateService.project$(option.url);
         default:
           return of(null);
@@ -50,17 +50,6 @@ export class MapService {
     ]);
   }
 
-  private static getPointOfInterestType (option: PointOfInterestOption) {
-    switch (option.constructor) {
-      case Blog:
-        return 'blog';
-      case Photo:
-        return 'photo';
-      case Project:
-        return 'project';
-    }
-  }
-
   private mapPointOfInterestToMapMarker (option: PointOfInterestOption) {
     const marker = new google.maps.Marker({
       position: option.pointOfInterest.location,
@@ -69,7 +58,7 @@ export class MapService {
           width: 45,
           height: 45
         } as google.maps.Size,
-        url: `/assets/images/icons/${MapService.getPointOfInterestType(option)}-marker.svg`
+        url: `/assets/images/icons/${option.type}-marker.svg`
       }
     });
 
@@ -92,7 +81,7 @@ export class MapService {
 
   cacheBlogPrologueImageSize$ (blog: Blog, size: ImageSize) {
     const newBlog = ({...blog, prologue: {...blog.prologue, ...cacheImageSizeUtility(blog.prologue, size)}});
-    return this.blogStateService.updateEntityState$(newBlog as Blog);
+    return this.blogStateService.updateEntityState$(newBlog);
   }
 
   cachePhotoImageSize$ (photo: Photo, size: ImageSize) {

@@ -14,11 +14,32 @@ export class BlogDataService implements DataServiceType<Blog> {
   constructor (private readonly http: HttpClient) {
   }
 
+  private static mapData (data: BlogData): Blog {
+    return {
+      ...data,
+      type: 'blog',
+      prologue: {
+        ...data.prologue,
+        image: {
+          ...data.prologue.image,
+          cachedSizes: []
+        }
+      },
+      paragraphs: data.paragraphs.map(paragraph => ({
+        ...paragraph,
+        image: {
+          ...paragraph.image,
+          cachedSizes: []
+        }
+      }))
+    };
+  }
+
   getEntityList$ (): Observable<Blog[]> {
-    return this.http.get<BlogData[]>(this.url).pipe(map(entityList => entityList.map((entity => new Blog(entity)))));
+    return this.http.get<BlogData[]>(this.url).pipe(map(entityList => entityList.map((BlogDataService.mapData))));
   }
 
   getEntity$ (selector: string): Observable<Blog> {
-    return this.http.get<BlogData>(`${this.url}/${selector}`).pipe(map(entity => new Blog(entity)));
+    return this.http.get<BlogData>(`${this.url}/${selector}`).pipe(map(BlogDataService.mapData));
   }
 }

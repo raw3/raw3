@@ -8,17 +8,35 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
-export class ProjectDataService implements DataServiceType<Project> {
+export class ProjectDataService implements DataServiceType<ProjectData> {
   readonly url = Endpoint.PROJECTS;
 
   constructor (private readonly http: HttpClient) {
   }
 
+  private static mapData (data: ProjectData): Project {
+    return {
+      ...data,
+      type: 'project',
+      image: {
+        ...data.image,
+        cachedSizes: []
+      },
+      paragraph: {
+        ...data.paragraph,
+        image: {
+          ...data.paragraph.image,
+          cachedSizes: []
+        }
+      }
+    };
+  }
+
   getEntityList$ (): Observable<Project[]> {
-    return this.http.get<ProjectData[]>(this.url).pipe(map(entityList => entityList.map((entity => new Project(entity)))));
+    return this.http.get<ProjectData[]>(this.url).pipe(map((projectList => projectList.map(ProjectDataService.mapData))));
   }
 
   getEntity$ (selector: string): Observable<Project> {
-    return this.http.get<ProjectData>(`${this.url}/${selector}`).pipe(map(entity => new Project(entity)));
+    return this.http.get<ProjectData>(`${this.url}/${selector}`).pipe(map(ProjectDataService.mapData));
   }
 }

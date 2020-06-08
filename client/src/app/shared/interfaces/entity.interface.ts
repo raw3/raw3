@@ -1,7 +1,7 @@
 import { PointOfInterestData } from '@shared/interfaces';
 
 export interface Entity {
+  type: 'blog' | 'photo' | 'project';
   url: string;
-  update: (entity: this) => void;
   pointOfInterest: PointOfInterestData;
 }

@@ -14,7 +14,11 @@ import { ImageSize } from '@shared/enums';
     >
       <h2>Project</h2>
 
-      <raw3-image [image]="project.image" height="15rem" (cacheImageSize)="cacheImageSize.emit($event)"></raw3-image>
+      <raw3-image
+        height="15rem"
+        [image]="project.image"
+        (cacheImageSize)="cacheImageSize.emit({project: project, size: $event})"
+      ></raw3-image>
 
       <span>{{ project.pointOfInterest.date * 1000 | date: 'dd/MM/yyyy' }}</span>
       <h3 [innerHTML]="project.title"></h3>
@@ -24,5 +28,5 @@ import { ImageSize } from '@shared/enums';
 })
 export class POIProjectComponent {
   @Input() project: Project;
-  @Output() cacheImageSize = new EventEmitter<ImageSize>();
+  @Output() cacheImageSize = new EventEmitter<{ project: Project, size: ImageSize }>();
 }

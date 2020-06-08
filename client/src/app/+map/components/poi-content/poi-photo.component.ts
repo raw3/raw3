@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Photo } from '@client/src/app/+photo';
+import { Project } from '@client/src/app/+project';
 import { ImageSize } from '@shared/enums';
 
 @Component({
@@ -14,7 +15,7 @@ import { ImageSize } from '@shared/enums';
     >
       <h2>Photo</h2>
 
-      <raw3-image [image]="photo.image" height="15rem" (cacheImageSize)="cacheImageSize.emit($event)"></raw3-image>
+      <raw3-image height="15rem" [image]="photo.image" (cacheImageSize)="cacheImageSize.emit({photo: photo, size: $event})"></raw3-image>
 
       <span>{{ photo.pointOfInterest.date * 1000 | date: 'dd/MM/yyyy' }}</span>
     </a>
@@ -22,5 +23,5 @@ import { ImageSize } from '@shared/enums';
 })
 export class POIPhotoComponent {
   @Input() photo: Photo;
-  @Output() cacheImageSize = new EventEmitter<ImageSize>();
+  @Output() cacheImageSize = new EventEmitter<{ photo: Photo, size: ImageSize }>();
 }

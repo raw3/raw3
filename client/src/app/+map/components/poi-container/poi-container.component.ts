@@ -10,39 +10,34 @@ import { PointOfInterestOption } from '@shared/types';
   selector: 'raw3-poi-container',
   styleUrls: ['./poi-container.component.scss'],
   template: `
-    <ng-container *ngTemplateOutlet="getTemplate(photo, blog, project)"></ng-container>
+    <ng-container [ngSwitch]="poi.type">
+      <raw3-poi-blog
+        *ngSwitchCase="'blog'"
+        [blog]="poi"
+        (cacheImageSize)="cacheBlogPrologueImageSize.emit($event)"
+      ></raw3-poi-blog>
 
-    <ng-template #blog>
-      <raw3-poi-blog [blog]="poi" (cacheImageSize)="cacheBlogPrologueImageSize.emit({blog: poi, size: $event})"></raw3-poi-blog>
-    </ng-template>
+      <raw3-poi-photo
+        *ngSwitchCase="'photo'"
+        [photo]="poi"
+        (cacheImageSize)="cachePhotoImageSize.emit($event)"
+      ></raw3-poi-photo>
 
-    <ng-template #photo>
-      <raw3-poi-photo [photo]="poi" (cacheImageSize)="cachePhotoImageSize.emit({photo: poi, size: $event})"></raw3-poi-photo>
-    </ng-template>
-
-    <ng-template #project>
-      <raw3-poi-project [project]="poi" (cacheImageSize)="cacheProjectImageSize.emit({project: poi, size: $event})"></raw3-poi-project>
-    </ng-template>
+      <raw3-poi-project
+        *ngSwitchCase="'project'"
+        [project]="poi"
+        (cacheImageSize)="cacheProjectImageSize.emit($event)"
+      ></raw3-poi-project>
+    </ng-container>
 
     <raw3-icon-button icon="cross" (click)="close.emit()" color="plain" description="Close current map pointer"></raw3-icon-button>
   `
 })
 export class POIContainerComponent {
-  @Input() poi: PointOfInterestOption | any;
+  @Input() poi: PointOfInterestOption;
 
   @Output() close = new EventEmitter();
   @Output() cacheBlogPrologueImageSize = new EventEmitter<{ blog: Blog, size: ImageSize }>();
   @Output() cachePhotoImageSize = new EventEmitter<{ photo: Photo, size: ImageSize }>();
   @Output() cacheProjectImageSize = new EventEmitter<{ project: Project, size: ImageSize }>();
-
-  getTemplate (photoTemplate, blogTemplate, projectTemplate) {
-    switch (this.poi.constructor) {
-      case Blog:
-        return blogTemplate;
-      case Photo:
-        return photoTemplate;
-      case Project:
-        return projectTemplate;
-    }
-  }
 }

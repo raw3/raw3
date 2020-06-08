@@ -14,11 +14,22 @@ export class PhotoDataService implements DataServiceType<Photo> {
   constructor (private readonly http: HttpClient) {
   }
 
+  private static mapData (data: PhotoData): Photo {
+    return {
+      ...data,
+      type: 'photo',
+      image: {
+        ...data.image,
+        cachedSizes: []
+      }
+    };
+  }
+
   getEntityList$ (): Observable<Photo[]> {
-    return this.http.get<PhotoData[]>(this.url).pipe(map(entityList => entityList.map((entity => new Photo(entity)))));
+    return this.http.get<PhotoData[]>(this.url).pipe(map(entityList => entityList.map(PhotoDataService.mapData)));
   }
 
   getEntity$ (selector: string): Observable<Photo> {
-    return this.http.get<PhotoData>(`${this.url}/${selector}`).pipe(map(entity => new Photo(entity)));
+    return this.http.get<PhotoData>(`${this.url}/${selector}`).pipe(map(PhotoDataService.mapData));
   }
 }
