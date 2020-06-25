@@ -2,11 +2,6 @@
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
-  "extends": [
-    "rxjs-tslint-rules",
-    "tslint-angular",
-    "tslint-eslint-rules"
-  ],
   "rules": {
     "array-bracket-spacing": [
       true,
@@ -224,23 +219,6 @@
       {
         "props": true
       }
-    ],
-    "rxjs-no-unsafe-takeuntil": true,
-    "rxjs-finnish": {
-      "options": [
-        {
-          "functions": true,
-          "methods": true,
-          "parameters": true,
-          "properties": true,
-          "variables": true
-        }
-      ],
-      "severity": "error"
-    },
-    "rxjs-no-internal": true,
-    "rxjs-ban-operators": true,
-    "rxjs-no-subject-value": true,
-    "rxjs-no-unsafe-switchmap": true
+    ]
   }
 }

@@ -16,7 +16,7 @@ export class NavigationService {
 
   constructor (
     private readonly router: Router,
-    private readonly ref: ApplicationRef,
+    private readonly ref: ApplicationRef
   ) {
   }
 
@@ -32,14 +32,10 @@ export class NavigationService {
         this.previousRoute$.next(this.router.url);
         this.navigationHistory$.next({...history, [this.router.url]: scrollElement.nativeElement.scrollTop});
 
-        if (event.navigationTrigger === 'popstate') {
-          return this.navigationEnds$.pipe(first(), tap(() => {
-            this.ref.tick();
-            scrollElement.nativeElement.scrollTop = history[event.url];
-          }));
-        }
-
-        return this.navigationEnds$.pipe(first(), tap(() => scrollElement.nativeElement.scrollTop = 0));
+        return this.navigationEnds$.pipe(first(), tap(() => {
+          this.ref.tick();
+          scrollElement.nativeElement.scrollTop = history[event.url];
+        }));
       })
     );
   }
