@@ -1,3 +1,5 @@
+/// <reference path="../../../../node_modules/@types/googlemaps/index.d.ts" />
+
 import { Injectable } from '@angular/core';
 import { Blog, BlogStateService } from '@client/src/app/+blog';
 import { MapFilter } from '@client/src/app/+map/enums/map-filter.enum';

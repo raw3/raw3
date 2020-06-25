@@ -1,5 +1,3 @@
-/// <reference path="../../../../node_modules/@types/googlemaps/index.d.ts" />
-
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MapFilter } from '@client/src/app/+map/enums/map-filter.enum';

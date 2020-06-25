@@ -1,0 +1,40 @@
+version: "3.3"
+
+services:
+  database:
+    volumes:
+      - database:/data/db
+      - database-config:/data/configdb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "root"
+      MONGO_INITDB_ROOT_PASSWORD: "YOUR_PASSWORD"
+
+  raw3:
+    expose:
+      - 80
+    environment:
+      VIRTUAL_HOST: raw3.io
+      LETSENCRYPT_HOST: raw3.io
+      LETSENCRYPT_EMAIL: admin@raw3.io
+      PORT: 80
+
+  redirect:
+    container_name: proxy-redirect
+    image: morbz/docker-web-redirect
+    restart: always
+    environment:
+      MONGODB_USER: "root"
+      MONGODB_PASSWORD: "YOUR_PASSWORD"
+      VIRTUAL_HOST: www.raw3.io,raw3.nl,www.raw3.nl
+      LETSENCRYPT_HOST: www.raw3.io,raw3.nl,www.raw3.nl
+      LETSENCRYPT_EMAIL: admin@raw3.io
+      REDIRECT_TARGET: https://raw3.io
+
+volumes:
+  database:
+  database-config:
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

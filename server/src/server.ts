@@ -56,14 +56,14 @@ export function app () {
   return server;
 }
 
-async function preloadData<T extends { url: string }> (data: T[], model: mongoose.Model<mongoose.Document>) {
-  const entities = await model.find();
+function preloadData<T extends { url: string }> (data: T[], model: mongoose.Model<mongoose.Document>) {
+  data.forEach(async entity => {
+    const isEntityStored = !!await model.findOne({url: entity.url});
 
-  if (!entities || !entities.length) {
-    data.forEach(entity => {
+    if (!isEntityStored) {
       new model(entity).save().then(() => console.log(`Entity ${entity.url} added to the database!`));
-    });
-  }
+    }
+  });
 }
 
 function run () {

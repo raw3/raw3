@@ -26,10 +26,11 @@
     "build": "ng build --prod",
     "watch": "ng build --prod --watch",
     "lint": "ng lint raw3",
-    "dev:ssr": "ng run raw3:serve-ssr",
+    "dev:ssr": "env MONGODB_USER=root env MONGODB_PASSWORD=root env MONGODB_URI=localhost:27017/raw3 ng run raw3:serve-ssr",
     "serve:ssr": "node dist/server/main.js",
     "build:ssr": "ng build --prod && ng run raw3:server:production",
-    "prerender": "ng run raw3:prerender"
+    "prerender": "ng run raw3:prerender",
+    "postinstall": "ngcc"
   },
   "dependencies": {
     "@angular/animations": "9.0.0",

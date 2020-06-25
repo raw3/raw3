@@ -12,6 +12,7 @@ import { AppModule } from './app.module';
     ServerTransferStateModule
   ],
   providers: [
+    {provide: 'google', useFactory: () => {}},
     {provide: 'window', useFactory: () => ({innerWidth: 0})}
   ]
 })
