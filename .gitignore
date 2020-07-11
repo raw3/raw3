@@ -28,3 +28,4 @@ webpack.records.json
 
 # Docker #
 ./docker-compose.prod.yml
+./docker-compose.override.yml
