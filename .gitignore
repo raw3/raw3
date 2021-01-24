@@ -27,5 +27,5 @@ webpack.records.json
 *.shim.ngstyle.ts
 
 # Docker #
-./docker-compose.prod.yml
-./docker-compose.override.yml
+#./docker-compose.prod.yml
+#./docker-compose.override.yml
